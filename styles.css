@@ -40,7 +40,6 @@
   --radius-pill: 9999px;
   
   --header-height: 80px;
-  --announcement-height: 38px;
 }
 
 *, *::before, *::after {
@@ -127,52 +126,6 @@ img {
 }
 
 /* ==========================================================================
-   ANNOUNCEMENT BAR
-   ========================================================================== */
-.announcement-bar {
-  background-color: var(--color-dark);
-  color: #FFFFFF;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  height: var(--announcement-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  position: relative;
-  z-index: 1001;
-}
-
-.announcement-bar p {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0 auto;
-}
-
-.announcement-bar span.gold-tag {
-  color: var(--color-gold);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-}
-
-.announcement-bar .bar-actions {
-  position: absolute;
-  right: 2rem;
-  display: flex;
-  gap: 1.25rem;
-  font-size: 0.75rem;
-  color: #CCCCCC;
-}
-
-.announcement-bar .bar-actions a:hover {
-  color: var(--color-gold);
-}
-
-/* ==========================================================================
    MAIN HEADER & NAVIGATION
    ========================================================================== */
 .main-header {
@@ -204,8 +157,9 @@ img {
 .nav-left, .nav-right {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  flex: 1;
+  gap: 1.25rem;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .nav-right {
@@ -319,23 +273,6 @@ img {
 .cart-icon,
 .product-bag {
   display: none !important;
-}
-
-/* Header Icons */
-.header-icon-btn {
-  position: relative;
-  background: transparent;
-  color: var(--color-dark);
-  font-size: 1.2rem;
-  padding: 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color var(--transition-fast);
-}
-
-.header-icon-btn:hover {
-  color: var(--color-gold);
 }
 
 .mobile-menu-btn {
