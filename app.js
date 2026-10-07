@@ -5,15 +5,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize state
   const state = {
-    cart: [
-      {
-        id: 'prod-1',
-        title: 'VR2C Care Vital Nutrition Shampoo',
-        price: 34.00,
-        qty: 1,
-        img: 'assets/body_img2.jpeg'
-      }
-    ],
     wishlist: new Set(['prod-1']),
     quizStep: 1,
     quizAnswers: {},
@@ -41,154 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --------------------------------------------------
-  // 2. Cart Drawer & State Management
-  // --------------------------------------------------
-  const cartBtn = document.getElementById('cartIconBtn');
-  const cartDrawer = document.getElementById('cartDrawer');
-  const drawerOverlay = document.getElementById('drawerOverlay');
-  const closeCartBtn = document.getElementById('closeCartBtn');
-
-  function toggleCart(show = true) {
-    if (show) {
-      cartDrawer?.classList.add('active');
-      drawerOverlay?.classList.add('active');
-    } else {
-      cartDrawer?.classList.remove('active');
-      drawerOverlay?.classList.remove('active');
-    }
-  }
-
-  cartBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    toggleCart(true);
-  });
-
-  closeCartBtn?.addEventListener('click', () => toggleCart(false));
-  drawerOverlay?.addEventListener('click', () => {
-    toggleCart(false);
-    closeModal();
-  });
-
-  function renderCart() {
-    const cartItemsContainer = document.getElementById('cartItemsList');
-    const cartSubtotalEl = document.getElementById('cartSubtotal');
-    const cartBadge = document.querySelector('.cart-badge');
-    const freeShippingProgress = document.getElementById('freeShippingProgress');
-    const freeShippingText = document.getElementById('freeShippingText');
-
-    if (!cartItemsContainer) return;
-
-    let subtotal = 0;
-    let totalItems = 0;
-
-    cartItemsContainer.innerHTML = '';
-
-    if (state.cart.length === 0) {
-      cartItemsContainer.innerHTML = `
-        <div style="text-align: center; padding: 3rem 1rem; color: #888;">
-          <i class="fas fa-shopping-bag" style="font-size: 2.5rem; margin-bottom: 1rem; color: #CCC;"></i>
-          <p>Your luxury cart is currently empty.</p>
-          <button class="btn-dark" style="margin-top: 1.5rem;" onclick="document.getElementById('closeCartBtn').click()">Explore Collection</button>
-        </div>
-      `;
-    } else {
-      state.cart.forEach(item => {
-        subtotal += item.price * item.qty;
-        totalItems += item.qty;
-
-        const itemEl = document.createElement('div');
-        itemEl.className = 'cart-item';
-        itemEl.innerHTML = `
-          <img src="${item.img}" alt="${item.title}" class="cart-item-img" />
-          <div class="cart-item-details">
-            <div class="cart-item-title">${item.title}</div>
-            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-            <div class="cart-item-qty">
-              <button class="qty-btn dec-btn" data-id="${item.id}">-</button>
-              <span style="font-size: 0.875rem; font-weight: 600;">${item.qty}</span>
-              <button class="qty-btn inc-btn" data-id="${item.id}">+</button>
-              <button style="margin-left: auto; color: #999; font-size: 0.8125rem;" class="remove-btn" data-id="${item.id}">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </div>
-          </div>
-        `;
-        cartItemsContainer.appendChild(itemEl);
-      });
-    }
-
-    if (cartSubtotalEl) cartSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-    if (cartBadge) cartBadge.textContent = totalItems;
-
-    // Free shipping threshold ($75)
-    const threshold = 75;
-    if (freeShippingProgress && freeShippingText) {
-      const percentage = Math.min(100, (subtotal / threshold) * 100);
-      freeShippingProgress.style.width = `${percentage}%`;
-
-      if (subtotal >= threshold) {
-        freeShippingText.innerHTML = `<span style="color: var(--color-success); font-weight: 600;"><i class="fas fa-check-circle"></i> Congratulations! You unlocked FREE Complimentary Shipping.</span>`;
-      } else {
-        const diff = (threshold - subtotal).toFixed(2);
-        freeShippingText.innerHTML = `Add <strong>$${diff}</strong> more to qualify for Free Express Delivery`;
-      }
-    }
-
-    // Attach qty handlers
-    cartItemsContainer.querySelectorAll('.inc-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = e.currentTarget.dataset.id;
-        const item = state.cart.find(i => i.id === id);
-        if (item) {
-          item.qty++;
-          renderCart();
-        }
-      });
-    });
-
-    cartItemsContainer.querySelectorAll('.dec-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = e.currentTarget.dataset.id;
-        const item = state.cart.find(i => i.id === id);
-        if (item && item.qty > 1) {
-          item.qty--;
-          renderCart();
-        } else if (item && item.qty === 1) {
-          state.cart = state.cart.filter(i => i.id !== id);
-          renderCart();
-        }
-      });
-    });
-
-    cartItemsContainer.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = e.currentTarget.dataset.id;
-        state.cart = state.cart.filter(i => i.id !== id);
-        renderCart();
-        showToast('Item removed from cart');
-      });
-    });
-  }
-
-  // Global function to add to cart
-  window.addToCart = function(product) {
-    const existing = state.cart.find(i => i.id === product.id);
-    if (existing) {
-      existing.qty++;
-    } else {
-      state.cart.push({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        qty: 1,
-        img: product.img
-      });
-    }
-    renderCart();
-    toggleCart(true);
-    showToast(`Added "${product.title}" to cart`);
-  };
+  // Cart interactions removed per storefront requirements.
 
   // --------------------------------------------------
   // 3. Toast Notifications
@@ -237,21 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Attach Add-to-Cart event to all product card buttons
-  document.querySelectorAll('.add-cart-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const card = e.currentTarget.closest('.product-card');
-      if (!card) return;
-
-      const product = {
-        id: card.dataset.id || 'prod-' + Math.random(),
-        title: card.querySelector('.product-title').textContent,
-        price: parseFloat(card.querySelector('.product-price').textContent.replace('$', '')),
-        img: card.querySelector('.product-img').src
-      };
-      addToCart(product);
-    });
-  });
+  // Product cards intentionally omit purchase buttons per storefront requirements.
 
   // --------------------------------------------------
   // 5. Interactive Hair Diagnosis Quiz Logic
@@ -326,10 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <p style="font-size: 0.8rem; color: #C5A059; font-weight: 600;">Step 2: Fortify & Protect</p>
           </div>
         </div>
-
-        <button class="btn-primary" onclick="addToCart({id:'bundle-quiz', title:'Custom VR2C Routine Bundle', price: 62.00, img:'assets/body_img2.jpeg'}); closeModal();">
-          Add Full Prescribed Bundle ($62.00)
-        </button>
       </div>
     `);
   }
@@ -493,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!card) return;
 
       const title = card.querySelector('.product-title').textContent;
-      const price = card.querySelector('.product-price').textContent;
       const img = card.querySelector('.product-img').src;
       const category = card.querySelector('.product-category').textContent;
 
@@ -505,20 +330,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <span style="color: var(--color-gold); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">${category}</span>
             <h2 style="font-size: 1.8rem; margin: 0.4rem 0 0.8rem 0;">${title}</h2>
-            <div style="font-size: 1.4rem; font-weight: 700; color: var(--color-dark); margin-bottom: 1rem;">${price}</div>
             <p style="color: #666; font-size: 0.9375rem; margin-bottom: 1.5rem; line-height: 1.6;">
               Formulated with VR2C Essential Minerals, Organic Silanols, and Centella Asiatica to restore inner vitality and structural shine to high-demand hair textures.
             </p>
-            <div style="margin-bottom: 1.5rem;">
-              <label style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Select Bottle Size:</label>
-              <div style="display: flex; gap: 0.5rem;">
-                <button class="filter-btn active" style="padding: 0.4rem 1rem;">250 ml</button>
-                <button class="filter-btn" style="padding: 0.4rem 1rem;">1000 ml Salon Size</button>
-              </div>
-            </div>
-            <button class="btn-primary" style="width: 100%;" onclick="addToCart({id: '${card.dataset.id}', title: '${title}', price: ${parseFloat(price.replace('$', ''))}, img: '${img}'}); closeModal();">
-              Add To Shopping Bag
-            </button>
           </div>
         </div>
       `);

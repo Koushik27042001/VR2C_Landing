@@ -16,10 +16,7 @@
 
   <!-- ANNOUNCEMENT BAR -->
   <div class="announcement-bar">
-    <p>
-      <span class="gold-tag">Complimentary</span>
-      Free Express Delivery on all orders over $75 | 100% VR2C Hair Craftsmanship
-    </p>
+    <p aria-hidden="true"></p>
     <div class="bar-actions">
       <a href="#salonFinder"><i class="fas fa-map-marker-alt"></i> Find VR2C Salon</a>
       <a href="#proSection">For Stylists</a>
@@ -33,17 +30,40 @@
       <!-- Left Navigation -->
       <nav class="nav-left">
         <div class="nav-dropdown">
-          <a href="#products" class="nav-link">Products <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
+          <a href="#heritage" class="nav-link">Brand Story <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
           <div class="dropdown-menu">
-            <a href="#products" class="dropdown-item">VR2C Care Series</a>
-            <a href="#products" class="dropdown-item">Style & Sculpting</a>
-            <a href="#products" class="dropdown-item">Color Muse Masks</a>
-            <a href="#products" class="dropdown-item">Scalp Wellness</a>
-            <a href="#products" class="dropdown-item">Salon Pro Line</a>
+            <a href="#heritage" class="dropdown-item">Our Story</a>
+            <a href="#heritage" class="dropdown-item">Founder & Company Story</a>
+            <a href="#heritage" class="dropdown-item">Our Values</a>
           </div>
         </div>
-        <a href="#hairQuiz" class="nav-link">Hair Quiz</a>
-        <a href="#salons" class="nav-link">Salons</a>
+
+        <div class="nav-dropdown">
+          <a href="#whyChooseUs" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#whyChooseUs" class="dropdown-item">Clean Ingredients</a>
+            <a href="#whyChooseUs" class="dropdown-item">Dermatology Tested</a>
+            <a href="#whyChooseUs" class="dropdown-item">Cruelty Free</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="#products" class="nav-link">Featured Products <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#products" class="dropdown-item">Our Products</a>
+            <a href="#products" class="dropdown-item">Best Sellers</a>
+            <a href="#products" class="dropdown-item">Salon Essentials</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="#ingredientSpotlight" class="nav-link">Ingredient Spotlight <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#ingredientSpotlight" class="dropdown-item">Hero Ingredients</a>
+            <a href="#ingredientSpotlight" class="dropdown-item">Mineral Infusion</a>
+            <a href="#ingredientSpotlight" class="dropdown-item">Scalp & Hair Science</a>
+          </div>
+        </div>
       </nav>
 
       <!-- Center Brand Logo (VR2C) -->
@@ -55,19 +75,28 @@
 
       <!-- Right Navigation & Action Icons -->
       <nav class="nav-right">
-        <a href="#heritage" class="nav-link">Our Story</a>
-        <a href="#proSection" class="nav-link">For Professionals</a>
-        
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+
+        <div class="nav-dropdown">
+          <a href="#shopByConcern" class="nav-link">Shop by Concern <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#shopByConcern" class="dropdown-item">Dryness</a>
+            <a href="#shopByConcern" class="dropdown-item">Hair Growth</a>
+            <a href="#shopByConcern" class="dropdown-item">Acne</a>
+            <a href="#shopByConcern" class="dropdown-item">Hydration</a>
+            <a href="#shopByConcern" class="dropdown-item">Scalp Care</a>
+          </div>
+        </div>
+
+        <a href="#newsletter" class="nav-link">Newsletter</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+
         <div style="display: flex; gap: 0.8rem; align-items: center; margin-left: 1.5rem;">
           <button class="header-icon-btn" id="searchToggleBtn" title="Search Products">
             <i class="fas fa-search"></i>
           </button>
           <button class="header-icon-btn" id="wishlistToggleBtn" title="Wishlist">
             <i class="far fa-heart"></i>
-          </button>
-          <button class="header-icon-btn" id="cartIconBtn" title="Shopping Bag">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="cart-badge">1</span>
           </button>
         </div>
       </nav>
@@ -111,7 +140,7 @@
   </section>
 
   <!-- BRAND TRUST BADGES / STATS BAR -->
-  <section class="trust-bar">
+  <section class="trust-bar" id="whyChooseUs">
     <div class="container">
       <div class="trust-grid">
         <div class="trust-item">
@@ -133,6 +162,51 @@
           <i class="fas fa-cut trust-icon"></i>
           <span class="trust-title">Pro Stylist Approved</span>
           <span class="trust-desc">Trusted in 85+ countries by hair masters</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENT SPOTLIGHT -->
+  <section class="section-padding" id="ingredientSpotlight">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">INGREDIENT SPOTLIGHT</span>
+        <h2 class="section-title">Hero Ingredients That Deliver Visible Results</h2>
+        <p class="section-desc">Each formula is powered by potent, skin-loving actives and mineral-rich care designed to protect, hydrate, and restore healthier-looking hair.</p>
+      </div>
+
+      <div class="media-grid-4">
+        <div class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">HERO INGREDIENT</span>
+            <h3 class="media-headline">Mineral Complex</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Essential minerals help support strength, balance, and a healthier scalp foundation for long-term vitality.</p>
+          </div>
+        </div>
+
+        <div class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">BOTANICAL CARE</span>
+            <h3 class="media-headline">Centella & Aloe</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Calming, hydrating support for sensitive scalps and dry, stressed hair strands.</p>
+          </div>
+        </div>
+
+        <div class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">RESTORATIVE</span>
+            <h3 class="media-headline">Peptide Repair</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Helps improve softness, resilience, and smoothness while reinforcing strand structure.</p>
+          </div>
+        </div>
+
+        <div class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">SCALP HEALTH</span>
+            <h3 class="media-headline">Balanced Care</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Clinically inspired ingredients help nourish the scalp while supporting cleaner, healthier growth.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -203,6 +277,51 @@
     </div>
   </section>
 
+  <!-- SHOP BY CONCERN -->
+  <section class="section-padding" id="shopByConcern">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">SHOP BY CONCERN</span>
+        <h2 class="section-title">Targeted Solutions for Every Hair Need</h2>
+        <p class="section-desc">Build a routine around the specific concerns you want to treat, from moisture repair to scalp wellness.</p>
+      </div>
+
+      <div class="media-grid-4">
+        <a href="#products" class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">CONCERN</span>
+            <h3 class="media-headline">Dryness</h3>
+            <span class="media-link-text">Repair & replenish <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#products" class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">CONCERN</span>
+            <h3 class="media-headline">Hair Growth</h3>
+            <span class="media-link-text">Support stronger growth <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#products" class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">CONCERN</span>
+            <h3 class="media-headline">Acne</h3>
+            <span class="media-link-text">Calm & balance <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="#products" class="media-card" style="height: auto;">
+          <div class="media-content" style="padding: 1.5rem;">
+            <span class="media-tag">CONCERN</span>
+            <h3 class="media-headline">Hydration</h3>
+            <span class="media-link-text">Boost moisture retention <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- BESTSELLERS PRODUCT SHOWCASE & FILTERABLE CATALOG -->
   <section class="section-padding products-section" id="products">
     <div class="container">
@@ -238,10 +357,6 @@
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               <span>(142)</span>
             </div>
-            <div class="product-price-row">
-              <span class="product-price">$34.00</span>
-              <button class="add-cart-btn"><i class="fas fa-plus"></i> Add</button>
-            </div>
             <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
           </div>
         </div>
@@ -259,10 +374,6 @@
             <div class="product-rating">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
               <span>(98)</span>
-            </div>
-            <div class="product-price-row">
-              <span class="product-price">$42.00</span>
-              <button class="add-cart-btn"><i class="fas fa-plus"></i> Add</button>
             </div>
             <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
           </div>
@@ -282,10 +393,6 @@
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               <span>(215)</span>
             </div>
-            <div class="product-price-row">
-              <span class="product-price">$38.00</span>
-              <button class="add-cart-btn"><i class="fas fa-plus"></i> Add</button>
-            </div>
             <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
           </div>
         </div>
@@ -303,10 +410,6 @@
             <div class="product-rating">
               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
               <span>(64)</span>
-            </div>
-            <div class="product-price-row">
-              <span class="product-price">$29.00</span>
-              <button class="add-cart-btn"><i class="fas fa-plus"></i> Add</button>
             </div>
             <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
           </div>
@@ -523,7 +626,7 @@
   </section>
 
   <!-- TESTIMONIALS & STYLIST REVIEWS -->
-  <section class="section-padding testimonials-section">
+  <section class="section-padding testimonials-section" id="testimonials">
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">STYLIST REVIEWS</span>
@@ -577,6 +680,70 @@
     </div>
   </section>
 
+  <!-- CLIENT FEEDBACK & FUTURE PRODUCT REQUIREMENTS -->
+  <section class="feedback-section" id="feedbackForms">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">CLIENT INSIGHTS</span>
+        <h2 class="section-title">Your Feedback Shapes Tomorrow’s VR2C Innovation</h2>
+        <p class="section-desc">Share your experience with our products or tell us about a challenge in your outlet so we can build the right solution for your salon.</p>
+      </div>
+
+      <div class="feedback-grid">
+        <div class="feedback-card">
+          <div class="form-kicker">Client Feedback</div>
+          <h3>Tell us about your experience</h3>
+          <form class="luxury-form">
+            <div class="form-field">
+              <label for="feedbackName">Client name</label>
+              <input id="feedbackName" type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div class="form-field">
+              <label for="feedbackContact">Contact details</label>
+              <input id="feedbackContact" type="text" placeholder="Phone number or email" required />
+            </div>
+
+            <div class="form-field">
+              <label for="feedbackMessage">Feedback on our product</label>
+              <textarea id="feedbackMessage" rows="5" placeholder="Share what you liked, what could improve, and how the product is performing in your salon or outlet." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Submit Feedback</button>
+          </form>
+        </div>
+
+        <div class="feedback-card accent-card">
+          <div class="form-kicker">Future Product Requirements</div>
+          <h3>Tell us what your outlet needs</h3>
+          <form class="luxury-form">
+            <div class="form-field">
+              <label for="requirementName">Client name</label>
+              <input id="requirementName" type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div class="form-field">
+              <label for="requirementContact">Contact details</label>
+              <input id="requirementContact" type="text" placeholder="Phone number or email" required />
+            </div>
+
+            <div class="form-field">
+              <label for="outletIssue">Issue facing in your outlet</label>
+              <textarea id="outletIssue" rows="4" placeholder="Describe the challenge your outlet is currently facing." required></textarea>
+            </div>
+
+            <div class="form-field">
+              <label for="futureProductIdea">How VR2C can help create a new product</label>
+              <textarea id="futureProductIdea" rows="4" placeholder="Tell us the solution you need and how VR2C can design a new product for your business." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Send Requirement</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- NEWSLETTER SIGNUP -->
   <section class="newsletter-section" id="newsletter">
     <div class="container">
@@ -594,7 +761,7 @@
   </section>
 
   <!-- LUXURY FOOTER -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="container">
       <div class="footer-grid">
         
@@ -662,40 +829,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- SLIDE-OVER CART DRAWER -->
-  <div class="drawer-overlay" id="drawerOverlay"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="drawer-header">
-      <h3>Your Shopping Bag</h3>
-      <button class="close-drawer-btn" id="closeCartBtn">&times;</button>
-    </div>
-
-    <!-- Free Shipping Progress -->
-    <div style="padding: 1rem 2rem; background: #FAF9F6; border-bottom: 1px solid #E8E8E8;">
-      <div id="freeShippingText" style="font-size: 0.8125rem; margin-bottom: 0.4rem; color: #444;">
-        Add <strong>$41.00</strong> more for Free Delivery
-      </div>
-      <div style="height: 6px; background: #E0E0E0; border-radius: 3px; overflow: hidden;">
-        <div id="freeShippingProgress" style="height: 100%; background: var(--color-gold); width: 45%; transition: width 0.3s ease;"></div>
-      </div>
-    </div>
-
-    <div class="drawer-body">
-      <div class="cart-items-list" id="cartItemsList">
-        <!-- Dynamic Items rendered by JS -->
-      </div>
-    </div>
-
-    <div class="drawer-footer">
-      <div class="subtotal-row">
-        <span>Subtotal:</span>
-        <span id="cartSubtotal">$34.00</span>
-      </div>
-      <p style="font-size: 0.75rem; color: #888; margin-bottom: 1rem;">Taxes and complimentary shipping calculated at checkout.</p>
-      <button class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">Proceed to Checkout</button>
-    </div>
-  </div>
 
   <!-- APPLICATION JS -->
   <script src="app.js"></script>

@@ -316,23 +316,6 @@ img {
   color: var(--color-gold);
 }
 
-.cart-badge {
-  position: absolute;
-  top: -2px;
-  right: -6px;
-  background-color: var(--color-dark);
-  color: #FFFFFF;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #FFFFFF;
-}
-
 .mobile-menu-btn {
   display: none;
   font-size: 1.5rem;
@@ -915,38 +898,6 @@ img {
   margin-left: 0.25rem;
 }
 
-.product-price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid #F2F2F2;
-}
-
-.product-price {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--color-dark);
-}
-
-.add-cart-btn {
-  background-color: var(--color-dark);
-  color: #FFFFFF;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.add-cart-btn:hover {
-  background-color: var(--color-gold);
-}
-
 /* ==========================================================================
    INTERACTIVE FEATURE 1: HAIR DIAGNOSIS QUIZ WIDGET
    ========================================================================== */
@@ -1485,6 +1436,98 @@ img {
 }
 
 /* ==========================================================================
+   CLIENT FEEDBACK & FUTURE PRODUCT REQUIREMENTS
+   ========================================================================== */
+.feedback-section {
+  background-color: #FFFFFF;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 5rem 0;
+}
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.feedback-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.accent-card {
+  background: linear-gradient(180deg, #F9F3EA 0%, #FFFFFF 100%);
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+.form-kicker {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: var(--color-gold-light);
+  color: var(--color-gold-hover);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.feedback-card h3 {
+  font-size: clamp(1.75rem, 2vw, 2.25rem);
+  margin-bottom: 1.5rem;
+  color: var(--color-dark);
+}
+
+.luxury-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: #FFFFFF;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  color: var(--color-dark);
+  resize: vertical;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-field textarea {
+  min-height: 120px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.12);
+}
+
+/* ==========================================================================
    NEWSLETTER & FOOTER
    ========================================================================== */
 .newsletter-section {
@@ -1854,7 +1897,7 @@ img {
   .trust-item {
     border-right: none;
   }
-  .quiz-container, .heritage-grid, .salons-showcase-grid {
+  .quiz-container, .heritage-grid, .salons-showcase-grid, .feedback-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
@@ -1880,4 +1923,17 @@ img {
   .salon-results-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.brand-logo-image {
+  display: block;
+  width: auto;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.footer-logo-image {
+  height: 52px;
+  margin-bottom: 1rem;
 }
