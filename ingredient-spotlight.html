@@ -63,51 +63,45 @@
         </div>
         <a href="contact-us.html" class="nav-link">Contact</a>
       </nav>
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
     </div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation">
+      <a href="brand-story.html">Brand Story</a>
+      <a href="why-choose-us.html">Why Choose Us</a>
+      <a href="featured-products.html">Featured Products</a>
+      <a href="ingredient-spotlight.html">Ingredient</a>
+      <a href="shop-by-concern.html">Shop</a>
+      <a href="contact-us.html">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <section class="section-padding" style="background: linear-gradient(180deg, #faf6ef 0%, #ffffff 100%);">
-      <div class="container">
-        <div class="section-header">
+    <section class="editorial-hero">
+      <img class="editorial-hero-image" src="assets/salon_1.jpeg" alt="Argan oil hair treatment styled with a brush in a warm, natural setting" />
+      <div class="editorial-hero-shade"></div>
+      <div class="container editorial-hero-inner">
+        <div class="editorial-hero-copy">
           <span class="section-subtitle">INGREDIENT SPOTLIGHT</span>
-          <h1 class="section-title">The science behind softer, stronger, shinier hair.</h1>
-          <p class="section-desc">Our formulas are powered by mineral-rich care, botanical calmers, and restorative actives that help protect the scalp while enhancing strand resilience.</p>
+          <h1>Good hair starts with thoughtful formulas.</h1>
+          <p>Explore the ingredients and textures behind the VR2C approach to scalp comfort, strength, and lasting shine.</p>
+          <a href="#ingredients" class="btn-primary">Explore the formulas <i class="fas fa-arrow-down"></i></a>
         </div>
       </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" id="ingredients">
       <div class="container">
-        <div class="media-grid-4">
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">HERO INGREDIENT</span>
-              <h3 class="media-headline">Mineral Complex</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Essential minerals help support strength, balance, and a healthier scalp foundation for long-term vitality.</p>
-            </div>
-          </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">BOTANICAL CARE</span>
-              <h3 class="media-headline">Centella & Aloe</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Calming, hydrating support for sensitive scalps and dry, stressed strands.</p>
-            </div>
-          </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">REPAIR</span>
-              <h3 class="media-headline">Peptide Repair</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Helps improve softness and resiliency while reinforcing healthy strand structure.</p>
-            </div>
-          </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">SCALP HEALTH</span>
-              <h3 class="media-headline">Balanced Care</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Clinically inspired ingredients help nourish the scalp while supporting cleaner, healthier growth.</p>
-            </div>
-          </div>
+        <div class="section-header">
+          <span class="section-subtitle">THE FORMULA NOTES</span>
+          <h2 class="section-title">A considered mix of care and performance.</h2>
+          <p class="section-desc">From the first rinse to the final drop, each step is designed to feel as good as it performs.</p>
+        </div>
+        <div class="editorial-grid">
+          <article class="editorial-card"><img class="editorial-card-image" src="assets/body_img.jpeg" alt="Volumizing shampoo for a fresh, balanced wash" /><div class="editorial-card-copy"><span class="editorial-card-meta">THE CLEANSE</span><h3>Gentle cleansing</h3><p>A thoughtful wash lifts away daily buildup while leaving hair feeling soft and refreshed.</p></div></article>
+          <article class="editorial-card"><img class="editorial-card-image" src="assets/salon_2.jpeg" alt="Rich hair mask for restorative care" /><div class="editorial-card-copy"><span class="editorial-card-meta">THE TREATMENT</span><h3>Comforting moisture</h3><p>Rich conditioners and masks help smooth dry lengths and support a more touchable finish.</p></div></article>
+          <article class="editorial-card"><img class="editorial-card-image" src="assets/body_img3.jpeg" alt="Argan oil treatment for hair shine" /><div class="editorial-card-copy"><span class="editorial-card-meta">THE FINISH</span><h3>Light-catching shine</h3><p>A few finishing drops help tame the look of flyaways and bring a polished glow to the ends.</p></div></article>
         </div>
       </div>
     </section>
@@ -119,34 +113,26 @@
           <h2 class="section-title">Healthy scalp, healthy hair story.</h2>
           <p class="section-desc">The right ingredients don’t just make hair look good for a day—they create the conditions for stronger, smoother, and more resilient hair over time.</p>
         </div>
-        <div class="media-grid-4">
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">NOURISH</span>
-              <h3 class="media-headline">Hydration</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Moisture balancing ingredients help improve softness, reduce roughness, and support daily comfort.</p>
-            </div>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <i class="fas fa-droplet trust-icon"></i>
+            <span class="trust-title">Hydration</span>
+            <span class="trust-desc">Moisture helps improve softness and everyday comfort.</span>
           </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">PROTECT</span>
-              <h3 class="media-headline">Shield</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Barrier-supportive actives help defend hair from environmental stress, heat, and daily wear.</p>
-            </div>
+          <div class="trust-item">
+            <i class="fas fa-shield-alt trust-icon"></i>
+            <span class="trust-title">Protection</span>
+            <span class="trust-desc">Support against heat, weather, and daily wear.</span>
           </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">SMOOTH</span>
-              <h3 class="media-headline">Gloss</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Light-reflecting ingredients support shine, smoother texture, and a polished salon finish.</p>
-            </div>
+          <div class="trust-item">
+            <i class="fas fa-sparkles trust-icon"></i>
+            <span class="trust-title">Gloss</span>
+            <span class="trust-desc">Smooth texture with a polished, light-catching finish.</span>
           </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">BALANCE</span>
-              <h3 class="media-headline">Scalp Comfort</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">A healthy scalp is the foundation for healthy growth, less irritation, and better everyday styling.</p>
-            </div>
+          <div class="trust-item">
+            <i class="fas fa-leaf trust-icon"></i>
+            <span class="trust-title">Scalp balance</span>
+            <span class="trust-desc">Comfortable scalp care as the foundation for healthy-looking hair.</span>
           </div>
         </div>
       </div>

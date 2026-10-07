@@ -28,7 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (mobileMenuBtn && mobileNavDrawer) {
     mobileMenuBtn.addEventListener('click', () => {
-      mobileNavDrawer.classList.toggle('active');
+      const isOpen = mobileNavDrawer.classList.toggle('active');
+      mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+      mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+    });
+
+    mobileNavDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNavDrawer.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Open navigation');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      });
     });
   }
 

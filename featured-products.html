@@ -63,32 +63,46 @@
         </div>
         <a href="contact-us.html" class="nav-link">Contact</a>
       </nav>
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
     </div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation">
+      <a href="brand-story.html">Brand Story</a>
+      <a href="why-choose-us.html">Why Choose Us</a>
+      <a href="featured-products.html">Featured Products</a>
+      <a href="ingredient-spotlight.html">Ingredient</a>
+      <a href="shop-by-concern.html">Shop</a>
+      <a href="contact-us.html">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <section class="section-padding" style="background: linear-gradient(180deg, #f9f5ee 0%, #ffffff 100%);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle">FEATURED PRODUCTS</span>
-          <h1 class="section-title">Signature formulas for every hair goal.</h1>
-          <p class="section-desc">Explore VR2C’s best-loved essentials, from strength and shine to color protection and scalp recovery.</p>
+    <section class="editorial-hero">
+      <img class="editorial-hero-image" src="assets/WhatsApp Image 2026-10-05 at 12.34.31 AM.jpeg" alt="VR2C daily hydration serum in a bright studio setting" />
+      <div class="editorial-hero-shade"></div>
+      <div class="container editorial-hero-inner">
+        <div class="editorial-hero-copy">
+          <span class="section-subtitle">THE VR2C COLLECTION</span>
+          <h1>Signature formulas for every hair ritual.</h1>
+          <p>Salon-inspired essentials for softness, shine, strength, and a more considered daily routine.</p>
+          <a href="#collection" class="btn-primary">Explore the collection <i class="fas fa-arrow-down"></i></a>
         </div>
       </div>
     </section>
 
-    <section class="section-padding products-section">
+    <section class="section-padding products-section" id="collection">
       <div class="container">
         <div class="products-grid">
           <div class="product-card" data-category="care">
             <span class="product-badge gold">BESTSELLER</span>
             <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
             <div class="product-img-container">
-              <img src="assets/body_img2.jpeg" alt="VR2C Care Vital Nutrition Shampoo" class="product-img" />
+              <img src="assets/body_img.jpeg" alt="VR2C volumizing shampoo" class="product-img" />
             </div>
             <div class="product-info">
               <span class="product-category">Care Series</span>
-              <h3 class="product-title">Vital Nutrition Shampoo</h3>
+              <h3 class="product-title">Volumizing Shampoo</h3>
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <span>(142)</span>
@@ -98,14 +112,14 @@
           </div>
 
           <div class="product-card" data-category="color">
-            <span class="product-badge">COLOR SHIELD</span>
+            <span class="product-badge">WEEKLY TREATMENT</span>
             <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
             <div class="product-img-container">
-              <img src="assets/body_img6.jpeg" alt="Color Muse Mask - Radiant Rose" class="product-img" />
+              <img src="assets/salon_2.jpeg" alt="VR2C repairing hair mask" class="product-img" />
             </div>
             <div class="product-info">
-              <span class="product-category">Color Muse</span>
-              <h3 class="product-title">Color Muse Mask - Rose Glow</h3>
+              <span class="product-category">Repair Ritual</span>
+              <h3 class="product-title">Repairing Hair Mask</h3>
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                 <span>(98)</span>
@@ -118,11 +132,11 @@
             <span class="product-badge gold">PRO CHOICE</span>
             <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
             <div class="product-img-container">
-              <img src="assets/body_img.jpeg" alt="VR2C Care Long & Strong Serum" class="product-img" />
+              <img src="assets/body_img3.jpeg" alt="Moroccan argan oil hair treatment" class="product-img" />
             </div>
             <div class="product-info">
-              <span class="product-category">Strengthening</span>
-              <h3 class="product-title">Long & Strong Fortifying Serum</h3>
+              <span class="product-category">Finishing Care</span>
+              <h3 class="product-title">Moroccan Argan Shine Oil</h3>
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <span>(215)</span>
@@ -138,8 +152,8 @@
               <img src="assets/body_img5.jpeg" alt="VR2C Style Design Paste" class="product-img" />
             </div>
             <div class="product-info">
-              <span class="product-category">Styling</span>
-              <h3 class="product-title">Style & Sculpt Matte Paste</h3>
+              <span class="product-category">Leave-In Care</span>
+              <h3 class="product-title">Detangling Leave-In Spray</h3>
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
                 <span>(64)</span>

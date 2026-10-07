@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | VR2C Haircosmetics</title>
-  <meta name="description" content="Join the VR2C community for product drops, expert tips, and salon news." />
+  <meta name="description" content="The VR2C journal: thoughtful haircare routines, ingredient notes, and advice from salon professionals." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -63,55 +63,59 @@
         </div>
         <a href="contact-us.html" class="nav-link">Contact</a>
       </nav>
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
     </div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation">
+      <a href="brand-story.html">Brand Story</a>
+      <a href="why-choose-us.html">Why Choose Us</a>
+      <a href="featured-products.html">Featured Products</a>
+      <a href="ingredient-spotlight.html">Ingredient</a>
+      <a href="shop-by-concern.html">Shop</a>
+      <a href="contact-us.html">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <section class="newsletter-section" style="padding: 5rem 0;">
-      <div class="container">
-        <div class="newsletter-box">
-          <span class="section-subtitle" style="color: var(--color-gold);">JOIN THE VR2C CIRCLE</span>
-          <h2>Unlock exclusive salon access</h2>
-          <p>Subscribe for first access to new product drops, hair care tips from top trichologists, and early salon event invitations.</p>
-          <form class="newsletter-form" id="newsletterForm">
-            <input type="email" class="newsletter-input" placeholder="Enter your email address..." required />
-            <button type="submit" class="btn-primary" style="white-space: nowrap;">Subscribe <i class="fas fa-paper-plane"></i></button>
-          </form>
+    <section class="editorial-hero">
+      <img class="editorial-hero-image" src="assets/WhatsApp Image 2026-10-05 at 12.34.31 AM.jpeg" alt="VR2C serum and folded towels in a bright studio" />
+      <div class="editorial-hero-shade"></div>
+      <div class="container editorial-hero-inner">
+        <div class="editorial-hero-copy">
+          <span class="section-subtitle">THE VR2C JOURNAL</span>
+          <h1>Good hair, thoughtfully considered.</h1>
+          <p>Ingredient notes, salon wisdom, and small rituals that make caring for your hair feel effortless.</p>
+          <a href="#journal" class="btn-primary">Explore the journal <i class="fas fa-arrow-down"></i></a>
         </div>
       </div>
     </section>
 
-    <section class="section-padding" style="background: #ffffff;">
+    <section class="section-padding" id="journal">
       <div class="container">
-        <div class="media-grid-4">
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">EXCLUSIVE</span>
-              <h3 class="media-headline">Early product drops</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Be first to discover launch moments, limited editions, and seasonal routines before the public release.</p>
-            </div>
-          </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">SMART CARE</span>
-              <h3 class="media-headline">Expert guidance</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Receive styling tips, ingredient education, and hair health recommendations from our in-house experts.</p>
-            </div>
-          </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">VIP ACCESS</span>
-              <h3 class="media-headline">Salon events</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Get invites to masterclass events, virtual consultations, and premium salon experiences.</p>
-            </div>
-          </div>
-          <div class="media-card" style="height: auto;">
-            <div class="media-content" style="padding: 1.5rem;">
-              <span class="media-tag">COMMUNITY</span>
-              <h3 class="media-headline">Client stories</h3>
-              <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Follow transformation journeys, salon wins, and real results from the VR2C community.</p>
-            </div>
-          </div>
+        <div class="section-header">
+          <span class="section-subtitle">NOTES FROM VR2C</span>
+          <h2 class="section-title">Ideas for your next ritual.</h2>
+          <p class="section-desc">A considered edit of practical haircare advice and product stories from our salon community.</p>
+        </div>
+        <div class="editorial-grid">
+          <article class="editorial-card"><img class="editorial-card-image" src="assets/body_img.jpeg" alt="VR2C volumizing shampoo in a light bathroom" /><div class="editorial-card-copy"><span class="editorial-card-meta">WASH DAY · 5 MIN READ</span><h3>How to build a gentler wash-day routine</h3><p>Start with the scalp, choose a wash that suits your routine, and let conditioner focus on the lengths.</p><a class="editorial-card-link" href="featured-products.html">Explore haircare <i class="fas fa-arrow-right"></i></a></div></article>
+          <article class="editorial-card"><img class="editorial-card-image" src="assets/body_img3.jpeg" alt="Argan oil treatment arranged beside a hairbrush" /><div class="editorial-card-copy"><span class="editorial-card-meta">INGREDIENTS · 4 MIN READ</span><h3>A closer look at argan oil</h3><p>Why this familiar finishing oil has earned a place in routines focused on softness and shine.</p><a class="editorial-card-link" href="ingredient-spotlight.html">Meet the ingredients <i class="fas fa-arrow-right"></i></a></div></article>
+          <article class="editorial-card"><img class="editorial-card-image" src="assets/salon_2.jpeg" alt="VR2C repairing hair mask for a weekly treatment ritual" /><div class="editorial-card-copy"><span class="editorial-card-meta">SALON NOTES · 6 MIN READ</span><h3>Make a weekly mask feel like a reset</h3><p>A simple treatment ritual can bring a little more softness and intention to your haircare week.</p><a class="editorial-card-link" href="shop-by-concern.html">Find your routine <i class="fas fa-arrow-right"></i></a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding journal-signup">
+      <div class="container">
+        <div class="newsletter-box">
+          <span class="section-subtitle">A LETTER FROM VR2C</span>
+          <h2>Make room for good hair days.</h2>
+          <p>Get occasional notes on new launches, salon guidance, and thoughtful haircare rituals.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required />
+            <button type="submit" class="btn-dark">Subscribe <i class="fas fa-arrow-right"></i></button>
+          </form>
         </div>
       </div>
     </section>
