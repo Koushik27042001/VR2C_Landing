@@ -293,6 +293,10 @@ img {
   font-size: 1.5rem;
   color: var(--color-dark);
   margin-left: auto;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-nav-drawer {
@@ -302,6 +306,8 @@ img {
   left: 0;
   right: 0;
   z-index: 1000;
+  max-height: calc(100vh - var(--header-height));
+  overflow-y: auto;
   padding: 0.75rem 1.5rem 1.25rem;
   background: #FFFFFF;
   border-top: 1px solid var(--color-border);
@@ -311,7 +317,25 @@ img {
 .mobile-nav-drawer.active {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.25rem 1rem;
+  gap: 0.75rem 1rem;
+}
+
+.mobile-nav-group {
+  display: grid;
+  align-content: start;
+}
+
+.mobile-nav-group > a:first-child {
+  font-weight: 700;
+  border-bottom-color: var(--color-dark);
+}
+
+.mobile-nav-group > a:not(:first-child) {
+  padding-left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .mobile-nav-drawer a {
@@ -328,6 +352,12 @@ img {
 
 .mobile-nav-drawer a:hover {
   color: var(--color-gold-hover);
+}
+
+.mobile-menu-btn:focus-visible,
+.mobile-nav-drawer a:focus-visible {
+  outline: 2px solid var(--color-gold-hover);
+  outline-offset: 3px;
 }
 
 /* ==========================================================================
@@ -2066,13 +2096,16 @@ img {
 
 @media (max-width: 992px) {
   .header-container {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
   .nav-left, .nav-right {
     display: none;
   }
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+  }
+  .mobile-nav-drawer.active {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .hero-title {
     font-size: 2.75rem;
@@ -2094,6 +2127,24 @@ img {
 }
 
 @media (max-width: 600px) {
+  :root {
+    --header-height: 68px;
+  }
+  .header-container {
+    padding: 0 1rem;
+  }
+  .header-logo-image {
+    width: min(44vw, 145px);
+    max-height: 48px;
+  }
+  .container, .container-wide {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  .mobile-nav-drawer {
+    max-height: calc(100vh - 68px);
+    padding: 0.75rem 1.25rem 1.25rem;
+  }
   .mobile-nav-drawer.active {
     grid-template-columns: 1fr;
   }
@@ -2112,7 +2163,7 @@ img {
     min-height: 440px;
   }
   .editorial-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .editorial-hero-inner {
     padding-top: 4rem;

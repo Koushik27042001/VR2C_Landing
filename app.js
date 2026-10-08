@@ -24,26 +24,80 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-  
-  if (mobileMenuBtn && mobileNavDrawer) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isOpen = mobileNavDrawer.classList.toggle('active');
-      mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
-      mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
-      const icon = mobileMenuBtn.querySelector('i');
-      if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-    });
+  if (mobileMenuBtn) {
+    const headerContainer = mobileMenuBtn.closest('.header-container');
+    const header = mobileMenuBtn.closest('.main-header');
+    let mobileNavDrawer = document.getElementById('mobileNavDrawer');
 
-    mobileNavDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    if (!mobileNavDrawer && headerContainer && header) {
+      mobileNavDrawer = document.createElement('nav');
+      mobileNavDrawer.className = 'mobile-nav-drawer';
+      mobileNavDrawer.id = 'mobileNavDrawer';
+      mobileNavDrawer.setAttribute('aria-label', 'Mobile navigation');
+      headerContainer.insertAdjacentElement('afterend', mobileNavDrawer);
+    }
+
+    if (mobileNavDrawer) {
+      mobileMenuBtn.type = 'button';
+      mobileMenuBtn.setAttribute('aria-controls', mobileNavDrawer.id);
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenuBtn.setAttribute('aria-label', 'Open navigation');
+      mobileNavDrawer.replaceChildren();
+
+      document.querySelectorAll('.nav-left, .nav-right').forEach(desktopNav => {
+        desktopNav.querySelectorAll(':scope > .nav-dropdown').forEach(dropdown => {
+          const primaryLink = dropdown.querySelector(':scope > .nav-link');
+          if (!primaryLink) return;
+
+          const group = document.createElement('div');
+          group.className = 'mobile-nav-group';
+          const headingLink = document.createElement('a');
+          headingLink.href = primaryLink.href;
+          headingLink.textContent = primaryLink.textContent.trim();
+          group.appendChild(headingLink);
+
+          dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+            const subLink = document.createElement('a');
+            subLink.href = item.href;
+            subLink.textContent = item.textContent.trim();
+            group.appendChild(subLink);
+          });
+
+          mobileNavDrawer.appendChild(group);
+        });
+
+        desktopNav.querySelectorAll(':scope > .nav-link').forEach(link => {
+          const mobileLink = document.createElement('a');
+          mobileLink.href = link.href;
+          mobileLink.textContent = link.textContent.trim();
+          mobileNavDrawer.appendChild(mobileLink);
+        });
+      });
+
+      const closeMobileNav = () => {
         mobileNavDrawer.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         mobileMenuBtn.setAttribute('aria-label', 'Open navigation');
         const icon = mobileMenuBtn.querySelector('i');
         if (icon) icon.className = 'fas fa-bars';
+      };
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = mobileNavDrawer.classList.toggle('active');
+        mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+        mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
       });
-    });
+
+      mobileNavDrawer.addEventListener('click', event => {
+        if (event.target.closest('a')) closeMobileNav();
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMobileNav();
+      });
+    }
   }
 
   // Cart interactions removed per storefront requirements.
