@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     activeCategory: 'all'
   };
 
+  try {
+    const savedWishlist = JSON.parse(localStorage.getItem('vr2cWishlist') || 'null');
+    if (Array.isArray(savedWishlist)) state.wishlist = new Set(savedWishlist);
+  } catch {
+    state.wishlist = new Set(['prod-1']);
+  }
+
   // --------------------------------------------------
   // 1. Header Scroll Effect & Mobile Navigation
   // --------------------------------------------------
@@ -110,12 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) {
       container = document.createElement('div');
       container.className = 'toast-container';
+      container.setAttribute('role', 'status');
+      container.setAttribute('aria-live', 'polite');
       document.body.appendChild(container);
     }
 
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<i class="fas fa-check-circle" style="color: var(--color-gold);"></i> <span>${message}</span>`;
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-circle-info';
+    icon.setAttribute('aria-hidden', 'true');
+    const text = document.createElement('span');
+    text.textContent = message;
+    toast.append(icon, text);
     container.appendChild(toast);
 
     setTimeout(() => {
@@ -146,6 +160,41 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.display = 'none';
         }
       });
+    });
+  });
+
+  document.querySelectorAll('.product-wishlist-btn').forEach(button => {
+    const card = button.closest('.product-card');
+    const title = card?.querySelector('.product-title')?.textContent.trim() || 'Product';
+    const productId = card?.dataset.id || `product-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    if (card) card.dataset.id = productId;
+
+    const updateWishlistButton = () => {
+      const isSaved = state.wishlist.has(productId);
+      button.classList.toggle('active', isSaved);
+      button.setAttribute('aria-pressed', String(isSaved));
+      button.setAttribute('aria-label', `${isSaved ? 'Remove' : 'Add'} ${title} ${isSaved ? 'from' : 'to'} wishlist`);
+      button.title = `${isSaved ? 'Remove from' : 'Add to'} wishlist`;
+      const icon = button.querySelector('i');
+      if (icon) icon.className = isSaved ? 'fas fa-heart' : 'far fa-heart';
+    };
+
+    button.type = 'button';
+    updateWishlistButton();
+    button.addEventListener('click', () => {
+      if (state.wishlist.has(productId)) {
+        state.wishlist.delete(productId);
+        showToast(`${title} removed from your wishlist.`);
+      } else {
+        state.wishlist.add(productId);
+        showToast(`${title} added to your wishlist.`);
+      }
+      try {
+        localStorage.setItem('vr2cWishlist', JSON.stringify([...state.wishlist]));
+      } catch {
+        showToast('Wishlist changes will last only for this visit.');
+      }
+      updateWishlistButton();
     });
   });
 
@@ -214,12 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         <div style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
           <div style="border: 1px solid #EEE; padding: 1rem; border-radius: 8px; width: 200px;">
-            <img src="assets/body_img2.jpeg" style="height: 140px; width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
+            <img src="assets/1000134054.png" alt="VR2C volumizing shampoo" style="height: 140px; width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
             <h4 style="font-size: 0.9rem;">VR2C Care Vital Nutrition</h4>
             <p style="font-size: 0.8rem; color: #C5A059; font-weight: 600;">Step 1: Cleanse & Nourish</p>
           </div>
           <div style="border: 1px solid #EEE; padding: 1rem; border-radius: 8px; width: 200px;">
-            <img src="assets/body_img.jpeg" style="height: 140px; width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
+            <img src="assets/1000134052.png" alt="VR2C Moroccan argan oil treatment" style="height: 140px; width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
             <h4 style="font-size: 0.9rem;">VR2C Care Long & Strong</h4>
             <p style="font-size: 0.8rem; color: #C5A059; font-weight: 600;">Step 2: Fortify & Protect</p>
           </div>
@@ -339,17 +388,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------
   const salonInput = document.getElementById('salonSearchInput');
   const salonItems = document.querySelectorAll('.salon-item');
+  const salonSearchForm = document.getElementById('salonSearchForm');
+  const salonSearchStatus = document.getElementById('salonSearchStatus');
 
-  salonInput?.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase().trim();
+  function filterSalons() {
+    const term = salonInput?.value.toLowerCase().trim() || '';
+    let visibleCount = 0;
     salonItems.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (text.includes(term)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
+      const isMatch = item.textContent.toLowerCase().includes(term);
+      item.hidden = !isMatch;
+      if (isMatch) visibleCount += 1;
     });
+    if (salonSearchStatus) {
+      salonSearchStatus.textContent = visibleCount
+        ? `${visibleCount} salon${visibleCount === 1 ? '' : 's'} found.`
+        : 'No salons match that search. Try another city or postal code.';
+    }
+  }
+
+  salonInput?.addEventListener('input', filterSalons);
+  salonSearchForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    filterSalons();
   });
 
   // --------------------------------------------------
@@ -362,8 +422,8 @@ document.addEventListener('DOMContentLoaded', () => {
       modalOverlay.id = 'customModalOverlay';
       modalOverlay.className = 'modal-overlay';
       modalOverlay.innerHTML = `
-        <div class="modal-content">
-          <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+        <div class="modal-content" role="dialog" aria-modal="true">
+          <button type="button" class="modal-close-btn" aria-label="Close dialog">&times;</button>
           <div id="modalBody"></div>
         </div>
       `;
@@ -371,13 +431,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById('modalBody').innerHTML = contentHtml;
+    const dialogTitle = document.querySelector('#modalBody h2');
+    const dialog = modalOverlay.querySelector('.modal-content');
+    if (dialogTitle && dialog) {
+      dialogTitle.id = 'modalTitle';
+      dialog.setAttribute('aria-labelledby', 'modalTitle');
+    }
     modalOverlay.classList.add('active');
+    modalOverlay.querySelector('.modal-close-btn')?.focus();
   }
 
   window.closeModal = function() {
     const modalOverlay = document.getElementById('customModalOverlay');
     if (modalOverlay) modalOverlay.classList.remove('active');
   };
+
+  document.addEventListener('click', event => {
+    const modalOverlay = document.getElementById('customModalOverlay');
+    if (event.target === modalOverlay) window.closeModal();
+    if (event.target.closest('.modal-close-btn')) window.closeModal();
+    if (event.target.closest('.social-icon[href="#"]')) {
+      event.preventDefault();
+      showToast('This social profile link has not been connected yet.');
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') window.closeModal();
+  });
 
   // Quick View triggers
   document.querySelectorAll('.quick-view-btn').forEach(btn => {
@@ -391,9 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const category = card.querySelector('.product-category').textContent;
 
       openCustomModal(`
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;">
+        <div class="quick-view-layout">
           <div style="border-radius: 8px; overflow: hidden; background: #F9F9F9;">
-            <img src="${img}" style="width: 100%; height: 380px; object-fit: cover;" />
+            <img src="${img}" alt="${title}" />
           </div>
           <div>
             <span style="color: var(--color-gold); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">${category}</span>
@@ -407,17 +488,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('form.luxury-form').forEach(form => {
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const subject = form.closest('.feedback-card')?.querySelector('h3')?.textContent.trim() || 'VR2C enquiry';
+      const body = [...form.querySelectorAll('input:not([readonly]), textarea')]
+        .map(field => {
+          const label = field.closest('.form-field')?.querySelector('label')?.textContent.trim() || 'Message';
+          return `${label}: ${field.value.trim()}`;
+        })
+        .join('\n\n');
+      window.location.href = `mailto:hello@vr2c.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showToast('Your email app should open with a draft. Press Send there to deliver it.');
+    });
+  });
+
   // Newsletter Form Handler
   const newsletterForm = document.getElementById('newsletterForm');
   newsletterForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = newsletterForm.querySelector('input');
     if (input && input.value) {
-      showToast('Thank you for joining the VR2C Haircosmetics VIP Circle!');
-      input.value = '';
+      showToast('Newsletter signup is not connected yet. Please contact hello@vr2c.com to subscribe.');
     }
   });
-
-  // Initial cart render
-  renderCart();
 });
