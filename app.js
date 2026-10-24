@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenuBtn.setAttribute('aria-controls', mobileNavDrawer.id);
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
       mobileMenuBtn.setAttribute('aria-label', 'Open navigation');
+      mobileMenuBtn.querySelector('i')?.setAttribute('aria-hidden', 'true');
       mobileNavDrawer.replaceChildren();
 
       document.querySelectorAll('.nav-left, .nav-right').forEach(desktopNav => {
@@ -99,6 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       mobileNavDrawer.addEventListener('click', event => {
         if (event.target.closest('a')) closeMobileNav();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 993px)').matches) closeMobileNav();
       });
 
       document.addEventListener('keydown', event => {
