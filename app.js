@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ratingText = '4.9 / 5 · 142 salon reviews'
   }) {
     return `
-      <div class="product-detail-shell">
+      <div class="product-detail-shell${title === 'Long & Strong Fortifying Serum' ? ' product-detail-shell--long-strong' : ''}">
         <div class="product-detail-gallery">
           <div class="product-rotate-stage" role="group" aria-label="Interactive ${title} product preview" tabindex="0">
             <img class="product-rotating-image" src="${img}" alt="${title}" />

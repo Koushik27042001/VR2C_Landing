@@ -3307,6 +3307,14 @@ img {
   margin-bottom: 1.2rem;
 }
 
+.product-detail-shell--long-strong .detail-category,
+.product-detail-shell--long-strong .detail-title,
+.product-detail-shell--long-strong .detail-rating,
+.product-detail-shell--long-strong .detail-rating span,
+.product-detail-shell--long-strong .detail-description {
+  color: #FFFFFF;
+}
+
 .detail-cta-panel {
   margin-top: 1rem;
   padding: 1.1rem 1.2rem;
