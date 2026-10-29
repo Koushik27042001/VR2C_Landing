@@ -68,23 +68,20 @@ main,footer,header{position:relative;z-index:1}
 @media(max-width:520px){.mobile-nav-drawer.active{grid-template-columns:1fr}}
 
 /* hero */
-.hero{min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;overflow:clip;isolation:isolate;padding:8rem 0 5rem;background:var(--ink)}
-.hero-bg{position:absolute;inset:-10% 0;background:url("assets/hero_section-image.jpeg") center/cover no-repeat;will-change:transform}
-.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(36,16,43,.92) 15%,rgba(36,16,43,.55) 55%,rgba(36,16,43,.2))}
+.hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;color:#fff;overflow:hidden;overflow:clip;isolation:isolate;padding:8rem 0 5rem;background:var(--ink);position:relative}
+.hero-bg{position:absolute;inset:-10% 0;background:url("assets/hero_section-image.jpeg") center right/cover no-repeat;will-change:transform}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(36,16,43,.92) 15%,rgba(36,16,43,.62) 55%,rgba(36,16,43,.25) 100%),linear-gradient(to top,rgba(36,16,43,.7) 0%,transparent 25%)}
 .hero .wrap{position:relative;z-index:2}
-.hero h1{font-size:clamp(3.2rem,9vw,8rem);max-width:11ch}
+.hero h1{font-size:clamp(3.2rem,8.5vw,7.6rem);max-width:14ch;line-height:1.02}
 .hero h1 span{display:block;overflow:hidden}
 .hero h1 span i{display:inline-block;font-style:italic;font-weight:400;transform:translateY(105%);animation:rise 1.2s cubic-bezier(.2,.8,.2,1) forwards}
 .hero h1 span:nth-child(2) i{animation-delay:.15s}.hero h1 span:nth-child(3) i{animation-delay:.3s}
 @keyframes rise{to{transform:none}}
-.hero .tag{font-size:.95rem;margin-bottom:1.5rem;color:var(--gold)}
-.hero p.lead{max-width:520px;margin:1.8rem 0 2.4rem;font-size:1.1rem;color:#eadbe8;opacity:0;animation:fade 1s .8s forwards}
+.hero .tag{font-size:.95rem;margin-bottom:1.4rem;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.hero p.lead{max-width:580px;margin:1.8rem 0 2.4rem;font-size:clamp(1.05rem,1.8vw,1.25rem);color:#eadbe8;opacity:0;animation:fade 1s .8s forwards;line-height:1.75}
 .hero .ctas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fade 1s 1s forwards}
 @keyframes fade{to{opacity:1}}
-.hero-product{position:absolute;right:6%;bottom:8%;width:min(26vw,320px);z-index:2;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45));animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-18px)}}
-@media(max-width:860px){.hero-product{display:none}}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;z-index:2;font-size:.75rem;color:#e8d6e6;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;font-size:.75rem;color:#e8d6e6;display:flex;flex-direction:column;align-items:center;gap:.6rem}
 .scroll-hint b{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:drip 2s infinite}
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
@@ -102,6 +99,29 @@ main,footer,header{position:relative;z-index:1}
 .v h3{font-size:1.6rem;margin:1rem 0 .5rem}
 .v p{font-size:.95rem;color:#5b4660}
 @media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}@media(max-width:540px){.vgrid{grid-template-columns:1fr}}
+
+/* signature spotlight (illustrated showcase) */
+.spotlight{background:#fff;padding:clamp(5rem,9vw,8rem) 0;border-top:1px solid rgba(36,16,43,.06);border-bottom:1px solid rgba(36,16,43,.06);position:relative;overflow:hidden}
+.spotlight-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2.5rem,6vw,5.5rem);align-items:center}
+.spotlight-visual{position:relative;border-radius:24px;overflow:hidden;background:linear-gradient(145deg,#fcf4f7,#f5e5ec);box-shadow:0 24px 60px rgba(36,16,43,.12);border:1px solid rgba(201,161,91,.3)}
+.spotlight-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(201,161,91,.22),transparent 60%);pointer-events:none;z-index:1}
+.spotlight-img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.spotlight-visual:hover .spotlight-img{transform:scale(1.03)}
+.spotlight-badge{position:absolute;top:1.25rem;left:1.25rem;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:rgba(36,16,43,.88);backdrop-filter:blur(8px);color:var(--gold);padding:.45rem 1rem;border-radius:99px;font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid rgba(201,161,91,.4)}
+.spotlight-caption{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:1rem 1.4rem;background:linear-gradient(to top,rgba(36,16,43,.85),transparent);color:#fff;font-size:.84rem}
+.spotlight-caption span:first-child{font-family:var(--serif);font-size:1.15rem;color:var(--gold)}
+.spotlight-content h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:1.2rem}
+.spotlight-lead{font-size:1.05rem;color:#5b4660;line-height:1.75;margin-bottom:2rem}
+.spotlight-features{display:grid;gap:1.1rem;margin-bottom:2rem}
+.spotlight-feat{display:flex;gap:1rem;align-items:flex-start}
+.spotlight-feat .feat-ic{width:36px;height:36px;border-radius:50%;background:var(--blush);color:var(--mulberry);display:grid;place-items:center;font-size:.9rem;flex-shrink:0}
+.spotlight-feat h3{font-size:1.15rem;font-family:var(--sans);font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.spotlight-feat p{font-size:.88rem;color:#6b5670;line-height:1.5}
+.spotlight-metrics{display:flex;gap:2rem;padding:1.4rem 0;margin-bottom:2.2rem;border-top:1px solid rgba(36,16,43,.1);border-bottom:1px solid rgba(36,16,43,.1)}
+.spotlight-metrics div strong{display:block;font-family:var(--serif);font-size:2.2rem;font-weight:500;color:var(--mulberry);line-height:1}
+.spotlight-metrics div span{font-size:.78rem;color:#7a637f;text-transform:uppercase;letter-spacing:.05em}
+.spotlight-actions{display:flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:960px){.spotlight-grid{grid-template-columns:1fr;gap:2.5rem}.spotlight-content h2{font-size:clamp(2rem,6vw,2.8rem)}}
 
 /* products */
 .collection{background:var(--blush)}
@@ -267,7 +287,6 @@ main,footer,header{position:relative;z-index:1}
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg" data-parallax="0.08"></div>
-  <img class="hero-product" src="assets/hero_image.png" alt="VR2C hair care product" data-parallax="-0.08">
   <div class="wrap">
     <p class="tag">Skin and hair care</p>
     <h1><span><i>Beauty care</i></span><span><i>with a thoughtful</i></span><span><i>difference</i></span></h1>
@@ -296,6 +315,57 @@ main,footer,header{position:relative;z-index:1}
       <div class="v rv"><span class="ic">❋</span><h3>Selected ingredients</h3><p>Carefully considered components.</p></div>
       <div class="v rv"><span class="ic">◌</span><h3>Science-informed</h3><p>Knowledge and practical experience.</p></div>
       <div class="v rv"><span class="ic">♡</span><h3>Made for everyday beauty</h3><p>Care that fits your routine.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT (ILLUSTRATED SHOWCASE) -->
+<section class="spotlight" id="spotlight">
+  <div class="wrap spotlight-grid">
+    <div class="spotlight-visual rv">
+      <div class="spotlight-badge">✦ Signature Illustrated Care</div>
+      <img src="assets/hero_image.png" alt="VR2C signature hydration serum illustrated studio edition" class="spotlight-img" loading="lazy">
+      <div class="spotlight-caption">
+        <span>Daily Hydration Serum</span>
+        <span>Dutch Botanical Science</span>
+      </div>
+    </div>
+    <div class="spotlight-content rv">
+      <p class="kicker">Signature formulation · Illustrated edition</p>
+      <h2>Thoughtfully formulated.<br>Illustrated by science.</h2>
+      <p class="spotlight-lead">Crafted with Dutch hair expertise, our signature daily hydration serum restores balance, fortifies strands, and seals weightless moisture into every layer. A true salon essential, created for your everyday ritual.</p>
+      <div class="spotlight-features">
+        <div class="spotlight-feat">
+          <span class="feat-ic">✦</span>
+          <div>
+            <h3>Weightless Hydration</h3>
+            <p>Fast-absorbing botanical infusion that hydrates without leaving heavy residue.</p>
+          </div>
+        </div>
+        <div class="spotlight-feat">
+          <span class="feat-ic">❋</span>
+          <div>
+            <h3>Essential Mineral Complex</h3>
+            <p>Infused with restorative minerals to reinforce hair cuticle and boost natural shine.</p>
+          </div>
+        </div>
+        <div class="spotlight-feat">
+          <span class="feat-ic">♡</span>
+          <div>
+            <h3>Pure &amp; Clean Formula</h3>
+            <p>Formulated without harsh sulfates, parabens, or mineral oils for clean peace of mind.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spotlight-metrics">
+        <div><strong data-count="98">0</strong>%<span>Natural origin</span></div>
+        <div><strong data-count="48">0</strong>h<span>Moisture lock</span></div>
+        <div><strong data-count="100">0</strong>%<span>Vegan certified</span></div>
+      </div>
+      <div class="spotlight-actions">
+        <a href="featured-products.html#collection" class="btn solid">Explore product collection ↗</a>
+        <a href="ingredient-spotlight.html#ingredients" class="btn dark">View hero ingredients →</a>
+      </div>
     </div>
   </div>
 </section>
