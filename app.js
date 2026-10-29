@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenuBtn.setAttribute('aria-controls', mobileNavDrawer.id);
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
       mobileMenuBtn.setAttribute('aria-label', 'Open navigation');
+      mobileMenuBtn.querySelector('i')?.setAttribute('aria-hidden', 'true');
       mobileNavDrawer.replaceChildren();
 
       document.querySelectorAll('.nav-left, .nav-right').forEach(desktopNav => {
@@ -99,6 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       mobileNavDrawer.addEventListener('click', event => {
         if (event.target.closest('a')) closeMobileNav();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 993px)').matches) closeMobileNav();
       });
 
       document.addEventListener('keydown', event => {
@@ -415,7 +420,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------
   // 8. Custom Modal Utility
   // --------------------------------------------------
+  let galleryCycleTimer;
+
   function openCustomModal(contentHtml) {
+    clearInterval(galleryCycleTimer);
     let modalOverlay = document.getElementById('customModalOverlay');
     if (!modalOverlay) {
       modalOverlay = document.createElement('div');
@@ -439,11 +447,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     modalOverlay.classList.add('active');
     modalOverlay.querySelector('.modal-close-btn')?.focus();
+
+    const stage = modalOverlay.querySelector('.product-rotate-stage');
+    const image = modalOverlay.querySelector('.product-rotating-image');
+    const angleButtons = modalOverlay.querySelectorAll('.product-angle-btn');
+    const spinToggle = modalOverlay.querySelector('.gallery-spin-toggle');
+    if (!stage || !image || !angleButtons.length || !spinToggle) return;
+
+    let angleIndex = 0;
+    let isSpinning = true;
+    let pointerStartX = null;
+    const angles = [0, -12, 12];
+    const setAngle = (index) => {
+      angleIndex = (index + angles.length) % angles.length;
+      image.style.setProperty('--gallery-angle', `${angles[angleIndex]}deg`);
+      angleButtons.forEach((button, buttonIndex) => {
+        const selected = buttonIndex === angleIndex;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+    };
+    const setSpinState = (spinning) => {
+      isSpinning = spinning;
+      spinToggle.setAttribute('aria-pressed', String(spinning));
+      spinToggle.textContent = spinning ? 'Pause spin' : 'Resume spin';
+      clearInterval(galleryCycleTimer);
+      if (spinning) {
+        galleryCycleTimer = setInterval(() => setAngle(angleIndex + 1), 2200);
+      }
+    };
+
+    angleButtons.forEach((button, index) => {
+      button.addEventListener('click', () => setAngle(index));
+    });
+    spinToggle.addEventListener('click', () => setSpinState(!isSpinning));
+    stage.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch') return;
+      const bounds = stage.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      image.style.setProperty('--pointer-yaw', `${x * 14}deg`);
+      image.style.setProperty('--pointer-pitch', `${y * -10}deg`);
+      image.style.setProperty('--pointer-zoom', '1.07');
+    });
+    stage.addEventListener('pointerleave', () => {
+      image.style.setProperty('--pointer-yaw', '0deg');
+      image.style.setProperty('--pointer-pitch', '0deg');
+      image.style.setProperty('--pointer-zoom', '1');
+    });
+    stage.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch') pointerStartX = event.clientX;
+    });
+    stage.addEventListener('pointerup', event => {
+      if (pointerStartX === null) return;
+      const delta = event.clientX - pointerStartX;
+      if (Math.abs(delta) > 35) setAngle(angleIndex + (delta < 0 ? 1 : -1));
+      pointerStartX = null;
+    });
+    setAngle(0);
+    setSpinState(true);
   }
 
   window.closeModal = function() {
     const modalOverlay = document.getElementById('customModalOverlay');
     if (modalOverlay) modalOverlay.classList.remove('active');
+    clearInterval(galleryCycleTimer);
   };
 
   document.addEventListener('click', event => {
@@ -461,6 +529,117 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Quick View triggers
+  function buildProductDetailContent({
+    title,
+    img,
+    category,
+    badge = 'Bestseller',
+    ratingText = '4.9 / 5 · 142 salon reviews'
+  }) {
+    return `
+      <div class="product-detail-shell${title === 'Long & Strong Fortifying Serum' ? ' product-detail-shell--long-strong' : ''}">
+        <div class="product-detail-gallery">
+          <div class="product-rotate-stage" role="group" aria-label="Interactive ${title} product preview" tabindex="0">
+            <img class="product-rotating-image" src="${img}" alt="${title}" />
+            <span class="product-brand-mark" aria-label="VR2C">VR2C</span>
+            <span class="gallery-interaction-hint" aria-hidden="true">DRAG TO EXPLORE</span>
+          </div>
+
+          <div class="product-detail-thumbs">
+            <button type="button" class="product-angle-btn active" aria-label="Front angle" aria-pressed="true">01</button>
+            <button type="button" class="product-angle-btn" aria-label="Left angle" aria-pressed="false">02</button>
+            <button type="button" class="product-angle-btn" aria-label="Right angle" aria-pressed="false">03</button>
+            <button type="button" class="gallery-spin-toggle" aria-pressed="true">Pause spin</button>
+          </div>
+        </div>
+
+        <div class="product-detail-copy">
+          <div class="detail-topline">
+            <span class="detail-badge">${badge}</span>
+            <span class="detail-category">${category}</span>
+          </div>
+
+          <h2 class="detail-title">${title}</h2>
+
+          <div class="detail-rating">
+            <span class="stars">★★★★★</span>
+            <span>${ratingText}</span>
+          </div>
+
+          <p class="detail-description">
+            Formulated in VR2C Laboratories with advanced essential minerals, pure botanical extracts, and restorative keratin complexes. Engineered to rebuild hair vitality, preserve pigment brilliance, and deliver salon-level sheen.
+          </p>
+
+          <div class="detail-cta-panel">
+            <div class="detail-cta-actions">
+              <button type="button" class="btn-primary" onclick="window.closeModal()">Add to routine</button>
+              <a href="#contact" class="btn-secondary" onclick="window.closeModal()">Book treatment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-ingredients-panel">
+        <div class="detail-section-header">
+          <span class="section-subtitle">WHY IT WORKS</span>
+          <h3>Ingredient-led repair for stronger, healthier hair</h3>
+        </div>
+
+        <div class="ingredient-grid">
+          <article class="ingredient-item">
+            <div class="ingredient-icon">◌</div>
+            <div>
+              <h4>Peptide Repair Complex</h4>
+              <p>Targets weakened cuticles and visibly smooths rough texture with every cleanse.</p>
+            </div>
+          </article>
+
+          <article class="ingredient-item">
+            <div class="ingredient-icon">✦</div>
+            <div>
+              <h4>Biotin + Mineral Blend</h4>
+              <p>Helps reinforce strand resilience and improves shine without heavy residue.</p>
+            </div>
+          </article>
+
+          <article class="ingredient-item">
+            <div class="ingredient-icon">❋</div>
+            <div>
+              <h4>Botanical Lipid Seal</h4>
+              <p>Locks in moisture while reducing frizz and preserving salon-fresh softness.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="detail-compare-panel">
+        <div class="detail-section-header">
+          <span class="section-subtitle">PERFORMANCE</span>
+          <h3>Compared with a standard routine</h3>
+        </div>
+
+        <div class="comparison-matrix">
+          <div class="comparison-row">
+            <span>Texture feel</span>
+            <strong>Soft + weightless</strong>
+          </div>
+          <div class="comparison-row">
+            <span>Frizz control</span>
+            <strong>Up to 72% smoother</strong>
+          </div>
+          <div class="comparison-row">
+            <span>Moisture retention</span>
+            <strong>24-hour hydration</strong>
+          </div>
+          <div class="comparison-row">
+            <span>Shine finish</span>
+            <strong>Mirror-gloss finish</strong>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   document.querySelectorAll('.quick-view-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -471,20 +650,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = card.querySelector('.product-img').src;
       const category = card.querySelector('.product-category').textContent;
 
-      openCustomModal(`
-        <div class="quick-view-layout">
-          <div style="border-radius: 8px; overflow: hidden; background: #F9F9F9;">
-            <img src="${img}" alt="${title}" />
-          </div>
-          <div>
-            <span style="color: var(--color-gold); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">${category}</span>
-            <h2 style="font-size: 1.8rem; margin: 0.4rem 0 0.8rem 0;">${title}</h2>
-            <p style="color: #666; font-size: 0.9375rem; margin-bottom: 1.5rem; line-height: 1.6;">
-              Formulated with VR2C Essential Minerals, Organic Silanols, and Centella Asiatica to restore inner vitality and structural shine to high-demand hair textures.
-            </p>
-          </div>
-        </div>
-      `);
+      openCustomModal(buildProductDetailContent({
+        title,
+        img,
+        category,
+        badge: 'Bestseller',
+        ratingText: '4.9 / 5 · 142 salon reviews'
+      }));
+    });
+  });
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', event => {
+      if (event.target.closest('.product-wishlist-btn, .quick-view-btn')) return;
+
+      const title = card.querySelector('.product-title')?.textContent.trim() || 'VR2C Luxury Formulation';
+      const img = card.querySelector('.product-img')?.src || '';
+      const category = card.querySelector('.product-category')?.textContent.trim() || 'Signature Care';
+      const badge = card.querySelector('.product-badge')?.textContent.trim() || 'EXCLUSIVE';
+
+      openCustomModal(buildProductDetailContent({
+        title,
+        img,
+        category,
+        badge,
+        ratingText: 'Professional salon tested'
+      }));
     });
   });
 
@@ -513,3 +704,120 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+
+// ==================================================
+// SCROLL-TRIGGERED 3D PRODUCT ENTRANCE ANIMATION
+// ==================================================
+const revealProductCards = document.querySelectorAll('.product-card, .featured-product-card, .product-item, .featured-item, .reveal-product, .media-card');
+
+const revealProductIfVisible = (card) => {
+  if (card.dataset.revealed === 'true') return;
+
+  const rect = card.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+    card.classList.add('is-visible');
+    card.dataset.revealed = 'true';
+  }
+};
+
+revealProductCards.forEach((card, index) => {
+  card.style.setProperty('--delay', `${index * 140}ms`);
+  revealProductIfVisible(card);
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        entry.target.dataset.revealed = 'true';
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.22,
+    rootMargin: '0px 0px -20px 0px'
+  });
+
+  observer.observe(card);
+});
+
+window.addEventListener('scroll', () => {
+  revealProductCards.forEach((card) => revealProductIfVisible(card));
+}, { passive: true });
+
+// ==================================================
+// CUSTOM UPDATE: VISIBLE FLOATING MOLECULE CANVAS ANIMATION
+// ==================================================
+(function initMoleculeGraphic() {
+  const hero = document.querySelector('.hero-section');
+  if (!hero) return;
+
+  let canvas = document.getElementById('moleculeCanvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.id = 'moleculeCanvas';
+    canvas.className = 'molecule-canvas-container';
+    hero.appendChild(canvas);
+  }
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+
+  function resize() {
+    width = canvas.width = hero.offsetWidth;
+    height = canvas.height = hero.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const particleCount = Math.floor(Math.min(width, 1400) / 28);
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.8,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 3 + 2.5
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      // Draw Glowing Molecule Node
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#D4AF37';
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = '#FFD700';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Draw Chemical/Molecular Bonds
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(212, 175, 55, ${0.4 * (1 - dist / 130)})`;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
