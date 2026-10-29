@@ -1,816 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VR2C | Home of the Hair Pro - Official Cosmetic Landing</title>
-  <meta name="description" content="Explore the world of VR2C Haircosmetics. Crafted with Dutch hair science, premium organic minerals, and 100 years of salon expertise." />
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VR2C | Skin and Hair Care with a Thoughtful Difference</title>
+<meta name="description" content="Thoughtfully developed skin and hair care with carefully selected ingredients, guided by professional experience and scientific knowledge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#24102b;--plum:#4a1d4f;--mulberry:#8a3366;--blush:#f7e4ea;--pearl:#fff9fb;--gold:#c9a15b;
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--pearl);color:var(--ink);line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+.wrap{width:min(1180px,90%);margin:auto}
+section{position:relative;padding:clamp(5rem,10vw,9rem) 0}
+.kicker{font-size:.85rem;color:var(--mulberry);margin-bottom:1rem;font-weight:500}
+.btn{display:inline-flex;gap:.6rem;align-items:center;padding:.95rem 1.8rem;border-radius:99px;font-weight:500;font-size:.95rem;border:1px solid currentColor;transition:.35s}
+.btn.solid{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn.solid:hover{background:#fff;border-color:#fff;transform:translateY(-3px)}
+.btn.line:hover{background:rgba(255,255,255,.14)}
+.btn.dark{color:var(--plum)}.btn.dark:hover{background:var(--plum);color:#fff}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* spiral background */
+#spiral{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+#spiral path{fill:none;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round}
+#spiral path.b{stroke:var(--mulberry);stroke-width:1;opacity:.6}
+main,footer,header{position:relative;z-index:1}
+
+/* Shared site header */
+.main-header{position:fixed;top:0;left:0;right:0;z-index:50;height:80px;background:rgba(255,255,255,.97);border-bottom:1px solid rgba(36,16,43,.1);transition:background .3s,box-shadow .3s}
+.main-header.solid,.main-header.scrolled{background:#fff;box-shadow:0 6px 24px rgba(36,16,43,.1)}
+.header-container{width:min(1440px,94%);height:100%;margin:auto;display:flex;align-items:center;gap:1rem}
+.nav-left,.nav-right{display:flex;align-items:center;gap:1.1rem;min-width:0}
+.nav-left{margin-left:auto}
+.nav-right{justify-content:flex-end}
+.main-header nav{font-size:.76rem}
+.main-header .nav-link{position:relative;display:inline-flex;align-items:center;gap:.3rem;color:var(--ink);font-weight:600;letter-spacing:.035em;text-transform:uppercase;white-space:nowrap}
+.main-header .nav-link::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--gold);transition:width .25s}
+.main-header .nav-link:hover::after,.main-header .nav-link:focus-visible::after{width:100%}
+.nav-dropdown{position:relative}
+.dropdown-menu{position:absolute;top:100%;left:-1rem;z-index:5;min-width:220px;padding:.7rem 1rem;background:#fff;border:1px solid rgba(36,16,43,.1);box-shadow:0 12px 30px rgba(36,16,43,.12);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s}
+.nav-right .dropdown-menu{right:0;left:auto}
+.nav-dropdown:hover .dropdown-menu,.nav-dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-item{display:block;padding:.65rem 0;color:var(--ink);font-size:.8rem;border-bottom:1px solid rgba(36,16,43,.08)}
+.dropdown-item:last-child{border-bottom:0}
+.dropdown-item:hover{color:var(--mulberry)}
+.header-logo{order:-1;display:flex;flex:0 0 auto;align-items:center}
+.header-logo-image{display:block;width:150px;max-height:58px;object-fit:contain}
+.mobile-menu-btn{display:none;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:transparent;color:var(--ink);font-size:1.25rem;cursor:pointer}
+.mobile-nav-drawer{display:none;position:absolute;top:100%;left:0;right:0;z-index:10;max-height:calc(100vh - 80px);overflow-y:auto;padding:.75rem 5% 1.25rem;background:#fff;border-top:1px solid rgba(36,16,43,.1);box-shadow:0 12px 30px rgba(36,16,43,.12)}
+.mobile-nav-drawer.active{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem 1rem}
+.mobile-nav-group{display:grid;align-content:start}
+.mobile-nav-drawer a{display:flex;align-items:center;min-height:42px;border-bottom:1px solid rgba(36,16,43,.08);color:var(--ink);font-size:.72rem;font-weight:600;letter-spacing:.035em;text-transform:uppercase}
+.mobile-nav-group>a:first-child{font-weight:700}
+.mobile-nav-group>a:not(:first-child){padding-left:.6rem;font-size:.68rem;font-weight:400;text-transform:none}
+.mobile-menu-btn:focus-visible,.mobile-nav-drawer a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:1100px){.header-container{gap:.65rem}.nav-left,.nav-right{gap:.65rem}.main-header .nav-link{font-size:.68rem}.header-logo-image{width:128px}}
+@media(max-width:860px){.main-header{height:72px}.header-container{width:90%}.nav-left,.nav-right{display:none}.mobile-menu-btn{display:flex}.header-logo{order:0}.header-logo-image{width:140px;max-height:54px}.mobile-nav-drawer{max-height:calc(100vh - 72px)}.mobile-nav-drawer.active{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.mobile-nav-drawer.active{grid-template-columns:1fr}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;overflow:clip;isolation:isolate;padding:8rem 0 5rem;background:var(--ink)}
+.hero-bg{position:absolute;inset:-10% 0;background:url("assets/hero_section-image.jpeg") center/cover no-repeat;will-change:transform}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(36,16,43,.92) 15%,rgba(36,16,43,.55) 55%,rgba(36,16,43,.2))}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(3.2rem,9vw,8rem);max-width:11ch}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:inline-block;font-style:italic;font-weight:400;transform:translateY(105%);animation:rise 1.2s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.15s}.hero h1 span:nth-child(3) i{animation-delay:.3s}
+@keyframes rise{to{transform:none}}
+.hero .tag{font-size:.95rem;margin-bottom:1.5rem;color:var(--gold)}
+.hero p.lead{max-width:520px;margin:1.8rem 0 2.4rem;font-size:1.1rem;color:#eadbe8;opacity:0;animation:fade 1s .8s forwards}
+.hero .ctas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fade 1s 1s forwards}
+@keyframes fade{to{opacity:1}}
+.hero-product{position:absolute;right:6%;bottom:8%;width:min(26vw,320px);z-index:2;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-18px)}}
+@media(max-width:860px){.hero-product{display:none}}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;z-index:2;font-size:.75rem;color:#e8d6e6;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.scroll-hint b{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* tagline + values */
+.tagline{background:var(--plum);color:#fff;padding:2.4rem 0;overflow:hidden;white-space:nowrap}
+.tagline div{display:inline-block;font-family:var(--serif);font-style:italic;font-size:2rem;animation:slide 32s linear infinite}
+.tagline span{margin:0 2.5rem;color:var(--gold)}
+@keyframes slide{to{transform:translateX(-50%)}}
+.values{background:var(--pearl);padding-bottom:3rem}
+.values h2{text-align:center;margin-bottom:4rem}
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.v{padding:2rem 1.5rem;border-top:2px solid var(--gold);background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+.v .ic{font-size:2.2rem;color:var(--mulberry);display:block;transition:transform .8s}
+.v:hover .ic{transform:rotate(360deg)}
+.v h3{font-size:1.6rem;margin:1rem 0 .5rem}
+.v p{font-size:.95rem;color:#5b4660}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}@media(max-width:540px){.vgrid{grid-template-columns:1fr}}
+
+/* products */
+.collection{background:var(--blush)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:4rem}
+.head p{max-width:480px;color:#5b4660}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;align-items:start}
+.card:nth-child(even){margin-top:4rem}
+.card .pic{aspect-ratio:3/4;overflow:hidden;border-radius:200px 200px 18px 18px;background:linear-gradient(#e9c9d8,#c99ab6)}
+.card .pic img{width:100%;height:118%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.card:hover .pic img{transform:scale(1.08)}
+.card small{display:block;margin-top:1.2rem;color:var(--mulberry);font-size:.8rem}
+.card h3{font-size:1.7rem;margin:.2rem 0 .6rem}
+.card a{font-size:.9rem;border-bottom:1px solid var(--gold);padding-bottom:2px}
+@media(max-width:980px){.pgrid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.pgrid{grid-template-columns:1fr}.card:nth-child(even){margin-top:0}}
+
+/* ingredients */
+.ingredients{background:var(--ink);color:#fff;overflow:hidden}
+.ing{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.ing p.t{color:#d9c5d6;margin:1.5rem 0 2rem;max-width:520px}
+.list{list-style:none;margin-bottom:2.4rem}
+.list li{display:grid;grid-template-columns:3rem 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.list li b{font-family:var(--serif);font-size:1.6rem;color:var(--gold);font-weight:500}
+.list h3{font-size:1.5rem}.list p{font-size:.92rem;color:#cdb7ca}
+.free{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.free span{border:1px solid rgba(201,161,91,.6);color:var(--gold);padding:.35rem 1rem;border-radius:99px;font-size:.82rem}
+.orbit{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.orbit .ring{position:absolute;inset:0;border:1px dashed rgba(201,161,91,.45);border-radius:50%}
+.orbit .ring:nth-child(2){inset:12%;border-color:rgba(255,255,255,.2)}
+.orbit .core{width:58%;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 90px rgba(201,161,91,.3)}
+.orbit .core img{width:100%;height:100%;object-fit:cover}
+.orbit .dot{position:absolute;top:50%;left:50%;width:0;height:0}
+.orbit .dot em{position:absolute;transform:translate(-50%,-50%);background:var(--gold);color:var(--ink);padding:.4rem 1rem;border-radius:99px;font-style:normal;font-size:.8rem;font-weight:600;white-space:nowrap}
+@media(max-width:900px){.ing{grid-template-columns:1fr;gap:3rem}}
+
+/* salon */
+.salon{background:var(--pearl)}
+.salon .sgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
+.stack{position:relative;aspect-ratio:1/1.05}
+.stack img{position:absolute;border-radius:16px;box-shadow:0 30px 60px rgba(36,16,43,.25);object-fit:cover}
+.stack .s1{width:62%;height:70%;left:0;top:0}
+.stack .s2{width:52%;height:52%;right:0;top:22%}
+.stack .s3{width:46%;height:42%;left:14%;bottom:0}
+.prod-list{margin:2rem 0}
+.prod-list div{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid #e5cfd9;font-family:var(--serif);font-size:1.6rem}
+.prod-list span{font-family:var(--sans);font-size:.9rem;color:var(--mulberry)}
+@media(max-width:900px){.salon .sgrid{grid-template-columns:1fr}}
+
+/* story */
+.story{background:var(--plum);color:#fff;text-align:center;overflow:hidden}
+.story .bgimg{position:absolute;inset:-15% 0;background:url("assets/bodyimage(5).jpeg") center/cover;opacity:.2;will-change:transform}
+.story .wrap{position:relative;max-width:820px}
+.story p{margin:1.8rem auto 2.4rem;font-size:1.15rem;color:#e8d6e6}
+.stats{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.2)}
+.stats strong{display:block;font-family:var(--serif);font-size:3.4rem;font-weight:500;color:var(--gold);line-height:1}
+.stats span{font-size:.88rem;color:#d9c5d6}
+
+/* routine */
+.routine{background:var(--blush)}
+.routine h2{text-align:center;margin-bottom:4rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
+.step{counter-increment:s;padding:2rem 1.5rem;background:var(--pearl);border-radius:18px}
+.step::before{content:counter(s);font-family:var(--serif);font-size:3rem;color:var(--gold);line-height:1}
+.step h3{font-size:1.5rem;margin:.6rem 0}.step p{font-size:.92rem;color:#5b4660}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}@media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* founders + gallery */
+.founders .fgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center}
+.founders p{margin:1.5rem 0 2rem;color:#5b4660;max-width:520px}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.chips span{background:var(--blush);padding:.4rem 1rem;border-radius:99px;font-size:.85rem;color:var(--plum)}
+.fimg{position:relative}
+.fimg img{border-radius:300px 300px 20px 20px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.gallery{padding-top:0}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gal div{overflow:hidden;border-radius:16px;aspect-ratio:4/5;background:var(--blush)}
+.gal div:nth-child(2){margin-top:3rem}
+.gal img{width:100%;height:118%;object-fit:cover}
+@media(max-width:900px){.founders .fgrid{grid-template-columns:1fr}}
+
+/* cta + footer */
+.cta{background:var(--ink);color:#fff;text-align:center;overflow:hidden}
+.cta h2{max-width:14ch;margin:auto}
+.cta form{display:flex;gap:.6rem;max-width:480px;margin:2.5rem auto 0;background:rgba(255,255,255,.1);padding:.4rem;border-radius:99px}
+.cta input{flex:1;background:none;border:0;color:#fff;padding:0 1.2rem;font:inherit;min-width:0}
+.cta input::placeholder{color:#c9b3c6}
+.cta button{cursor:pointer;font:inherit}
+.site-footer{background:#170a1c;color:#bfa9bc;padding:4rem 0 2rem;font-size:.9rem}
+.site-footer .footer-grid{width:min(1180px,90%);margin:0 auto 3rem;display:grid;grid-template-columns:2fr repeat(4,minmax(0,1fr));gap:2rem}
+.site-footer .footer-brand{max-width:320px}
+.site-footer .footer-logo-image{display:block;width:auto;height:48px;max-width:190px;object-fit:contain;margin-bottom:1rem}
+.site-footer .footer-brand p{margin-bottom:1.25rem;color:#cdb7ca}
+.site-footer .footer-heading{margin-bottom:1.1rem;color:#fff;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.site-footer .footer-menu{list-style:none}
+.site-footer .footer-menu li{margin-bottom:.6rem}
+.site-footer .footer-menu a{color:#cdb7ca;transition:color .2s}
+.site-footer .footer-menu a:hover{color:#fff}
+.site-footer .social-links{display:flex;gap:.65rem}
+.site-footer .social-icon{display:flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;transition:background .2s,transform .2s}
+.site-footer .social-icon:hover{background:var(--mulberry);transform:translateY(-2px)}
+.site-footer .footer-bottom{width:min(1180px,90%);margin:auto;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:1rem;color:#cdb7ca;font-size:.78rem}
+@media(max-width:900px){.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.site-footer .footer-brand{grid-column:1/-1}}
+@media(max-width:560px){.site-footer .footer-grid{grid-template-columns:1fr 1fr;gap:1.75rem 1rem}.site-footer .footer-brand{grid-column:1/-1}.site-footer .footer-bottom{flex-direction:column}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s,transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 span i{transform:none}.hero p.lead,.hero .ctas{opacity:1}}
+</style>
 </head>
 <body>
 
-  <!-- MAIN NAVIGATION HEADER -->
-  <header class="main-header">
-    <div class="header-container">
-      
-      <!-- Left Navigation -->
-      <nav class="nav-left">
-        <div class="nav-dropdown">
-          <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
-            <a href="brand-story.html#story" class="dropdown-item">Founder & Company Story</a>
-            <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
-          </div>
-        </div>
+<svg id="spiral" aria-hidden="true" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid slice">
+  <g id="sg"><path id="sp1"/><path id="sp2" class="b"/></g>
+</svg>
 
-        <div class="nav-dropdown">
-          <a href="why-choose-us.html" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="why-choose-us.html#principles" class="dropdown-item">Clean Ingredients</a>
-            <a href="why-choose-us.html#principles" class="dropdown-item">Dermatology Tested</a>
-            <a href="why-choose-us.html#principles" class="dropdown-item">Cruelty Free</a>
-          </div>
-        </div>
-
-        <div class="nav-dropdown">
-          <a href="featured-products.html" class="nav-link">Featured Products <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="featured-products.html#collection" class="dropdown-item">Our Products</a>
-            <a href="featured-products.html#collection" class="dropdown-item">Best Sellers</a>
-            <a href="featured-products.html#collection" class="dropdown-item">Salon Essentials</a>
-          </div>
-        </div>
-
-        <div class="nav-dropdown">
-          <a href="ingredient-spotlight.html" class="nav-link">Ingredient <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="ingredient-spotlight.html#ingredients" class="dropdown-item">Hero Ingredients</a>
-            <a href="ingredient-spotlight.html#ingredients" class="dropdown-item">Mineral Infusion</a>
-            <a href="ingredient-spotlight.html#ingredients" class="dropdown-item">Scalp & Hair Science</a>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Center Brand Logo -->
-      <a href="index.html" class="header-logo" aria-label="VR2C Haircosmetics Home">
-        <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics logo" class="header-logo-image" />
-      </a>
-
-      <!-- Right Navigation & Action Icons -->
-      <nav class="nav-right">
-        <div class="nav-dropdown">
-          <a href="shop-by-concern.html" class="nav-link">Shop <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Dryness</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Hair Growth</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Acne</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Hydration</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Scalp Care</a>
-          </div>
-        </div>
-
-        <a href="contact-us.html#contact-form" class="nav-link">Contact</a>
-      </nav>
-
-      <!-- Mobile Hamburger Button -->
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </header>
-
-  <!-- HERO SECTION (USING assets/hero_image.png) -->
-  <section class="hero-section" id="hero">
-    <div class="hero-background-wrapper">
-      <img src="assets/hero_image.png" alt="VR2C daily hydration serum in a bright studio setting" class="hero-bg-img" />
-      <div class="hero-gradient-overlay"></div>
-    </div>
-    
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fas fa-crown"></i> Official VR2C Brand Landing
-        </div>
-        <h1 class="hero-title">
-          Color Muse: <br />
-          <i>Personalized Color Mask</i>
-        </h1>
-        <p class="hero-subtitle">
-          Formulated by VR2C hair scientists with essential minerals and pure pigments. Experience salon-grade radiance and custom nourishment crafted for your hair.
-        </p>
-        <div class="hero-cta-group">
-          <a href="#products" class="btn-primary">
-            Discover Collection <i class="fas fa-arrow-right"></i>
-          </a>
-          <a href="#hairQuiz" class="btn-secondary">
-            Take Hair Quiz
-          </a>
+<header class="main-header" id="top">
+  <div class="header-container">
+    <nav class="nav-left" aria-label="Company information">
+      <div class="nav-dropdown">
+        <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
+          <a href="brand-story.html#story" class="dropdown-item">Founder &amp; Company Story</a>
+          <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
         </div>
       </div>
+      <div class="nav-dropdown">
+        <a href="why-choose-us.html" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <a href="why-choose-us.html#principles" class="dropdown-item">Clean Ingredients</a>
+          <a href="why-choose-us.html#principles" class="dropdown-item">Care Standards</a>
+          <a href="why-choose-us.html#standards" class="dropdown-item">Sustainability</a>
+        </div>
+      </div>
+      <a href="featured-products.html" class="nav-link">Products</a>
+      <a href="ingredient-spotlight.html" class="nav-link">Ingredients</a>
+    </nav>
+
+    <a href="index.html" class="header-logo" aria-label="VR2C Haircosmetics home">
+      <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics" class="header-logo-image">
+    </a>
+
+    <nav class="nav-right" aria-label="Shop and support">
+      <div class="nav-dropdown">
+        <a href="shop-by-concern.html" class="nav-link">Shop <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <a href="shop-by-concern.html#concerns" class="dropdown-item">Shop by Concern</a>
+          <a href="featured-products.html#collection" class="dropdown-item">Featured Products</a>
+        </div>
+      </div>
+      <a href="testimonials.html#client-stories" class="nav-link">Testimonials</a>
+      <a href="contact-us.html#contact-form" class="nav-link">Contact</a>
+    </nav>
+
+    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation"></nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" data-parallax="0.08"></div>
+  <img class="hero-product" src="assets/hero_image.png" alt="VR2C hair care product" data-parallax="-0.08">
+  <div class="wrap">
+    <p class="tag">Skin and hair care</p>
+    <h1><span><i>Beauty care</i></span><span><i>with a thoughtful</i></span><span><i>difference</i></span></h1>
+    <p class="lead">Thoughtfully developed skin and hair care with carefully selected ingredients, guided by professional experience and scientific knowledge.</p>
+    <div class="ctas">
+      <a href="featured-products.html#collection" class="btn solid">Explore products ↗</a>
+      <a href="brand-story.html#story" class="btn line">Our story →</a>
     </div>
-  </section>
+  </div>
+  <div class="scroll-hint">Scroll<b></b></div>
+</section>
 
-  <!-- BRAND TRUST BADGES / STATS BAR -->
-  <section class="trust-bar" id="whyChooseUs">
-    <div class="container">
-      <div class="trust-grid">
-        <div class="trust-item">
-          <i class="fas fa-flask trust-icon"></i>
-          <span class="trust-title">100+ Years Science</span>
-          <span class="trust-desc">Formulated in VR2C Labs since 1922</span>
-        </div>
-        <div class="trust-item">
-          <i class="fas fa-leaf trust-icon"></i>
-          <span class="trust-title">Cruelty Free & Organic</span>
-          <span class="trust-desc">Leaping Bunny certified ethical care</span>
-        </div>
-        <div class="trust-item">
-          <i class="fas fa-award trust-icon"></i>
-          <span class="trust-title">B-Corp Certified</span>
-          <span class="trust-desc">Highest standard of environmental care</span>
-        </div>
-        <div class="trust-item">
-          <i class="fas fa-cut trust-icon"></i>
-          <span class="trust-title">Pro Stylist Approved</span>
-          <span class="trust-desc">Trusted in 85+ countries by hair masters</span>
-        </div>
-      </div>
+<div class="tagline"><div>
+  <span>✧</span>Carefully considered<span>❋</span>Thoughtfully developed<span>◌</span>Made for real life<span>♡</span>
+  <span>✧</span>Carefully considered<span>❋</span>Thoughtfully developed<span>◌</span>Made for real life<span>♡</span>
+  <span>✧</span>Carefully considered<span>❋</span>Thoughtfully developed<span>◌</span>Made for real life<span>♡</span>
+  <span>✧</span>Carefully considered<span>❋</span>Thoughtfully developed<span>◌</span>Made for real life<span>♡</span>
+</div></div>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap">
+    <h2 class="rv">Beauty with purpose</h2>
+    <div class="vgrid">
+      <div class="v rv"><span class="ic">✧</span><h3>Thoughtfully developed</h3><p>Products created with a clear purpose.</p></div>
+      <div class="v rv"><span class="ic">❋</span><h3>Selected ingredients</h3><p>Carefully considered components.</p></div>
+      <div class="v rv"><span class="ic">◌</span><h3>Science-informed</h3><p>Knowledge and practical experience.</p></div>
+      <div class="v rv"><span class="ic">♡</span><h3>Made for everyday beauty</h3><p>Care that fits your routine.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- INGREDIENT SPOTLIGHT -->
-  <section class="section-padding" id="ingredientSpotlight">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">INGREDIENT SPOTLIGHT</span>
-        <h2 class="section-title">Hero Ingredients That Deliver Visible Results</h2>
-        <p class="section-desc">Each formula is powered by potent, skin-loving actives and mineral-rich care designed to protect, hydrate, and restore healthier-looking hair.</p>
-      </div>
-
-      <div class="media-grid-4">
-        <div class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">HERO INGREDIENT</span>
-            <h3 class="media-headline">Mineral Complex</h3>
-            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Essential minerals help support strength, balance, and a healthier scalp foundation for long-term vitality.</p>
-          </div>
-        </div>
-
-        <div class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">BOTANICAL CARE</span>
-            <h3 class="media-headline">Centella & Aloe</h3>
-            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Calming, hydrating support for sensitive scalps and dry, stressed hair strands.</p>
-          </div>
-        </div>
-
-        <div class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">RESTORATIVE</span>
-            <h3 class="media-headline">Peptide Repair</h3>
-            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Helps improve softness, resilience, and smoothness while reinforcing strand structure.</p>
-          </div>
-        </div>
-
-        <div class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">SCALP HEALTH</span>
-            <h3 class="media-headline">Balanced Care</h3>
-            <p style="color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6;">Clinically inspired ingredients help nourish the scalp while supporting cleaner, healthier growth.</p>
-          </div>
-        </div>
-      </div>
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="kicker">Explore our collection</p><h2>Thoughtful care<br>for your routine</h2></div>
+      <div><p>Explore the VR2C range of skin and hair care products designed to fit naturally into everyday routines.</p><br><a href="featured-products.html#collection" class="btn dark">View all products →</a></div>
     </div>
-  </section>
+    <div class="pgrid">
+      <article class="card rv"><div class="pic"><img src="assets/bodyimage(1).jpeg" alt="Vital Nutrition Shampoo" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Vital Nutrition Shampoo</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
+      <article class="card rv"><div class="pic"><img src="assets/bodyimage(2).jpeg" alt="Color Muse Mask" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Color Muse Mask</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
+      <article class="card rv"><div class="pic"><img src="assets/bodyimage(3).jpeg" alt="Long and Strong Serum" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Long &amp; Strong Serum</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
+      <article class="card rv"><div class="pic"><img src="assets/bodyimage(4).jpeg" alt="Style and Finish" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Style &amp; Finish</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
+    </div>
+  </div>
+</section>
 
-  <!-- FEATURED CARE RANGES / MEDIA GRID (USING LOCAL IMAGES body_img to body_img4) -->
-  <section class="section-padding">
-    <div class="container-wide">
-      <div class="section-header">
-        <span class="section-subtitle">SIGNATURE COLLECTIONS</span>
-        <h2 class="section-title">Nourishment for Every Hair Type</h2>
-        <p class="section-desc">Each formula is infused with essential minerals to boost scalp health and transform locks from root to tip.</p>
+<!-- INGREDIENTS -->
+<section class="ingredients" id="ingredients">
+  <div class="wrap ing">
+    <div class="rv">
+      <p class="kicker" style="color:var(--gold)">Carefully considered</p>
+      <h2>Clean, thoughtfully selected ingredients</h2>
+      <p class="t">We are intentional about our ingredients. Our formulas feature carefully chosen components such as vitamin E, argan oil, and aloe vera. We avoid parabens, sulfates, and mineral oil so you can feel confident in your skincare and haircare choices.</p>
+      <div class="free"><span>Paraben-free</span><span>Sulfate-free</span><span>Mineral oil-free</span></div>
+      <ul class="list">
+        <li><b>01</b><div><h3>Aloe Vera</h3><p>A carefully selected ingredient in beauty care.</p></div></li>
+        <li><b>02</b><div><h3>Argan Oil</h3><p>Included in our thoughtful approach to hair care.</p></div></li>
+        <li><b>03</b><div><h3>Vitamin E</h3><p>One of the ingredients used in our formulas.</p></div></li>
+      </ul>
+      <a href="why-choose-us.html#principles" class="btn solid">Why choose VR2C →</a>
+    </div>
+    <div class="orbit rv" id="orbit">
+      <div class="ring"></div><div class="ring"></div>
+      <div class="core"><img src="assets/bodyimage(6).jpeg" alt="VR2C formulas" loading="lazy"></div>
+      <div class="dot" data-a="0"><em>Aloe Vera</em></div>
+      <div class="dot" data-a="120"><em>Argan Oil</em></div>
+      <div class="dot" data-a="240"><em>Vitamin E</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- SALON -->
+<section class="salon" id="salon">
+  <div class="wrap sgrid">
+    <div class="stack rv">
+      <img class="s1" src="assets/1000133905.png" alt="In-salon product" data-parallax="-0.05" loading="lazy">
+      <img class="s2" src="assets/1000134051.png" alt="In-salon product" data-parallax="0.07" loading="lazy">
+      <img class="s3" src="assets/1000134054.png" alt="In-salon product" data-parallax="-0.1" loading="lazy">
+    </div>
+    <div class="rv">
+      <p class="kicker">Professional range</p>
+      <h2>In-salon use products</h2>
+      <p style="margin-top:1.2rem;color:#5b4660;max-width:480px">Professional-grade treatments built with stylists, for a consistent, considered result from the chair to your bathroom shelf.</p>
+      <div class="prod-list">
+        <div>#1 Pre Shampoo<span>Prep</span></div>
+        <div>#2 Hair Cream / Masque<span>500 ml</span></div>
+        <div>#3 Mask<span>500 ml</span></div>
+        <div>#4 Argan Oil<span>150 ml</span></div>
       </div>
+      <a href="contact-us.html#contact-form" class="btn dark">Become a salon partner →</a>
+    </div>
+  </div>
+</section>
 
-      <div class="media-grid-4">
-        <!-- Card 1: body_img.jpeg -->
-        <a href="#products" class="media-card">
-          <div class="media-img-wrapper">
-            <img src="assets/1000134054.png" alt="VR2C volumizing shampoo" class="media-img" />
-            <div class="media-overlay"></div>
-          </div>
-          <div class="media-content">
-            <span class="media-tag">VR2C CARE</span>
-            <h3 class="media-headline">Long & Strong</h3>
-            <span class="media-link-text">Thicker, fuller hair <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="bgimg" data-parallax="0.2"></div>
+  <div class="wrap rv">
+    <p class="kicker" style="color:var(--gold)">Our story</p>
+    <h2>It starts with what matters</h2>
+    <p>Meaningful beauty care starts with a better understanding of what people use on their skin and hair, and why they trust certain products. VR2C was created from this belief.</p>
+    <a href="brand-story.html#story" class="btn solid">Read our story →</a>
+    <div class="stats">
+      <div><strong data-count="7">0</strong><span>Signature products</span></div>
+      <div><strong data-count="3">0</strong><span>Hero ingredients</span></div>
+      <div><strong data-count="0">0</strong><span>Parabens or sulfates</span></div>
+    </div>
+  </div>
+</section>
 
-        <!-- Card 2: body_img2.jpeg -->
-        <a href="#products" class="media-card">
-          <div class="media-img-wrapper">
-            <img src="assets/1000134054.png" alt="VR2C volumizing shampoo" class="media-img" />
-            <div class="media-overlay"></div>
-          </div>
-          <div class="media-content">
-            <span class="media-tag">VR2C CARE</span>
-            <h3 class="media-headline">Vital Nutrition</h3>
-            <span class="media-link-text">Deeply nourished hair <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+<!-- ROUTINE -->
+<section class="routine" id="routine">
+  <div class="wrap">
+    <h2 class="rv">A routine in four steps</h2>
+    <div class="steps">
+      <div class="step rv"><h3>Prepare</h3><p>Begin with Pre Shampoo to ready hair for cleansing.</p></div>
+      <div class="step rv"><h3>Cleanse</h3><p>Wash gently with Vital Nutrition Shampoo.</p></div>
+      <div class="step rv"><h3>Treat</h3><p>Apply Color Muse Mask or Long &amp; Strong Serum.</p></div>
+      <div class="step rv"><h3>Finish</h3><p>Style with Style &amp; Finish and a touch of argan oil.</p></div>
+    </div>
+  </div>
+</section>
 
-        <!-- Card 3: body_img3.jpeg -->
-        <a href="#products" class="media-card">
-          <div class="media-img-wrapper">
-            <img src="assets/1000134052.png" alt="VR2C Moroccan argan oil treatment" class="media-img" />
-            <div class="media-overlay"></div>
-          </div>
-          <div class="media-content">
-            <span class="media-tag">VR2C CARE</span>
-            <h3 class="media-headline">Instant Revive</h3>
-            <span class="media-link-text">Strong, radiant hair <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+<!-- FOUNDERS -->
+<section class="founders" id="founders">
+  <div class="wrap fgrid">
+    <div class="rv">
+      <p class="kicker">Our founders</p>
+      <h2>Professional beauty. Scientific expertise. Business leadership.</h2>
+      <p>Meet the people behind VR2C, bringing experience in professional beauty, pharmaceutical research and development, finance, operations, and entrepreneurship.</p>
+      <div class="chips"><span>Professional beauty</span><span>Pharma R&amp;D</span><span>Finance</span><span>Operations</span></div>
+      <a href="brand-story.html#story" class="btn dark">Meet our founders →</a>
+    </div>
+    <div class="fimg rv"><img src="assets/bodyimage(5).jpeg" alt="VR2C founders" data-parallax="-0.04" loading="lazy"></div>
+  </div>
+</section>
 
-        <!-- Card 4: body_img4.jpeg -->
-        <a href="#products" class="media-card">
-          <div class="media-img-wrapper">
-            <img src="assets/1000134050.png" alt="VR2C leave-in conditioner spray" class="media-img" />
-            <div class="media-overlay"></div>
-          </div>
-          <div class="media-content">
-            <span class="media-tag">VR2C CARE</span>
-            <h3 class="media-headline">Radiant Gloss</h3>
-            <span class="media-link-text">Intensely shiny hair <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+<section class="gallery">
+  <div class="wrap gal">
+    <div class="rv"><img src="assets/bodyimage(6).jpeg" alt="" data-parallax="-0.08" loading="lazy"></div>
+    <div class="rv"><img src="assets/bodyimage(1).jpeg" alt="" data-parallax="-0.08" loading="lazy"></div>
+    <div class="rv"><img src="assets/bodyimage(3).jpeg" alt="" data-parallax="-0.08" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap rv">
+    <h2>Care that fits your life</h2>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Thank you';">
+      <input type="email" required placeholder="Your email address" aria-label="Email address">
+      <button class="btn solid" type="submit">Join the list</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" aria-label="VR2C Haircosmetics home"><img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics" class="footer-logo-image"></a>
+      <p>Thoughtfully developed skin and hair care, guided by professional experience and scientific knowledge.</p>
+      <div class="social-links" aria-label="Social media">
+        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
       </div>
     </div>
-  </section>
-
-  <!-- SHOP BY CONCERN -->
-  <section class="section-padding" id="shopByConcern">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">SHOP BY CONCERN</span>
-        <h2 class="section-title">Targeted Solutions for Every Hair Need</h2>
-        <p class="section-desc">Build a routine around the specific concerns you want to treat, from moisture repair to scalp wellness.</p>
-      </div>
-
-      <div class="media-grid-4">
-        <a href="#products" class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">CONCERN</span>
-            <h3 class="media-headline">Dryness</h3>
-            <span class="media-link-text">Repair & replenish <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
-
-        <a href="#products" class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">CONCERN</span>
-            <h3 class="media-headline">Hair Growth</h3>
-            <span class="media-link-text">Support stronger growth <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
-
-        <a href="#products" class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">CONCERN</span>
-            <h3 class="media-headline">Acne</h3>
-            <span class="media-link-text">Calm & balance <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
-
-        <a href="#products" class="media-card" style="height: auto;">
-          <div class="media-content" style="padding: 1.5rem;">
-            <span class="media-tag">CONCERN</span>
-            <h3 class="media-headline">Hydration</h3>
-            <span class="media-link-text">Boost moisture retention <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
-      </div>
+    <div>
+      <h2 class="footer-heading">Explore</h2>
+      <ul class="footer-menu">
+        <li><a href="featured-products.html#collection">Featured Products</a></li>
+        <li><a href="shop-by-concern.html#concerns">Shop by Concern</a></li>
+        <li><a href="ingredient-spotlight.html#ingredients">Ingredients</a></li>
+        <li><a href="testimonials.html#client-stories">Testimonials</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- BESTSELLERS PRODUCT SHOWCASE & FILTERABLE CATALOG -->
-  <section class="section-padding products-section" id="products">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">CURATED SELECTION</span>
-        <h2 class="section-title">Bestselling Formulations</h2>
-        <p class="section-desc">Explore our salon-proven shampoos, masks, oils, and targeted scalp serums.</p>
-      </div>
-
-      <!-- Filter Buttons -->
-      <div class="filter-tabs">
-        <button class="filter-btn active" data-category="all">All Products</button>
-        <button class="filter-btn" data-category="care">Care & Repair</button>
-        <button class="filter-btn" data-category="color">Color Preservation</button>
-        <button class="filter-btn" data-category="style">Styling & Finish</button>
-        <button class="filter-btn" data-category="scalp">Scalp Health</button>
-      </div>
-
-      <!-- Products Grid -->
-      <div class="products-grid">
-        
-        <!-- Product 1 -->
-        <div class="product-card" data-category="care" data-id="prod-1">
-          <span class="product-badge gold">BESTSELLER</span>
-          <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-img-container">
-            <img src="assets/1000134054.png" alt="VR2C volumizing shampoo" class="product-img" />
-          </div>
-          <div class="product-info">
-            <span class="product-category">Care Series</span>
-            <h3 class="product-title">Vital Nutrition Shampoo</h3>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span>(142)</span>
-            </div>
-            <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card" data-category="color" data-id="prod-2">
-          <span class="product-badge">COLOR SHIELD</span>
-          <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-img-container">
-            <img src="assets/1000134047.png" alt="VR2C repairing hair mask with keratin and argan oil" class="product-img" />
-          </div>
-          <div class="product-info">
-            <span class="product-category">Color Muse</span>
-            <h3 class="product-title">Color Muse Mask - Rose Glow</h3>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span>(98)</span>
-            </div>
-            <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card" data-category="care" data-id="prod-3">
-          <span class="product-badge gold">PRO CHOICE</span>
-          <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-img-container">
-            <img src="assets/1000134052.png" alt="VR2C Moroccan argan oil treatment" class="product-img" />
-          </div>
-          <div class="product-info">
-            <span class="product-category">Strengthening</span>
-            <h3 class="product-title">Long & Strong Fortifying Serum</h3>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span>(215)</span>
-            </div>
-            <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card" data-category="style" data-id="prod-4">
-          <span class="product-badge">NEW</span>
-          <button class="product-wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-img-container">
-            <img src="assets/1000134050.png" alt="VR2C leave-in conditioner spray" class="product-img" />
-          </div>
-          <div class="product-info">
-            <span class="product-category">Styling</span>
-            <h3 class="product-title">Style & Sculpt Matte Paste</h3>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-              <span>(64)</span>
-            </div>
-            <button class="quick-view-btn btn-outline-dark" style="margin-top: 0.8rem; width: 100%; font-size: 0.75rem; padding: 0.4rem;">Quick View</button>
-          </div>
-        </div>
-
-      </div>
+    <div>
+      <h2 class="footer-heading">About VR2C</h2>
+      <ul class="footer-menu">
+        <li><a href="brand-story.html#story">Our Story</a></li>
+        <li><a href="brand-story.html#values">Our Values</a></li>
+        <li><a href="why-choose-us.html#principles">Why Choose Us</a></li>
+        <li><a href="index.html#salon">For Salons</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- INTERACTIVE DIAGNOSIS QUIZ SECTION -->
-  <section class="section-padding quiz-banner-section" id="hairQuiz">
-    <div class="container">
-      <div class="quiz-container">
-        
-        <div class="quiz-text-side">
-          <span class="section-subtitle" style="color: var(--color-gold);">HAIR DIAGNOSTIC TOOL</span>
-          <h2>Find Your Custom Hair Care Routine</h2>
-          <p>Answer 3 quick questions crafted by VR2C trichologists and unlock a tailored prescription of formulas targeted specifically for your texture.</p>
-          
-          <ul class="quiz-features-list">
-            <li><i class="fas fa-check-circle"></i> Instant 60-second diagnostic analysis</li>
-            <li><i class="fas fa-check-circle"></i> Precision essential mineral match</li>
-            <li><i class="fas fa-check-circle"></i> 100% satisfaction salon guarantee</li>
-          </ul>
-        </div>
-
-        <div class="quiz-box">
-          <div class="quiz-progress">
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-            <span class="step-count">STEP 1 OF 3</span>
-          </div>
-
-          <!-- Step 1 -->
-          <div class="quiz-step active" id="quizStep1">
-            <h3 class="quiz-question">What is your natural hair texture?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card selected" data-step="1" data-value="Straight">
-                <i class="fas fa-align-justify" style="margin-bottom: 0.4rem; display: block; color: var(--color-gold);"></i> Straight & Fine
-              </div>
-              <div class="quiz-option-card" data-step="1" data-value="Wavy">
-                <i class="fas fa-water" style="margin-bottom: 0.4rem; display: block; color: var(--color-gold);"></i> Wavy & Medium
-              </div>
-              <div class="quiz-option-card" data-step="1" data-value="Curly">
-                <i class="fas fa-dharmachakra" style="margin-bottom: 0.4rem; display: block; color: var(--color-gold);"></i> Curly & Dense
-              </div>
-              <div class="quiz-option-card" data-step="1" data-value="Coily">
-                <i class="fas fa-asterisk" style="margin-bottom: 0.4rem; display: block; color: var(--color-gold);"></i> Coily / Textured
-              </div>
-            </div>
-            <div class="quiz-nav-btns">
-              <button class="btn-dark quiz-next-btn" style="width: 100%;">Continue <i class="fas fa-arrow-right"></i></button>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="quiz-step" id="quizStep2">
-            <h3 class="quiz-question">What is your primary hair concern?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" data-step="2" data-value="Dryness">Dry & Brittle Ends</div>
-              <div class="quiz-option-card" data-step="2" data-value="Color Fading">Color Fading</div>
-              <div class="quiz-option-card" data-step="2" data-value="Frizz">Frizz & Humidity</div>
-              <div class="quiz-option-card" data-step="2" data-value="Thinning">Volume & Thinning</div>
-            </div>
-            <div class="quiz-nav-btns">
-              <button class="btn-outline-dark quiz-prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
-              <button class="btn-dark quiz-next-btn">Continue <i class="fas fa-arrow-right"></i></button>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="quiz-step" id="quizStep3">
-            <h3 class="quiz-question">What desired finish do you prefer?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" data-step="3" data-value="Glass Gloss">Glass Gloss Shine</div>
-              <div class="quiz-option-card" data-step="3" data-value="Weightless Volume">Weightless Lift</div>
-              <div class="quiz-option-card" data-step="3" data-value="Deep Nourish">Silky Softness</div>
-              <div class="quiz-option-card" data-step="3" data-value="Color Protection">Vibrant Color Hold</div>
-            </div>
-            <div class="quiz-nav-btns">
-              <button class="btn-outline-dark quiz-prev-btn"><i class="fas fa-arrow-left"></i> Back</button>
-              <button class="btn-primary quiz-next-btn" style="background: var(--color-gold); border-color: var(--color-gold); color: #FFF;">See Prescribed Routine</button>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
+    <div>
+      <h2 class="footer-heading">Customer Care</h2>
+      <ul class="footer-menu">
+        <li><a href="contact-us.html#contact-form">Contact</a></li>
+        <li><a href="newsletter.html#journal">Newsletter</a></li>
+        <li><a href="index.html#routine">Hair Care Routine</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- INTERACTIVE BEFORE & AFTER HAIR TRANSFORMATION SLIDER -->
-  <section class="section-padding transformation-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">PROVEN RESULTS</span>
-        <h2 class="section-title">The VR2C Hair Transformation</h2>
-        <p class="section-desc">Drag the interactive slider below to see the dramatic restoration after just one treatment of VR2C Care Vital Nutrition.</p>
-      </div>
-
-      <div class="comparison-wrapper" id="comparisonWrapper" tabindex="0" role="slider" aria-label="Before and after hair transformation comparison" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-        <!-- After image (base) -->
-        <img src="assets/1000134052.png" alt="VR2C Moroccan argan oil treatment" class="comparison-image" id="comparisonAfterImg" />
-        <span class="comparison-badge after">AFTER: 3X Gloss & Smoothness</span>
-
-        <!-- Before image (overlay clip) -->
-        <div class="comparison-overlay-img" id="comparisonOverlay">
-          <img src="assets/1000134047.png" alt="VR2C repairing hair mask" id="comparisonBeforeImg" />
-          <span class="comparison-badge before">BEFORE: Dry & Damaged</span>
-        </div>
-
-        <!-- Drag handle -->
-        <div class="slider-handle" id="sliderHandle">
-          <div class="handle-circle">
-            <i class="fas fa-arrows-alt-h"></i>
-          </div>
-        </div>
-      </div>
+    <div>
+      <h2 class="footer-heading">Information</h2>
+      <ul class="footer-menu">
+        <li><a href="why-choose-us.html#standards">Sustainability</a></li>
+        <li><a href="contact-us.html#contact-form">Careers &amp; Enquiries</a></li>
+      </ul>
     </div>
-  </section>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 VR2C Haircosmetics. All rights reserved.</p>
+    <a href="index.html#top">Back to top</a>
+  </div>
+</footer>
 
-  <!-- HERITAGE & DUTCH SCIENCE SECTION (USING LOCAL IMAGE body_img7.jpeg) -->
-  <section class="section-padding heritage-section" id="heritage">
-    <div class="container">
-      <div class="heritage-grid">
-        
-        <div class="heritage-img-box">
-          <img src="assets/hero_image.png" alt="VR2C daily hydration serum in a bright studio" class="heritage-img" />
-          <div class="heritage-floating-badge">
-            <span class="year">1922</span>
-            <span class="label">Founded in Holland</span>
-          </div>
-        </div>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        <div class="heritage-content">
-          <span class="section-subtitle">OUR HERITAGE</span>
-          <h2>100 Years of VR2C Expertise & Science</h2>
-          <p>Founded by master hair scientists, VR2C Haircosmetics has spent over a century pioneering breakthroughs in organic hair dyes, gentle perms, and essential mineral complexes.</p>
-          <p>We craft every bottle in our solar-powered headquarters, combining family devotion with rigorous trichological research.</p>
+  /* Build golden-ratio spiral paths */
+  function spiralPoints(offset){
+    const pts=[], turns=6, steps=420, b=Math.log(1.618)/(Math.PI/2)*0.62;
+    for(let i=0;i<=steps;i++){
+      const t=i/steps*turns*2*Math.PI, r=6*Math.exp(b*t);
+      pts.push((r*Math.cos(t+offset)).toFixed(1)+','+(r*Math.sin(t+offset)).toFixed(1));
+    }
+    return 'M'+pts.join(' L');
+  }
+  const p1=document.getElementById('sp1'), p2=document.getElementById('sp2'), g=document.getElementById('sg');
+  p1.setAttribute('d',spiralPoints(0)); p2.setAttribute('d',spiralPoints(Math.PI));
+  const L1=p1.getTotalLength(), L2=p2.getTotalLength();
+  [[p1,L1],[p2,L2]].forEach(([p,L])=>{p.style.strokeDasharray=L;p.style.strokeDashoffset=L;});
 
-          <div class="heritage-pillars">
-            <div class="pillar-item">
-              <h4><i class="fas fa-microscope"></i> Essential Mineral Complex</h4>
-              <p>5 essential minerals nourish the scalp to optimize hair follicle health.</p>
-            </div>
-            <div class="pillar-item">
-              <h4><i class="fas fa-globe-europe"></i> Sustainable Production</h4>
-              <p>Carbon-neutral manufacturing in our state-of-the-art facility.</p>
-            </div>
-          </div>
-        </div>
+  const header=document.getElementById('top');
+  const par=[...document.querySelectorAll('[data-parallax]')];
+  const orbit=document.getElementById('orbit');
+  const dots=orbit?[...orbit.querySelectorAll('.dot')]:[];
+  let ticking=false;
 
-      </div>
-    </div>
-  </section>
+  function update(){
+    const y=scrollY, max=document.documentElement.scrollHeight-innerHeight, prog=max>0?y/max:0;
+    header.classList.toggle('solid',y>60);
+    if(!reduce){
+      p1.style.strokeDashoffset=L1*(1-Math.min(1,prog*1.4));
+      p2.style.strokeDashoffset=L2*(1-Math.min(1,Math.max(0,prog*1.4-.15)));
+      g.style.transform='rotate('+(prog*540)+'deg) scale('+(1+prog*0.6)+')';
+      par.forEach(el=>{
+        const r=el.getBoundingClientRect();
+        if(r.bottom<-200||r.top>innerHeight+200)return;
+        const d=(r.top+r.height/2-innerHeight/2)*parseFloat(el.dataset.parallax);
+        el.style.transform='translate3d(0,'+d.toFixed(1)+'px,0)';
+      });
+      if(orbit){
+        const rad=orbit.offsetWidth/2;
+        dots.forEach(d=>{
+          const a=(parseFloat(d.dataset.a)+y*0.18)*Math.PI/180;
+          d.style.transform='translate('+Math.cos(a)*rad+'px,'+Math.sin(a)*rad+'px)';
+        });
+      }
+    }
+    ticking=false;
+  }
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  addEventListener('resize',update);
+  update();
 
-  <!-- PROFESSIONAL SALONS & LOCATOR (USING LOCAL IMAGES salon_1, salon_2, body_img5, body_img6) -->
-  <section class="section-padding salons-section" id="salons">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">FOR SALONS & STYLISTS</span>
-        <h2 class="section-title">Experience VR2C in Certified Salons</h2>
-        <p class="section-desc">Locate a certified VR2C Haircosmetics partner salon near you for personalized color blending and deep conditioning rituals.</p>
-      </div>
+  /* Reveal on scroll */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    e.target.querySelectorAll('[data-count]').forEach(count);
+  }),{threshold:.15});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*90+'ms';io.observe(el);});
 
-      <!-- Showcase Dual Cards -->
-      <div class="salons-showcase-grid" id="proSection">
-        <div class="salon-card-lg">
-          <img src="assets/1000134052.png" alt="VR2C Moroccan argan oil treatment" />
-          <div class="salon-card-overlay">
-            <h3>Find a Certified Stylist</h3>
-            <p>Over 10,000 top salons worldwide trust VR2C to deliver flawless haircuts, balayage, and restorative treatments.</p>
-            <a href="#salonFinder" class="btn-primary" style="align-self: flex-start;">Locate Salons Near You</a>
-          </div>
-        </div>
-
-        <div class="salon-card-lg">
-          <img src="assets/1000134047.png" alt="VR2C repairing hair mask" />
-          <div class="salon-card-overlay">
-            <h3>Become a VR2C Partner Salon</h3>
-            <p>Elevate your salon business with world-class color innovation, master education, and dedicated brand support.</p>
-            <a href="#newsletter" class="btn-secondary" style="align-self: flex-start;">Apply for Pro Account</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Salon Finder Live Search Widget -->
-      <div class="salon-search-box" id="salonFinder">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Live Salon Locator</h3>
-        <form class="salon-search-form" id="salonSearchForm">
-          <input type="search" id="salonSearchInput" class="salon-input" aria-label="Search salons by city or postal code" placeholder="Enter city, postal code, or country (e.g. New York, Amsterdam, London)..." />
-          <button type="submit" class="btn-dark"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
-        </form>
-        <p class="salon-search-status" id="salonSearchStatus" role="status" aria-live="polite">3 salons listed.</p>
-
-        <div class="salon-results-grid">
-          <div class="salon-item">
-            <div class="salon-name">Maison VR2C Flagship Salon</div>
-            <div class="salon-address">542 Fifth Avenue, New York, NY 10036</div>
-            <div class="salon-distance"><i class="fas fa-map-marker-alt"></i> 0.4 miles away</div>
-          </div>
-          <div class="salon-item">
-            <div class="salon-name">Atelier Hair & Spa</div>
-            <div class="salon-address">128 Keizersgracht, Amsterdam, Netherlands</div>
-            <div class="salon-distance"><i class="fas fa-map-marker-alt"></i> Certified Master Partner</div>
-          </div>
-          <div class="salon-item">
-            <div class="salon-name">Studio Luxe Hair Design</div>
-            <div class="salon-address">45 Bond Street, London, W1S 2XF</div>
-            <div class="salon-distance"><i class="fas fa-map-marker-alt"></i> 1.2 miles away</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS & STYLIST REVIEWS -->
-  <section class="section-padding testimonials-section" id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">STYLIST REVIEWS</span>
-        <h2 class="section-title">Loved by Master Stylists</h2>
-        <p class="section-desc">Hear what leading colorists and salon owners say about VR2C Haircosmetics.</p>
-      </div>
-
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="review-quote">"VR2C Care Vital Nutrition completely transformed my clients' damaged hair. It locks in moisture without weighing down natural texture."</p>
-          <div class="review-author">
-            <div class="author-avatar">EM</div>
-            <div>
-              <div class="author-name">Elena Moretti</div>
-              <div class="author-title">Master Colorist, Paris</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="review-quote">"The Color Muse mask is unmatched for post-color vibrancy. My clients leave the chair with incredible mirror shine that lasts weeks."</p>
-          <div class="review-author">
-            <div class="author-avatar">JD</div>
-            <div>
-              <div class="author-name">Julian DeVries</div>
-              <div class="author-title">Salon Director, Amsterdam</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="review-quote">"VR2C's commitment to cruelty-free science and eco-friendly packaging makes them our salon's #1 brand of choice."</p>
-          <div class="review-author">
-            <div class="author-avatar">SC</div>
-            <div>
-              <div class="author-name">Sophia Chen</div>
-              <div class="author-title">Lead Stylist, New York</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENT FEEDBACK & FUTURE PRODUCT REQUIREMENTS -->
-  <section class="feedback-section" id="feedbackForms">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">CLIENT INSIGHTS</span>
-        <h2 class="section-title">Your Feedback Shapes Tomorrow’s VR2C Innovation</h2>
-        <p class="section-desc">Share your experience with our products or tell us about a challenge in your outlet so we can build the right solution for your salon.</p>
-      </div>
-
-      <div class="feedback-grid">
-        <div class="feedback-card">
-          <div class="form-kicker">Client Feedback</div>
-          <h3>Tell us about your experience</h3>
-          <form class="luxury-form">
-            <div class="form-field">
-              <label for="feedbackName">Client name</label>
-              <input id="feedbackName" type="text" placeholder="Enter your name" required />
-            </div>
-
-            <div class="form-field">
-              <label for="feedbackContact">Contact details</label>
-              <input id="feedbackContact" type="text" placeholder="Phone number or email" required />
-            </div>
-
-            <div class="form-field">
-              <label for="feedbackMessage">Feedback on our product</label>
-              <textarea id="feedbackMessage" rows="5" placeholder="Share what you liked, what could improve, and how the product is performing in your salon or outlet." required></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Submit Feedback</button>
-          </form>
-        </div>
-
-        <div class="feedback-card accent-card">
-          <div class="form-kicker">Future Product Requirements</div>
-          <h3>Tell us what your outlet needs</h3>
-          <form class="luxury-form">
-            <div class="form-field">
-              <label for="requirementName">Client name</label>
-              <input id="requirementName" type="text" placeholder="Enter your name" required />
-            </div>
-
-            <div class="form-field">
-              <label for="requirementContact">Contact details</label>
-              <input id="requirementContact" type="text" placeholder="Phone number or email" required />
-            </div>
-
-            <div class="form-field">
-              <label for="outletIssue">Issue facing in your outlet</label>
-              <textarea id="outletIssue" rows="4" placeholder="Describe the challenge your outlet is currently facing." required></textarea>
-            </div>
-
-            <div class="form-field">
-              <label for="futureProductIdea">How VR2C can help create a new product</label>
-              <textarea id="futureProductIdea" rows="4" placeholder="Tell us the solution you need and how VR2C can design a new product for your business." required></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Send Requirement</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER SIGNUP -->
-  <section class="newsletter-section" id="newsletter">
-    <div class="container">
-      <div class="newsletter-box">
-        <span class="section-subtitle" style="color: var(--color-gold);">JOIN THE VR2C CIRCLE</span>
-        <h2>Unlock Exclusive Salon Access</h2>
-        <p>Subscribe for first access to new product drops, hair care tips from top trichologists, and 15% off your first order.</p>
-
-        <form class="newsletter-form" id="newsletterForm">
-          <input type="email" class="newsletter-input" placeholder="Enter your email address..." required />
-          <button type="submit" class="btn-primary" style="white-space: nowrap;">Subscribe <i class="fas fa-paper-plane"></i></button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- LUXURY FOOTER -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        
-        <div class="footer-brand">
-          <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics logo" class="footer-logo-image" style="margin-bottom: 1rem;" />
-          <p>VR2C Haircosmetics is a premier family-owned company dedicated to professional hair care since 1922. Made with love and scientific passion for beautiful hair.</p>
-          <div class="social-links">
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Collections</h4>
-          <ul class="footer-menu">
-            <li><a href="featured-products.html#collection">VR2C Care</a></li>
-            <li><a href="featured-products.html#collection">Color Muse</a></li>
-            <li><a href="featured-products.html#collection">VR2C Style</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">So Pure Organic</a></li>
-            <li><a href="brand-story.html#story">1922 by VR2C</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">Ingredient</a></li>
-            <li><a href="shop-by-concern.html#concerns">Shop</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">About Us</h4>
-          <ul class="footer-menu">
-            <li><a href="brand-story.html#story">Our Heritage (1922)</a></li>
-            <li><a href="why-choose-us.html#standards">B-Corp Sustainability</a></li>
-            <li><a href="index.html#salonFinder">Salon Finder</a></li>
-            <li><a href="index.html#proSection">For Stylists & Pros</a></li>
-            <li><a href="contact-us.html#contact-form">Careers</a></li>
-            <li><a href="newsletter.html#journal">Blog</a></li>
-            <li><a href="testimonials.html#client-stories">Testimonials</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Customer Care</h4>
-          <ul class="footer-menu">
-            <li><a href="index.html#hairQuiz">Hair Routine Quiz</a></li>
-            <li><a href="contact-us.html#contact-form">Shipping & Returns</a></li>
-            <li><a href="contact-us.html#contact-form">Track Order</a></li>
-            <li><a href="contact-us.html#contact-form">FAQs</a></li>
-            <li><a href="contact-us.html#contact-form">Contact</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Sustainability</h4>
-          <ul class="footer-menu">
-            <li><a href="why-choose-us.html#standards">Cruelty Free Policy</a></li>
-            <li><a href="why-choose-us.html#standards">Solar-Powered Lab</a></li>
-            <li><a href="why-choose-us.html#standards">Recycled Packaging</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">Clean Formulas</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 VR2C Haircosmetics. All rights reserved.</p>
-        <p>Privacy Policy | Terms of Service | Cookie Settings</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- APPLICATION JS -->
-  <script src="app.js"></script>
+  function count(el){
+    const to=+el.dataset.count, t0=performance.now();
+    (function f(t){const k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);})(t0);
+  }
+})();
+</script>
+<script src="app.js"></script>
 </body>
 </html>
