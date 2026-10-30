@@ -52,18 +52,155 @@
       margin-bottom: 0.8rem;
     }
 
-    /* 1. HERO & FILTER BAR */
+    /* 1. HERO & FILTER BAR WITH DECORATIVE BACKGROUND */
     .prod-hero-section {
-      padding: 6.5rem 0 3.5rem;
+      padding: 7rem 0 4rem;
       background: linear-gradient(180deg, #170a1c 0%, #220d2b 45%, var(--prod-pearl) 100%);
       color: #ffffff;
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative Background Elements (Dot Matrix + Scientific Rings + Glows) */
+    .prod-hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Ambient Glow Orbs */
+    .prod-decor-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.55;
+    }
+
+    .prod-decor-glow-1 {
+      top: -5%;
+      left: 18%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(138, 51, 102, 0.35) 0%, transparent 70%);
+      animation: pulseGlow 12s ease-in-out infinite alternate;
+    }
+
+    .prod-decor-glow-2 {
+      top: 10%;
+      right: 16%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(201, 161, 91, 0.24) 0%, transparent 70%);
+      animation: pulseGlow 15s ease-in-out infinite alternate-reverse;
+    }
+
+    /* Luxury Dot Matrix Grid */
+    .prod-decor-matrix {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle, rgba(201, 161, 91, 0.32) 1.25px, transparent 1.25px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 30px 30px, 15px 15px;
+      background-position: 0 0, 15px 15px;
+      mask-image: radial-gradient(ellipse 70% 62% at 50% 36%, black 20%, rgba(0, 0, 0, 0.6) 50%, transparent 78%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 62% at 50% 36%, black 20%, rgba(0, 0, 0, 0.6) 50%, transparent 78%);
+      opacity: 0.9;
+    }
+
+    /* Orbital Geometric Rings (Salon Science & Molecular Elegance) */
+    .prod-decor-rings {
+      position: absolute;
+      top: 36%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 820px;
+      height: 820px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .prod-ring {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .prod-ring-1 {
+      width: 430px;
+      height: 430px;
+      border: 1px dashed rgba(201, 161, 91, 0.22);
+      animation: ringRotate 55s linear infinite;
+    }
+
+    .prod-ring-2 {
+      width: 690px;
+      height: 690px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      animation: ringRotateReverse 80s linear infinite;
+    }
+
+    /* Luminous Orbit Nodes */
+    .prod-orb {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--prod-gold);
+    }
+
+    .prod-orb-1 {
+      top: 15%;
+      left: 85%;
+      background: var(--prod-gold);
+    }
+
+    .prod-orb-2 {
+      bottom: 14%;
+      left: 14%;
+      background: #ffffff;
+      box-shadow: 0 0 10px #ffffff;
+      opacity: 0.85;
+    }
+
+    .prod-orb-3 {
+      top: 50%;
+      right: -3px;
+      background: var(--prod-gold);
+      width: 7px;
+      height: 7px;
+    }
+
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes ringRotateReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.45; }
+      100% { transform: scale(1.15) translate(15px, -15px); opacity: 0.7; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .prod-ring-1, .prod-ring-2, .prod-decor-glow-1, .prod-decor-glow-2 {
+        animation: none !important;
+      }
     }
 
     .prod-hero-content {
       max-width: 840px;
       margin: 0 auto 3rem;
+      position: relative;
+      z-index: 2;
     }
 
     .prod-hero-content .prod-kicker {
@@ -100,6 +237,8 @@
 
     /* Filter Controls Bar */
     .prod-controls-bar {
+      position: relative;
+      z-index: 2;
       background: #ffffff;
       border: 1px solid rgba(74, 29, 79, 0.09);
       border-radius: 20px;
@@ -863,8 +1002,24 @@
 </header>
 
   <main class="prod-page">
-    <!-- 1. HERO SECTION -->
+    <!-- 1. HERO SECTION WITH DECORATIVE BACKGROUND -->
     <section class="prod-hero-section" id="collection">
+      <!-- Decorative Dot Matrix & Science Orbit Background -->
+      <div class="prod-hero-decor" aria-hidden="true">
+        <div class="prod-decor-glow prod-decor-glow-1"></div>
+        <div class="prod-decor-glow prod-decor-glow-2"></div>
+        <div class="prod-decor-matrix"></div>
+        <div class="prod-decor-rings">
+          <div class="prod-ring prod-ring-1">
+            <span class="prod-orb prod-orb-1"></span>
+            <span class="prod-orb prod-orb-2"></span>
+          </div>
+          <div class="prod-ring prod-ring-2">
+            <span class="prod-orb prod-orb-3"></span>
+          </div>
+        </div>
+      </div>
+
       <div class="prod-container">
         <div class="prod-hero-content">
           <span class="prod-kicker">✦ THE VR2C COLLECTION</span>
