@@ -68,10 +68,9 @@ main,footer,header{position:relative;z-index:1}
 @media(max-width:520px){.mobile-nav-drawer.active{grid-template-columns:1fr}}
 
 /* hero */
-.hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;color:#fff;overflow:hidden;position:relative;padding:7.5rem 0 4.5rem;background:#130818}
-.hero-ambient{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 78% 50%,rgba(201,161,91,.16) 0%,transparent 55%),radial-gradient(circle at 18% 35%,rgba(138,51,102,.22) 0%,transparent 60%),radial-gradient(circle at 50% 100%,rgba(36,16,43,.9) 0%,#130818 100%);z-index:1}
-.hero .wrap{position:relative;z-index:2;width:min(1320px,92%);margin:auto}
-.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,4vw,4.5rem);align-items:center}
+.hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;color:#fff;overflow:hidden;position:relative;padding:7.5rem 0 4.5rem;background:#000000}
+.hero .wrap{position:relative;z-index:2;width:min(1360px,92%);margin:auto}
+.hero-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(2rem,4.5vw,4.5rem);align-items:center}
 .hero-content{display:flex;flex-direction:column;justify-content:center}
 .hero .tag{font-size:.9rem;margin-bottom:1.2rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:.5rem}
 .hero h1{font-size:clamp(2.6rem,5.2vw,5.4rem);line-height:1.16;margin:0 0 1rem;color:#fff}
@@ -87,15 +86,10 @@ main,footer,header{position:relative;z-index:1}
 .hero-badges span{display:inline-flex;align-items:center;gap:.4rem;letter-spacing:.02em}
 .hero-badges span i{color:var(--gold);font-size:.7rem}
 
-/* hero framed media */
-.hero-media{position:relative;width:100%}
-.hero-frame{position:relative;border-radius:22px;background:#050207;padding:10px;border:1px solid rgba(201,161,91,.35);box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 45px rgba(201,161,91,.15);transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease}
-.hero-frame:hover{transform:translateY(-4px);box-shadow:0 36px 85px rgba(0,0,0,.75),0 0 55px rgba(201,161,91,.25)}
-.hero-frame-inner{position:relative;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:1599/892}
-.hero-frame-img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#000}
-.hero-frame-pill{position:absolute;top:.9rem;left:.9rem;z-index:2;display:inline-flex;align-items:center;gap:.4rem;background:rgba(20,8,25,.85);backdrop-filter:blur(8px);color:var(--gold);border:1px solid rgba(201,161,91,.4);padding:.35rem .85rem;border-radius:99px;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.hero-frame-foot{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:.65rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 70%,transparent 100%);color:#eadbe8;font-size:.76rem;letter-spacing:.02em}
-.hero-frame-foot strong{color:var(--gold);font-weight:600}
+/* hero standalone illustrator image (frameless, seamless with hero background) */
+.hero-media{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
+.hero-illustrator-img{width:100%;height:auto;display:block;object-fit:contain;border:none;outline:none;background:transparent;box-shadow:none;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.hero-illustrator-img:hover{transform:scale(1.015)}
 
 .scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:2;font-size:.75rem;color:#e8d6e6;display:flex;flex-direction:column;align-items:center;gap:.5rem;pointer-events:none}
 .scroll-hint b{width:1px;height:40px;background:linear-gradient(var(--gold),transparent);animation:drip 2s infinite}
@@ -107,12 +101,6 @@ main,footer,header{position:relative;z-index:1}
   .hero h1{font-size:clamp(2.4rem,7vw,3.8rem);max-width:100%}
   .hero p.lead{max-width:100%}
   .scroll-hint{display:none}
-}
-@media(max-width:560px){
-  .hero-frame{padding:6px;border-radius:16px}
-  .hero-frame-inner{border-radius:10px}
-  .hero-frame-pill{top:.5rem;left:.5rem;font-size:.62rem;padding:.25rem .6rem}
-  .hero-frame-foot{font-size:.68rem;padding:.4rem .7rem}
 }
 
 /* tagline + values */
@@ -316,7 +304,6 @@ main,footer,header{position:relative;z-index:1}
 <main>
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-ambient" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-content">
       <p class="tag">✦ Skin and hair care</p>
@@ -334,16 +321,7 @@ main,footer,header{position:relative;z-index:1}
     </div>
     
     <div class="hero-media rv">
-      <div class="hero-frame">
-        <div class="hero-frame-inner">
-          <img src="assets/hero_section-image.jpeg" alt="VR2C complete hair and skin care product collection" class="hero-frame-img" />
-          <div class="hero-frame-pill">✦ Complete Collection</div>
-          <div class="hero-frame-foot">
-            <strong>VR2C Official Collection</strong>
-            <span>100% In-Frame · Dutch Science</span>
-          </div>
-        </div>
-      </div>
+      <img src="assets/hero_section-image.jpeg" alt="VR2C hair and skin care complete collection" class="hero-illustrator-img" />
     </div>
   </div>
   <div class="scroll-hint">Scroll<b></b></div>
