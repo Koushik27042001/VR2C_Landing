@@ -3,11 +3,592 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brand Story | VR2C Haircosmetics</title>
-  <meta name="description" content="Learn about the heritage, values, and Dutch hair science behind VR2C Haircosmetics." />
+  <title>Our Story | VR2C Haircosmetics</title>
+  <meta name="description" content="Discover the VR2C story: thoughtful beauty care guided by purpose, clean ingredients, rigorous US testing, and authentic simplicity." />
   <link rel="icon" type="image/svg+xml" href="assets/v2c-favicon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --story-ink: #24102b;
+      --story-plum: #4a1d4f;
+      --story-mulberry: #8a3366;
+      --story-blush: #f7e4ea;
+      --story-pearl: #fff9fb;
+      --story-gold: #c9a15b;
+      --story-gold-hover: #b58d47;
+      --story-font-serif: 'Cormorant Garamond', Georgia, serif;
+      --story-font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--story-font-sans);
+      color: var(--story-ink);
+      background: var(--story-pearl);
+      line-height: 1.7;
+    }
+
+    .story-page {
+      overflow-x: hidden;
+    }
+
+    .story-container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    .story-kicker {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--story-mulberry);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .story-paragraph {
+      font-size: 1.05rem;
+      color: #4b3d50;
+      line-height: 1.8;
+      margin-bottom: 1.35rem;
+    }
+
+    .story-btn-primary,
+    .story-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.85rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .story-btn-primary {
+      background: var(--story-gold);
+      color: var(--story-ink);
+      border: 1px solid var(--story-gold);
+    }
+
+    .story-btn-primary:hover {
+      background: #fff;
+      color: var(--story-ink);
+      border-color: var(--story-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 161, 91, 0.25);
+    }
+
+    .story-btn-secondary {
+      background: transparent;
+      color: var(--story-ink);
+      border: 1px solid rgba(36, 16, 43, 0.25);
+    }
+
+    .story-btn-secondary:hover {
+      background: rgba(36, 16, 43, 0.06);
+      border-color: var(--story-ink);
+      transform: translateY(-2px);
+    }
+
+    /* 1. HERO SECTION */
+    .story-hero-section {
+      padding: 7rem 0 5rem;
+      background: linear-gradient(180deg, #170a1c 0%, #200d27 40%, var(--story-pearl) 100%);
+      color: #fff;
+      position: relative;
+    }
+
+    .story-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .story-hero-copy .story-kicker {
+      color: var(--story-gold);
+    }
+
+    .story-hero-copy .story-title {
+      font-family: var(--story-font-serif);
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+    }
+
+    .story-lead-quote {
+      font-family: var(--story-font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-style: italic;
+      color: var(--story-gold);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .story-hero-copy .story-paragraph {
+      color: #eedde9;
+    }
+
+    .story-hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .story-hero-actions .story-btn-secondary {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .story-hero-actions .story-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #ffffff;
+    }
+
+    .story-hero-visual {
+      position: relative;
+    }
+
+    .story-image-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(201, 161, 91, 0.35);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 35px rgba(201, 161, 91, 0.15);
+      transition: transform 0.5s ease;
+    }
+
+    .story-image-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .story-hero-img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-visual-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.4rem;
+      background: linear-gradient(to top, rgba(23, 10, 28, 0.95), transparent);
+      color: #eedde9;
+      font-size: 0.8rem;
+    }
+
+    .story-visual-caption span:first-child {
+      color: var(--story-gold);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* 2. STRATEGY SECTION */
+    .story-strategy-section {
+      padding: 5rem 0;
+      background: var(--story-pearl);
+    }
+
+    .story-strategy-card {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      background: #ffffff;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      border-radius: 24px;
+      border: 1px solid rgba(36, 16, 43, 0.08);
+      box-shadow: 0 16px 40px rgba(36, 16, 43, 0.06);
+    }
+
+    .story-strategy-card h2 {
+      font-family: var(--story-font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      margin-bottom: 1.2rem;
+      color: var(--story-ink);
+    }
+
+    .story-strategy-text {
+      font-size: 1.15rem;
+      color: #554458;
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .story-core-question {
+      font-family: var(--story-font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--story-plum);
+      background: var(--story-blush);
+      padding: 2rem 2.5rem;
+      border-radius: 18px;
+      border-left: 4px solid var(--story-gold);
+      margin: 2rem 0;
+    }
+
+    .story-strategy-subtext {
+      font-size: 1.05rem;
+      color: #635068;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* 3. INTENTION SECTION */
+    .story-intention-section {
+      padding: 5rem 0;
+      background: #ffffff;
+      border-top: 1px solid rgba(36, 16, 43, 0.06);
+    }
+
+    .story-intention-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .story-intention-content h2 {
+      font-family: var(--story-font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      margin-bottom: 1.4rem;
+      color: var(--story-ink);
+    }
+
+    .story-safety-card {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--story-pearl);
+      border-radius: 18px;
+      border: 1px solid rgba(201, 161, 91, 0.3);
+    }
+
+    .story-safety-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--story-blush);
+      color: var(--story-mulberry);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+    }
+
+    .story-safety-text h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--story-ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .story-safety-text p {
+      font-size: 0.92rem;
+      color: #554458;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .story-intention-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .story-pillar-item {
+      background: var(--story-pearl);
+      padding: 1.8rem 1.4rem;
+      border-radius: 18px;
+      border-top: 2px solid var(--story-gold);
+      box-shadow: 0 10px 25px rgba(36, 16, 43, 0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .story-pillar-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .pillar-num {
+      font-family: var(--story-font-serif);
+      font-size: 1.8rem;
+      color: var(--story-gold);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .story-pillar-item h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--story-ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-pillar-item p {
+      font-size: 0.88rem;
+      color: #635068;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* 4. TRUST SECTION */
+    .story-trust-section {
+      padding: 6rem 0;
+      background: var(--story-blush);
+      text-align: center;
+    }
+
+    .story-trust-header {
+      max-width: 820px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .story-trust-header h2 {
+      font-family: var(--story-font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      margin-bottom: 1.2rem;
+      color: var(--story-ink);
+    }
+
+    .story-trust-intro {
+      font-size: 1.15rem;
+      color: #4b3d50;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-trust-highlight {
+      font-family: var(--story-font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      color: var(--story-plum);
+      font-weight: 500;
+      padding: 0.5rem 0;
+    }
+
+    .story-values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .story-value-card {
+      background: #ffffff;
+      padding: 2.2rem 1.6rem;
+      border-radius: 20px;
+      box-shadow: 0 14px 35px rgba(36, 16, 43, 0.06);
+      border-top: 3px solid var(--story-gold);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .story-value-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .story-value-badge {
+      font-family: var(--story-font-serif);
+      font-size: 1.6rem;
+      color: var(--story-gold);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .story-value-card h3 {
+      font-size: 1.35rem;
+      font-family: var(--story-font-serif);
+      font-weight: 600;
+      color: var(--story-ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .story-value-card p {
+      font-size: 0.92rem;
+      color: #554458;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* 5. EXAMPLE SPOTLIGHT */
+    .story-example-section {
+      padding: 6rem 0;
+      background: #ffffff;
+    }
+
+    .story-example-card {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(2.5rem, 5vw, 4.5rem);
+      align-items: center;
+      background: var(--story-pearl);
+      border-radius: 28px;
+      padding: clamp(2rem, 4vw, 3.5rem);
+      border: 1px solid rgba(201, 161, 91, 0.3);
+      box-shadow: 0 20px 50px rgba(36, 16, 43, 0.06);
+    }
+
+    .story-example-visual {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(36, 16, 43, 0.15);
+    }
+
+    .story-example-img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-example-content h2 {
+      font-family: var(--story-font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--story-ink);
+      margin-bottom: 1.2rem;
+    }
+
+    .story-example-lead {
+      font-size: 1.12rem;
+      color: #4b3d50;
+      line-height: 1.75;
+      margin-bottom: 1.6rem;
+    }
+
+    .story-example-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .story-example-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.98rem;
+      color: #433347;
+      font-weight: 500;
+    }
+
+    .story-example-list li i {
+      color: var(--story-gold);
+      font-size: 1rem;
+    }
+
+    /* 6. CTA SECTION */
+    .story-cta-section {
+      padding: 5rem 0 6rem;
+      background: #170a1c;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .story-cta-box {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .story-cta-box h2 {
+      font-family: var(--story-font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    .story-cta-box p {
+      font-size: 1.1rem;
+      color: #eedde9;
+      line-height: 1.75;
+      margin-bottom: 2.2rem;
+    }
+
+    .story-cta-buttons {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .story-cta-buttons .story-btn-secondary {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .story-cta-buttons .story-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #ffffff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px) {
+      .story-hero-grid,
+      .story-intention-grid,
+      .story-example-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .story-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story-hero-section {
+        padding: 5.5rem 0 4rem;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .story-intention-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .story-values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-hero-actions,
+      .story-cta-buttons {
+        flex-direction: column;
+      }
+
+      .story-btn-primary,
+      .story-btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
@@ -17,7 +598,7 @@
           <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
           <div class="dropdown-menu">
             <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
-            <a href="brand-story.html#story" class="dropdown-item">Founder & Company Story</a>
+            <a href="index.html#founders" class="dropdown-item">Meet Our Founders</a>
             <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
           </div>
         </div>
@@ -78,39 +659,195 @@
     </nav>
   </header>
 
-  <main>
-    <section class="coming-soon-page" aria-labelledby="comingSoonTitle">
-      <div class="container">
-        <div class="coming-soon-hero" id="story">
-          <div class="coming-soon-copy">
-            <span class="section-subtitle">OUR HERITAGE · IN THE MAKING</span>
-            <h1 id="comingSoonTitle">Our story is taking shape.</h1>
-            <p>We’re preparing a thoughtful look at the people, ideas, and salon heritage behind VR2C. The complete story will be here soon.</p>
-            <a href="index.html" class="btn-primary"><i class="fas fa-house" aria-hidden="true"></i> Return to Home</a>
+  <main class="story-page">
+    <!-- 1. HERO SECTION -->
+    <section class="story-hero-section" id="story">
+      <div class="story-container">
+        <div class="story-hero-grid">
+          <div class="story-hero-copy">
+            <span class="story-kicker">✦ OUR STORY</span>
+            <h1 class="story-title">It Starts With What Matters</h1>
+            <p class="story-lead-quote">Beauty is everywhere.</p>
+            <p class="story-paragraph">
+              Meaningful beauty care starts with a better understanding of what people use on their skin and hair, and why they trust certain products. VR2C stands out for its devotion to personalised simplicity: we develop each product by listening to real needs, prioritising effective ingredients, and excluding unnecessary additives. This keeps us focused on authentic care rather than trends.
+            </p>
+            <p class="story-paragraph">
+              VR2C was created from this belief. We set out to build a beauty brand focused on quality, purpose, thoughtful development, and trust.
+            </p>
+            <div class="story-hero-actions">
+              <a href="index.html#founders" class="story-btn-primary"><i class="fas fa-users" aria-hidden="true"></i> Meet Our Founders</a>
+              <a href="why-choose-us.html" class="story-btn-secondary"><i class="fas fa-shield-alt" aria-hidden="true"></i> Why Choose VR2C?</a>
+            </div>
           </div>
-          <figure class="coming-soon-visual">
-            <img src="assets/1000134047.png" alt="VR2C repairing hair mask with keratin and argan oil" />
-            <figcaption><span class="coming-soon-pulse"></span> A fuller story is on its way</figcaption>
-          </figure>
+          <div class="story-hero-visual">
+            <div class="story-image-card">
+              <img src="assets/bodyimage(3).jpeg" alt="VR2C handcrafted hair and skin care collection" class="story-hero-img">
+              <div class="story-visual-caption">
+                <span>✦ Thoughtful Formulations</span>
+                <span>Quality · Purpose · Trust</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <section class="coming-soon-roadmap" aria-label="Brand story roadmap">
-          <p class="roadmap-kicker">THE BUILD</p>
-          <h2>From our roots to your routine</h2>
-          <div class="roadmap-steps">
-            <details class="roadmap-step" open>
-              <summary><span class="roadmap-number">01</span><span class="roadmap-title">Gather the history</span></summary>
-              <p>Bring the people and milestones behind the brand into one clear story.</p>
-            </details>
-            <details class="roadmap-step" id="values">
-              <summary><span class="roadmap-number">02</span><span class="roadmap-title">Share what guides us</span></summary>
-              <p>Connect our heritage to the care, craft, and values behind each ritual.</p>
-            </details>
-            <details class="roadmap-step">
-              <summary><span class="roadmap-number">03</span><span class="roadmap-title">Publish the full story</span></summary>
-              <p>The complete Brand Story will appear here when it’s ready.</p>
-            </details>
+      </div>
+    </section>
+
+    <!-- 2. GUIDING STRATEGY & THE CORE QUESTION -->
+    <section class="story-strategy-section">
+      <div class="story-container">
+        <div class="story-strategy-card">
+          <span class="story-kicker">OUR STRATEGY</span>
+          <h2>A Core Question Guides Every Decision</h2>
+          <p class="story-strategy-text">
+            Our strategy combines modern beauty innovation with a careful understanding of skin and hair care. Each product begins with a question:
+          </p>
+          <blockquote class="story-core-question">
+            “Can we create something that honestly adds value to someone's everyday beauty routine?”
+          </blockquote>
+          <p class="story-strategy-subtext">
+            This question shapes our decisions on ingredients, formulations, product experience, quality, and performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BEAUTY WITH INTENTION -->
+    <section class="story-intention-section">
+      <div class="story-container">
+        <div class="story-intention-grid">
+          <div class="story-intention-content">
+            <span class="story-kicker">THOUGHTFUL SIMPLICITY</span>
+            <h2>Beauty With Intention</h2>
+            <p class="story-paragraph">
+              We don't believe beauty should be complicated.
+            </p>
+            <p class="story-paragraph">
+              We believe the right products should fit naturally into your life, be easy to understand and use, and have a clear purpose.
+            </p>
+            <p class="story-paragraph">
+              That is why we take a careful approach to developing our skin and hair care range, from concept and formulation to evaluation, packaging, and user experience.
+            </p>
+            
+            <div class="story-safety-card">
+              <div class="story-safety-icon">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i>
+              </div>
+              <div class="story-safety-text">
+                <h3>Rigorously Evaluated in the USA</h3>
+                <p>We rigorously evaluate and safety-test every product in the United States. We verify efficacy, safety, and strict ethical standards at every stage so you receive dependable formulas you can trust.</p>
+              </div>
+            </div>
           </div>
-        </section>
+
+          <div class="story-intention-cards">
+            <div class="story-pillar-item">
+              <div class="pillar-num">01</div>
+              <h3>Concept &amp; Need</h3>
+              <p>Listening to real skin and hair care needs before beginning any formulation.</p>
+            </div>
+            <div class="story-pillar-item">
+              <div class="pillar-num">02</div>
+              <h3>Purity &amp; Ingredients</h3>
+              <p>Prioritising clean, effective ingredients while excluding unnecessary additives.</p>
+            </div>
+            <div class="story-pillar-item">
+              <div class="pillar-num">03</div>
+              <h3>US Safety Testing</h3>
+              <p>Strict evaluation ensuring high safety margins, stability, and ethical compliance.</p>
+            </div>
+            <div class="story-pillar-item">
+              <div class="pillar-num">04</div>
+              <h3>User Experience</h3>
+              <p>Designed to fit smoothly and naturally into your everyday ritual.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BUILDING TRUST & BRAND COMMITMENT -->
+    <section class="story-trust-section" id="values">
+      <div class="story-container">
+        <div class="story-trust-header">
+          <span class="story-kicker">LONG-TERM COMMITMENT</span>
+          <h2>Building Trust, More Than a Brand</h2>
+          <p class="story-trust-intro">
+            VR2C is being built for the long term. We aim for every product to strengthen the relationship between our brand and our customers. This calls for careful creation, candid communication, and a pledge to continuous improvement.
+          </p>
+          <p class="story-trust-highlight">
+            “We believe a beauty brand should earn its place in your routine, not simply request it.”
+          </p>
+          <p class="story-paragraph" style="margin-top: 1rem; color: #5b4660;">
+            VR2C represents our journey to create purposeful beauty care.
+          </p>
+        </div>
+
+        <div class="story-values-grid">
+          <div class="story-value-card">
+            <span class="story-value-badge">01</span>
+            <h3>Carefully Considered</h3>
+            <p>Every active component selected for purposeful skin and hair health.</p>
+          </div>
+          <div class="story-value-card">
+            <span class="story-value-badge">02</span>
+            <h3>Thoughtfully Developed</h3>
+            <p>Formulations tested with scientific discipline and salon-tested expertise.</p>
+          </div>
+          <div class="story-value-card">
+            <span class="story-value-badge">03</span>
+            <h3>Made for Real Life</h3>
+            <p>Care routines created for genuine everyday convenience, clarity, and efficacy.</p>
+          </div>
+          <div class="story-value-card">
+            <span class="story-value-badge">04</span>
+            <h3>Built to Last</h3>
+            <p>Uncompromising product integrity, honest communication, and enduring trust.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. REAL-LIFE EXAMPLE SPOTLIGHT -->
+    <section class="story-example-section">
+      <div class="story-container">
+        <div class="story-example-card">
+          <div class="story-example-visual">
+            <img src="assets/bodyimage(5).jpeg" alt="VR2C restorative hair serum" class="story-example-img">
+          </div>
+          <div class="story-example-content">
+            <span class="story-kicker">IN REAL LIFE</span>
+            <h2>Created for Busy Mornings</h2>
+            <p class="story-example-lead">
+              For example, we designed our restorative hair serum for busy mornings. It is easy to apply, smooths frizz, and protects hair from heat styling, making it simple to leave home confidently.
+            </p>
+            <ul class="story-example-list">
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Effortless drop-in application with lightweight absorption</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Instant frizz control and natural strand nourishment</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Heat styling defence from blow-drying to curling</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Enriched with Moroccan argan and pure botanical oils</li>
+            </ul>
+            <div>
+              <a href="featured-products.html#collection" class="story-btn-primary">Explore Products ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FINAL CALL TO ACTION -->
+    <section class="story-cta-section">
+      <div class="story-container">
+        <div class="story-cta-box">
+          <span class="story-kicker" style="color: var(--story-gold);">JOIN OUR JOURNEY</span>
+          <h2>Explore the People &amp; Principles Behind VR2C</h2>
+          <p>
+            We believe a beauty brand should earn its place in your routine. Meet our founders or learn more about the standards that guide every VR2C creation.
+          </p>
+          <div class="story-cta-buttons">
+            <a href="index.html#founders" class="story-btn-primary"><i class="fas fa-users" aria-hidden="true"></i> Meet Our Founders</a>
+            <a href="why-choose-us.html" class="story-btn-secondary"><i class="fas fa-certificate" aria-hidden="true"></i> Why Choose VR2C?</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -120,12 +857,12 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics logo" class="footer-logo-image" style="margin-bottom: 1rem;" />
-          <p>VR2C Haircosmetics is a premier family-owned company dedicated to professional hair care since 1922. Made with love and scientific passion for beautiful hair.</p>
+          <p>VR2C Haircosmetics is dedicated to purposeful skin and hair care. Carefully considered. Thoughtfully developed. Made for real life.</p>
           <div class="social-links">
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div>
@@ -134,20 +871,19 @@
             <li><a href="featured-products.html#collection">VR2C Care</a></li>
             <li><a href="featured-products.html#collection">Color Muse</a></li>
             <li><a href="featured-products.html#collection">VR2C Style</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">So Pure Organic</a></li>
-            <li><a href="brand-story.html#story">1922 by VR2C</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">Ingredient</a></li>
-            <li><a href="shop-by-concern.html#concerns">Shop</a></li>
+            <li><a href="ingredient-spotlight.html#ingredients">Hero Ingredients</a></li>
+            <li><a href="brand-story.html#story">Our Story</a></li>
+            <li><a href="shop-by-concern.html#concerns">Shop by Concern</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer-heading">About Us</h4>
           <ul class="footer-menu">
-            <li><a href="brand-story.html#story">Our Heritage (1922)</a></li>
-            <li><a href="why-choose-us.html#standards">B-Corp Sustainability</a></li>
-            <li><a href="index.html#salon">Salon &amp; Stylist Information</a></li>
-            <li><a href="contact-us.html#contact-form">Careers</a></li>
-            <li><a href="newsletter.html#journal">Blog</a></li>
+            <li><a href="brand-story.html#story">Our Heritage</a></li>
+            <li><a href="index.html#founders">Our Founders</a></li>
+            <li><a href="why-choose-us.html#principles">Care Standards</a></li>
+            <li><a href="index.html#salon">For Salons</a></li>
+            <li><a href="contact-us.html#contact-form">Careers &amp; Enquiries</a></li>
             <li><a href="testimonials.html#client-stories">Testimonials</a></li>
           </ul>
         </div>
@@ -155,18 +891,18 @@
           <h4 class="footer-heading">Customer Care</h4>
           <ul class="footer-menu">
             <li><a href="index.html#routine">Hair Care Routine</a></li>
-            <li><a href="contact-us.html#contact-form">Shipping & Returns</a></li>
+            <li><a href="contact-us.html#contact-form">Shipping &amp; Returns</a></li>
             <li><a href="contact-us.html#contact-form">Track Order</a></li>
             <li><a href="contact-us.html#contact-form">FAQs</a></li>
-            <li><a href="contact-us.html#contact-form">Contact</a></li>
+            <li><a href="contact-us.html#contact-form">Contact Us</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer-heading">Sustainability</h4>
           <ul class="footer-menu">
-            <li><a href="why-choose-us.html#standards">Cruelty Free Policy</a></li>
-            <li><a href="why-choose-us.html#standards">Solar-Powered Lab</a></li>
-            <li><a href="why-choose-us.html#standards">Recycled Packaging</a></li>
+            <li><a href="why-choose-us.html#principles">Cruelty-Free Policy</a></li>
+            <li><a href="why-choose-us.html#principles">US Safety Tested</a></li>
+            <li><a href="why-choose-us.html#principles">Recycled Packaging</a></li>
             <li><a href="ingredient-spotlight.html#ingredients">Clean Formulas</a></li>
           </ul>
         </div>
