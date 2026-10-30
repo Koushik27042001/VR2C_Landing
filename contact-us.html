@@ -34,7 +34,7 @@
     }
 
     .contact-page {
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     .contact-container {
@@ -316,17 +316,38 @@
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: clamp(2rem, 4vw, 3.8rem);
-      align-items: start;
+      align-items: stretch;
     }
 
-    /* Left Column: Luxury Message Form */
+    /* Left Column: Sticky Container & Luxury Message Form */
+    .contact-form-column {
+      position: relative;
+      height: 100%;
+    }
+
     .contact-form-card {
       background: #ffffff;
       border-radius: 28px;
-      padding: clamp(2rem, 4vw, 3.2rem);
+      padding: clamp(1.8rem, 3.2vw, 2.6rem);
       box-shadow: 0 18px 45px rgba(74, 29, 79, 0.07);
       border: 1px solid rgba(74, 29, 79, 0.08);
-      position: relative;
+      position: sticky;
+      top: clamp(4.8rem, 8vh, 5.8rem);
+      z-index: 10;
+      max-height: calc(100vh - 6.2rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(201, 161, 91, 0.3) transparent;
+      transition: top 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form-card::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .contact-form-card::-webkit-scrollbar-thumb {
+      background: rgba(201, 161, 91, 0.35);
+      border-radius: 99px;
     }
 
     .contact-form-card .contact-kicker {
@@ -527,6 +548,77 @@
       color: #8c7690;
       margin-top: 0.2rem;
       display: block;
+    }
+
+    
+    /* Standards & Commitments Card in Sidebar */
+    .contact-standards-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: clamp(1.8rem, 3.2vw, 2.4rem);
+      box-shadow: 0 18px 45px rgba(74, 29, 79, 0.07);
+      border: 1px solid rgba(74, 29, 79, 0.08);
+    }
+
+    .contact-standards-card .contact-kicker {
+      color: var(--contact-mulberry);
+    }
+
+    .contact-standards-card h3 {
+      font-family: var(--contact-font-serif);
+      font-size: 1.85rem;
+      font-weight: 500;
+      color: var(--contact-ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-standards-card p.standards-subtitle {
+      color: #5d4863;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-standards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.95rem;
+    }
+
+    .contact-standard-box {
+      background: #fdfafc;
+      border: 1px solid rgba(74, 29, 79, 0.06);
+      border-radius: 14px;
+      padding: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .contact-standard-box:hover {
+      background: #ffffff;
+      border-color: rgba(201, 161, 91, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(74, 29, 79, 0.05);
+    }
+
+    .contact-standard-box i {
+      color: var(--contact-gold);
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .contact-standard-box h5 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--contact-plum);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-standard-box p {
+      font-size: 0.8rem;
+      color: #6a546f;
+      line-height: 1.4;
+      margin: 0;
     }
 
     /* Product Showcase Card in Sidebar */
@@ -778,7 +870,16 @@
       .contact-layout-grid {
         grid-template-columns: 1fr;
       }
+      .contact-form-card {
+        position: static;
+        top: auto;
+        max-height: none;
+        overflow-y: visible;
+      }
       .contact-form-row {
+        grid-template-columns: 1fr;
+      }
+      .contact-standards-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -891,8 +992,9 @@
       <div class="contact-container">
         <div class="contact-layout-grid">
           
-          <!-- Left Column: Message Form -->
-          <div class="contact-form-card">
+          <!-- Left Column: Sticky Message Form Container -->
+          <div class="contact-form-column">
+            <div class="contact-form-card">
             <span class="contact-kicker">✦ DIRECT MESSAGE</span>
             <h2>Send Us a Message</h2>
             <p class="form-subtitle">Complete the details below and our concierge team will respond candidly and promptly.</p>
@@ -941,9 +1043,10 @@
                 <i class="fas fa-lock" aria-hidden="true"></i> Your privacy is respected. We never share your details with third parties.
               </p>
             </form>
+            </div>
           </div>
 
-          <!-- Right Column: Direct Touchpoints & Salon Support -->
+          <!-- Right Column: Direct Touchpoints, Standards & Salon Support -->
           <div class="contact-support-column">
             
             <div class="contact-info-card">
@@ -993,6 +1096,37 @@
                     <a href="tel:+18008722026">+1 (800) 872-2026</a>
                     <span class="contact-subtext">Toll-free customer &amp; stylist assistance</span>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <!-- Standards & USA Evaluation Card -->
+            <div class="contact-standards-card">
+              <span class="contact-kicker">✦ QUALITY &amp; VALIDATION</span>
+              <h3>Standards You Can Trust</h3>
+              <p class="standards-subtitle">Every formula is developed with scientific care, dermatological evaluation, and clean botanical integrity.</p>
+              
+              <div class="contact-standards-grid">
+                <div class="contact-standard-box">
+                  <i class="fas fa-flask" aria-hidden="true"></i>
+                  <h5>US Healios Labs Testing</h5>
+                  <p>Scientifically evaluated for safety, sensitivity, and clinical efficacy.</p>
+                </div>
+                <div class="contact-standard-box">
+                  <i class="fas fa-leaf" aria-hidden="true"></i>
+                  <h5>100% Clean Formulas</h5>
+                  <p>No parabens, sulfates, or mineral oil. Only purposeful botanicals.</p>
+                </div>
+                <div class="contact-standard-box">
+                  <i class="fas fa-award" aria-hidden="true"></i>
+                  <h5>Salon-Grade Mastery</h5>
+                  <p>Guided by 27+ years of professional hairdressing &amp; R&amp;D experience.</p>
+                </div>
+                <div class="contact-standard-box">
+                  <i class="fas fa-shipping-fast" aria-hidden="true"></i>
+                  <h5>Fast Concierge Dispatch</h5>
+                  <p>Orders securely packed and shipped within 24 to 48 business hours.</p>
                 </div>
               </div>
             </div>
