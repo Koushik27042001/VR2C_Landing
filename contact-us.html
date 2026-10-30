@@ -3,135 +3,1121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | VR2C Haircosmetics</title>
-  <meta name="description" content="Get in touch with VR2C Haircosmetics for support, salon partnerships, and product guidance." />
+  <title>Contact Us | VR2C Haircosmetics Concierge &amp; Salon Support</title>
+  <meta name="description" content="Connect with the VR2C team for personalized routine guidance, ingredient transparency, USA Healios Labs testing details, and professional salon partnerships." />
   <link rel="icon" type="image/svg+xml" href="assets/v2c-favicon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --contact-ink: #24102b;
+      --contact-plum: #4a1d4f;
+      --contact-mulberry: #8a3366;
+      --contact-blush: #f7e4ea;
+      --contact-pearl: #fff9fb;
+      --contact-gold: #c9a15b;
+      --contact-gold-hover: #b58d47;
+      --contact-font-serif: 'Cormorant Garamond', Georgia, serif;
+      --contact-font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--contact-font-sans);
+      color: var(--contact-ink);
+      background: var(--contact-pearl);
+      line-height: 1.7;
+    }
+
+    .contact-page {
+      overflow-x: hidden;
+    }
+
+    .contact-container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    .contact-kicker {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--contact-gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-btn-primary,
+    .contact-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.95rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.94rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .contact-btn-primary {
+      background: var(--contact-gold);
+      color: var(--contact-ink);
+      border: 1px solid var(--contact-gold);
+    }
+
+    .contact-btn-primary:hover {
+      background: #ffffff;
+      color: var(--contact-ink);
+      border-color: var(--contact-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(201, 161, 91, 0.28);
+    }
+
+    .contact-btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .contact-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* 1. HERO SECTION WITH DECORATIVE BACKGROUND */
+    .contact-hero-section {
+      padding: 7.2rem 0 4.8rem;
+      background: linear-gradient(180deg, #170a1c 0%, #220d2b 45%, var(--contact-pearl) 100%);
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Layered Decorative Elements (Dot Matrix + Science Orbit + Glowing Orbs) */
+    .contact-hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Ambient Glow Orbs */
+    .contact-decor-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(65px);
+      opacity: 0.55;
+    }
+
+    .contact-decor-glow-1 {
+      top: -8%;
+      left: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(138, 51, 102, 0.38) 0%, transparent 70%);
+      animation: contactGlowPulse 12s ease-in-out infinite alternate;
+    }
+
+    .contact-decor-glow-2 {
+      top: 12%;
+      right: 14%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(201, 161, 91, 0.26) 0%, transparent 70%);
+      animation: contactGlowPulse 15s ease-in-out infinite alternate-reverse;
+    }
+
+    /* Luxury Dot Matrix Grid */
+    .contact-decor-matrix {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle, rgba(201, 161, 91, 0.32) 1.25px, transparent 1.25px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 30px 30px, 15px 15px;
+      background-position: 0 0, 15px 15px;
+      mask-image: radial-gradient(ellipse 72% 64% at 50% 36%, black 20%, rgba(0, 0, 0, 0.6) 50%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 36%, black 20%, rgba(0, 0, 0, 0.6) 50%, transparent 80%);
+      opacity: 0.9;
+    }
+
+    /* Orbital Geometric Rings (Salon Science & Molecular Connectivity) */
+    .contact-decor-rings {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 860px;
+      height: 860px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .contact-ring {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .contact-ring-1 {
+      width: 460px;
+      height: 460px;
+      border: 1px dashed rgba(201, 161, 91, 0.24);
+      animation: contactRingRotate 55s linear infinite;
+    }
+
+    .contact-ring-2 {
+      width: 720px;
+      height: 720px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      animation: contactRingReverse 85s linear infinite;
+    }
+
+    /* Luminous Orbit Nodes */
+    .contact-orb {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--contact-gold);
+    }
+
+    .contact-orb-1 {
+      top: 14%;
+      left: 84%;
+      background: var(--contact-gold);
+    }
+
+    .contact-orb-2 {
+      bottom: 12%;
+      left: 15%;
+      background: #ffffff;
+      box-shadow: 0 0 10px #ffffff;
+      opacity: 0.9;
+    }
+
+    .contact-orb-3 {
+      top: 50%;
+      right: -3px;
+      background: var(--contact-gold);
+      width: 7px;
+      height: 7px;
+    }
+
+    @keyframes contactRingRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes contactRingReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes contactGlowPulse {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.45; }
+      100% { transform: scale(1.15) translate(15px, -15px); opacity: 0.7; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .contact-ring-1, .contact-ring-2, .contact-decor-glow-1, .contact-decor-glow-2 {
+        animation: none !important;
+      }
+    }
+
+    .contact-hero-content {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-hero-title {
+      font-family: var(--contact-font-serif);
+      font-size: clamp(2.8rem, 5.4vw, 4.4rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.85rem;
+      color: #ffffff;
+    }
+
+    .contact-hero-subheading {
+      font-family: var(--contact-font-serif);
+      font-style: italic;
+      font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+      color: var(--contact-gold);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .contact-hero-lead {
+      font-size: 1.12rem;
+      color: #ebdbe7;
+      line-height: 1.8;
+      margin: 0 auto 2.2rem;
+      max-width: 680px;
+    }
+
+    .contact-hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .contact-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(201, 161, 91, 0.35);
+      color: #ffffff;
+      font-size: 0.86rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-badge-pill i {
+      color: var(--contact-gold);
+    }
+
+    .contact-badge-pill:hover {
+      background: rgba(201, 161, 91, 0.16);
+      border-color: var(--contact-gold);
+      transform: translateY(-2px);
+    }
+
+    /* 2. MAIN INTERACTIVE CONTACT SECTION */
+    .contact-main-section {
+      padding: 4.5rem 0 6rem;
+      background: var(--contact-pearl);
+      position: relative;
+    }
+
+    .contact-layout-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(2rem, 4vw, 3.8rem);
+      align-items: start;
+    }
+
+    /* Left Column: Luxury Message Form */
+    .contact-form-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: clamp(2rem, 4vw, 3.2rem);
+      box-shadow: 0 18px 45px rgba(74, 29, 79, 0.07);
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      position: relative;
+    }
+
+    .contact-form-card .contact-kicker {
+      color: var(--contact-mulberry);
+    }
+
+    .contact-form-card h2 {
+      font-family: var(--contact-font-serif);
+      font-size: clamp(2rem, 3.5vw, 2.7rem);
+      font-weight: 500;
+      color: var(--contact-ink);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-form-card p.form-subtitle {
+      color: #5d4863;
+      font-size: 0.98rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .contact-luxury-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .contact-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .contact-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      text-align: left;
+    }
+
+    .contact-field-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--contact-plum);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .contact-field-group input,
+    .contact-field-group select,
+    .contact-field-group textarea {
+      width: 100%;
+      padding: 0.95rem 1.15rem;
+      background: #faf6f9;
+      border: 1.5px solid rgba(74, 29, 79, 0.12);
+      border-radius: 12px;
+      font-family: var(--contact-font-sans);
+      font-size: 0.95rem;
+      color: var(--contact-ink);
+      transition: all 0.28s ease;
+      outline: none;
+    }
+
+    .contact-field-group input:focus,
+    .contact-field-group select:focus,
+    .contact-field-group textarea:focus {
+      background: #ffffff;
+      border-color: var(--contact-gold);
+      box-shadow: 0 0 0 4px rgba(201, 161, 91, 0.18);
+    }
+
+    .contact-field-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .contact-submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1.05rem 2.2rem;
+      border-radius: 999px;
+      background: var(--contact-gold);
+      color: var(--contact-ink);
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .contact-submit-btn:hover {
+      background: #ffffff;
+      color: var(--contact-ink);
+      box-shadow: 0 10px 25px rgba(201, 161, 91, 0.32);
+      transform: translateY(-2px);
+      outline: 1.5px solid var(--contact-gold);
+    }
+
+    .contact-privacy-note {
+      font-size: 0.82rem;
+      color: #7b667e;
+      text-align: center;
+      margin-top: 0.8rem;
+    }
+
+    /* Right Column: Direct Touchpoints & Salon Support */
+    .contact-support-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .contact-info-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: clamp(1.8rem, 3.5vw, 2.5rem);
+      box-shadow: 0 18px 45px rgba(74, 29, 79, 0.07);
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info-card .contact-kicker {
+      color: var(--contact-mulberry);
+    }
+
+    .contact-info-card h3 {
+      font-family: var(--contact-font-serif);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--contact-ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-channels-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .contact-channel-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 1rem;
+      border-radius: 16px;
+      background: #fdfafd;
+      border: 1px solid rgba(74, 29, 79, 0.06);
+      transition: all 0.25s ease;
+    }
+
+    .contact-channel-item:hover {
+      background: #ffffff;
+      border-color: rgba(201, 161, 91, 0.4);
+      transform: translateX(4px);
+      box-shadow: 0 6px 18px rgba(74, 29, 79, 0.05);
+    }
+
+    .contact-channel-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(201, 161, 91, 0.15);
+      color: var(--contact-mulberry);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-channel-meta h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--contact-plum);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-channel-meta p,
+    .contact-channel-meta a {
+      font-size: 0.9rem;
+      color: #5d4863;
+      text-decoration: none;
+      line-height: 1.5;
+    }
+
+    .contact-channel-meta a:hover {
+      color: var(--contact-gold-hover);
+      text-decoration: underline;
+    }
+
+    .contact-channel-meta .contact-subtext {
+      font-size: 0.78rem;
+      color: #8c7690;
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    /* Product Showcase Card in Sidebar */
+    .contact-pedestal-card {
+      background: linear-gradient(145deg, #1d0c24 0%, #301338 100%);
+      color: #ffffff;
+      border-radius: 28px;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(201, 161, 91, 0.28);
+      box-shadow: 0 20px 45px rgba(23, 10, 28, 0.35);
+    }
+
+    .contact-pedestal-card::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(201, 161, 91, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .contact-pedestal-badge {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--contact-gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-pedestal-card h4 {
+      font-family: var(--contact-font-serif);
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-pedestal-card p {
+      font-size: 0.92rem;
+      color: #ecdde8;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-pedestal-media {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1.4rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 40%, #f4e8ee 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .contact-pedestal-media img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    /* 3. FAQ ACCORDION SECTION */
+    .contact-faq-section {
+      padding: 5.5rem 0 6.5rem;
+      background: var(--contact-blush);
+      position: relative;
+    }
+
+    .contact-faq-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .contact-faq-header .contact-kicker {
+      color: var(--contact-mulberry);
+    }
+
+    .contact-faq-header h2 {
+      font-family: var(--contact-font-serif);
+      font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+      font-weight: 500;
+      color: var(--contact-ink);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-faq-header p {
+      color: #5d4863;
+      font-size: 1.05rem;
+    }
+
+    .contact-faq-accordion {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .contact-faq-item {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      box-shadow: 0 6px 20px rgba(74, 29, 79, 0.04);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .contact-faq-item:hover {
+      border-color: rgba(201, 161, 91, 0.45);
+      box-shadow: 0 10px 25px rgba(74, 29, 79, 0.07);
+    }
+
+    .contact-faq-trigger {
+      width: 100%;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-family: var(--contact-font-sans);
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--contact-ink);
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .contact-faq-trigger:hover {
+      color: var(--contact-mulberry);
+    }
+
+    .contact-faq-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #faf4f7;
+      color: var(--contact-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .contact-faq-item.active .contact-faq-icon {
+      transform: rotate(180deg);
+      background: var(--contact-gold);
+      color: var(--contact-ink);
+    }
+
+    .contact-faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+      padding: 0 1.8rem;
+      color: #55415b;
+      font-size: 0.98rem;
+      line-height: 1.8;
+    }
+
+    .contact-faq-item.active .contact-faq-content {
+      padding: 0 1.8rem 1.6rem;
+      max-height: 400px;
+    }
+
+    /* 4. BOTTOM ACTION STRIP */
+    .contact-cta-strip {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #170a1c 0%, #290f33 100%);
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+    }
+
+    .contact-cta-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contact-cta-inner h2 {
+      font-family: var(--contact-font-serif);
+      font-size: clamp(2.3rem, 4.2vw, 3.2rem);
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .contact-cta-inner p {
+      font-size: 1.08rem;
+      color: #ebdce8;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .contact-cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    /* TOAST FEEDBACK */
+    .contact-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #170a1c;
+      color: #ffffff;
+      border: 1px solid var(--contact-gold);
+      padding: 1rem 1.6rem;
+      border-radius: 999px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 980px) {
+      .contact-layout-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-hero-section {
+        padding: 5.5rem 0 3.5rem;
+      }
+      .contact-form-card {
+        padding: 1.6rem;
+      }
+      .contact-info-card {
+        padding: 1.5rem;
+      }
+      .contact-badge-pill {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- UNIFIED VR2C SITE HEADER (MATCHING INDEX.HTML) -->
   <header class="main-header" id="top">
-  <div class="header-container">
-    <nav class="nav-left" aria-label="Company information">
-      <div class="nav-dropdown">
-        <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-        <div class="dropdown-menu">
-          <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
-          <a href="our-founders.html" class="dropdown-item">Founder &amp; Company Story</a>
-          <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
+    <div class="header-container">
+      <nav class="nav-left" aria-label="Company information">
+        <div class="nav-dropdown">
+          <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+          <div class="dropdown-menu">
+            <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
+            <a href="our-founders.html" class="dropdown-item">Founder &amp; Company Story</a>
+            <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="why-choose-us.html" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+          <div class="dropdown-menu">
+            <a href="why-choose-us.html#principles" class="dropdown-item">Clean Ingredients</a>
+            <a href="why-choose-us.html#principles" class="dropdown-item">Care Standards</a>
+            <a href="why-choose-us.html#standards" class="dropdown-item">Sustainability</a>
+          </div>
+        </div>
+        <a href="featured-products.html" class="nav-link">Products</a>
+        <a href="ingredient-spotlight.html" class="nav-link">Ingredients</a>
+      </nav>
+
+      <a href="index.html" class="header-logo" aria-label="VR2C Haircosmetics home">
+        <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics" class="header-logo-image">
+      </a>
+
+      <nav class="nav-right" aria-label="Shop and support">
+        <div class="nav-dropdown">
+          <a href="shop-by-concern.html" class="nav-link">Shop <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+          <div class="dropdown-menu">
+            <a href="shop-by-concern.html#concerns" class="dropdown-item">Shop by Concern</a>
+            <a href="featured-products.html#collection" class="dropdown-item">Featured Products</a>
+          </div>
+        </div>
+        <a href="testimonials.html#client-stories" class="nav-link">Testimonials</a>
+        <a href="contact-us.html#contact-form" class="nav-link active">Contact</a>
+      </nav>
+
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation"></nav>
+  </header>
+
+  <main class="contact-page">
+    <!-- 1. HERO SECTION WITH DECORATIVE BACKGROUND -->
+    <section class="contact-hero-section" id="concierge">
+      <!-- Decorative Dot Matrix & Science Orbit Background -->
+      <div class="contact-hero-decor" aria-hidden="true">
+        <div class="contact-decor-glow contact-decor-glow-1"></div>
+        <div class="contact-decor-glow contact-decor-glow-2"></div>
+        <div class="contact-decor-matrix"></div>
+        <div class="contact-decor-rings">
+          <div class="contact-ring contact-ring-1">
+            <span class="contact-orb contact-orb-1"></span>
+            <span class="contact-orb contact-orb-2"></span>
+          </div>
+          <div class="contact-ring contact-ring-2">
+            <span class="contact-orb contact-orb-3"></span>
+          </div>
         </div>
       </div>
-      <div class="nav-dropdown">
-        <a href="why-choose-us.html" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-        <div class="dropdown-menu">
-          <a href="why-choose-us.html#principles" class="dropdown-item">Clean Ingredients</a>
-          <a href="why-choose-us.html#principles" class="dropdown-item">Care Standards</a>
-          <a href="why-choose-us.html#standards" class="dropdown-item">Sustainability</a>
-        </div>
-      </div>
-      <a href="featured-products.html" class="nav-link">Products</a>
-      <a href="ingredient-spotlight.html" class="nav-link">Ingredients</a>
-    </nav>
 
-    <a href="index.html" class="header-logo" aria-label="VR2C Haircosmetics home">
-      <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics" class="header-logo-image">
-    </a>
-
-    <nav class="nav-right" aria-label="Shop and support">
-      <div class="nav-dropdown">
-        <a href="shop-by-concern.html" class="nav-link">Shop <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-        <div class="dropdown-menu">
-          <a href="shop-by-concern.html#concerns" class="dropdown-item">Shop by Concern</a>
-          <a href="featured-products.html#collection" class="dropdown-item">Featured Products</a>
-        </div>
-      </div>
-      <a href="testimonials.html#client-stories" class="nav-link">Testimonials</a>
-      <a href="contact-us.html#contact-form" class="nav-link">Contact</a>
-    </nav>
-
-    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
-      <i class="fas fa-bars" aria-hidden="true"></i>
-    </button>
-  </div>
-  <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation"></nav>
-</header>
-
-  <main>
-    <section class="editorial-hero">
-      <img class="editorial-hero-image" src="assets/1000134054.png" alt="VR2C volumizing shampoo" />
-      <div class="editorial-hero-shade"></div>
-      <div class="container editorial-hero-inner">
-        <div class="editorial-hero-copy">
-          <span class="section-subtitle">CONTACT</span>
-          <h1>Let’s make your next hair day a good one.</h1>
-          <p>Questions about a product, a routine, or working with VR2C? Our team is ready to help.</p>
-          <a href="#contact-form" class="btn-primary">Send us a note <i class="fas fa-arrow-down"></i></a>
+      <div class="contact-container">
+        <div class="contact-hero-content">
+          <span class="contact-kicker">✦ GET IN TOUCH · VR2C CARE &amp; SALON CONCIERGE</span>
+          <h1 class="contact-hero-title">Care That Listens.<br>Solutions That Deliver.</h1>
+          <p class="contact-hero-subheading">Thoughtful Guidance for Everyday Routines &amp; Professional Salons</p>
+          <p class="contact-hero-lead">
+            We believe modern beauty care should be transparent, personal, and dependable. Whether you are seeking tailored product advice, have formulation questions regarding our US Healios Labs LLC testing, or wish to partner as an authorized salon — our team is here for you.
+          </p>
+          
+          <div class="contact-hero-badges">
+            <span class="contact-badge-pill"><i class="fas fa-clock" aria-hidden="true"></i> Concierge Response in &lt; 24h</span>
+            <span class="contact-badge-pill"><i class="fas fa-vial" aria-hidden="true"></i> USA Formulation &amp; Safety Insights</span>
+            <span class="contact-badge-pill"><i class="fas fa-cut" aria-hidden="true"></i> Professional Salon Education</span>
+            <span class="contact-badge-pill"><i class="fas fa-shield-alt" aria-hidden="true"></i> Clean &amp; Certified Ingredients</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section-padding feedback-section" id="contact-form" style="padding: 2rem 0 5rem;">
-      <div class="container">
-        <div class="feedback-grid">
-          <div class="feedback-card">
-            <div class="form-kicker">Get in touch</div>
-            <h3>Send us a message</h3>
-            <form class="luxury-form">
-              <div class="form-field">
-                <label for="name">Your name</label>
-                <input id="name" type="text" placeholder="Enter your name" required />
+    <!-- 2. MAIN INTERACTIVE CONTACT SECTION -->
+    <section class="contact-main-section" id="contact-form">
+      <div class="contact-container">
+        <div class="contact-layout-grid">
+          
+          <!-- Left Column: Message Form -->
+          <div class="contact-form-card">
+            <span class="contact-kicker">✦ DIRECT MESSAGE</span>
+            <h2>Send Us a Message</h2>
+            <p class="form-subtitle">Complete the details below and our concierge team will respond candidly and promptly.</p>
+            
+            <form class="contact-luxury-form" id="vr2cContactForm">
+              <div class="contact-form-row">
+                <div class="contact-field-group">
+                  <label for="contactName">Your Name</label>
+                  <input id="contactName" type="text" placeholder="e.g. Eleanor Vance" required />
+                </div>
+                <div class="contact-field-group">
+                  <label for="contactEmail">Email Address</label>
+                  <input id="contactEmail" type="email" placeholder="name@example.com" required />
+                </div>
               </div>
-              <div class="form-field">
-                <label for="email">Email address</label>
-                <input id="email" type="email" placeholder="name@example.com" required />
+
+              <div class="contact-form-row">
+                <div class="contact-field-group">
+                  <label for="contactSubject">Subject / Concern</label>
+                  <select id="contactSubject" required>
+                    <option value="" disabled selected>Select enquiry type</option>
+                    <option value="routine">Product Recommendations &amp; Hair Routine</option>
+                    <option value="salon">Salon &amp; Stylist Partnership</option>
+                    <option value="science">Formulation, Ingredients &amp; US Testing</option>
+                    <option value="orders">Order Inquiries &amp; Shipping</option>
+                    <option value="press">Press, Collaborations &amp; General</option>
+                  </select>
+                </div>
+                <div class="contact-field-group">
+                  <label for="contactPhone">Phone (Optional)</label>
+                  <input id="contactPhone" type="tel" placeholder="+1 (555) 000-0000" />
+                </div>
               </div>
-              <div class="form-field">
-                <label for="message">How can we help?</label>
-                <textarea id="message" rows="5" placeholder="Tell us more about your question, salon, or product interest." required></textarea>
+
+              <div class="contact-field-group">
+                <label for="contactMessage">How can we help?</label>
+                <textarea id="contactMessage" rows="5" placeholder="Tell us more about your hair/skin needs, your salon details, or the specific product questions you have..." required></textarea>
               </div>
-              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+
+              <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">
+                <span>Send Note to Concierge</span>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              </button>
+
+              <p class="contact-privacy-note">
+                <i class="fas fa-lock" aria-hidden="true"></i> Your privacy is respected. We never share your details with third parties.
+              </p>
             </form>
           </div>
 
-          <div class="feedback-card accent-card">
-            <img class="contact-photo" src="assets/1000134047.png" alt="VR2C repairing hair mask for salon-inspired treatment" />
-            <div class="form-kicker">Salon support</div>
-            <h3>Visit or connect</h3>
-            <div class="luxury-form">
-              <div class="form-field">
-                <label>Head office</label>
-                <input type="text" value="VR2C Haircosmetics, 28 Canal Street, Amsterdam" readonly />
-              </div>
-              <div class="form-field">
-                <label>Email</label>
-                <input type="email" value="hello@vr2c.com" readonly />
-              </div>
-              <div class="form-field">
-                <label>Phone</label>
-                <input type="text" value="+31 (0) 20 555 0142" readonly />
-              </div>
-              <div class="form-field">
-                <label>Hours</label>
-                <input type="text" value="Mon–Fri | 9:00–18:00 CET" readonly />
+          <!-- Right Column: Direct Touchpoints & Salon Support -->
+          <div class="contact-support-column">
+            
+            <div class="contact-info-card">
+              <span class="contact-kicker">✦ DIRECT TOUCHPOINTS</span>
+              <h3>Connect With VR2C</h3>
+              
+              <div class="contact-channels-list">
+                <div class="contact-channel-item">
+                  <div class="contact-channel-icon" aria-hidden="true">
+                    <i class="fas fa-envelope-open-text"></i>
+                  </div>
+                  <div class="contact-channel-meta">
+                    <h4>Customer Care &amp; Routine Concierge</h4>
+                    <a href="mailto:care@vr2c.com">care@vr2c.com</a>
+                    <span class="contact-subtext">Mon–Sat | 9:00 AM – 6:00 PM EST</span>
+                  </div>
+                </div>
+
+                <div class="contact-channel-item">
+                  <div class="contact-channel-icon" aria-hidden="true">
+                    <i class="fas fa-cut"></i>
+                  </div>
+                  <div class="contact-channel-meta">
+                    <h4>Professional Salon Partnerships</h4>
+                    <a href="mailto:salons@vr2c.com">salons@vr2c.com</a>
+                    <span class="contact-subtext">Education, stylist backbar &amp; wholesale</span>
+                  </div>
+                </div>
+
+                <div class="contact-channel-item">
+                  <div class="contact-channel-icon" aria-hidden="true">
+                    <i class="fas fa-microscope"></i>
+                  </div>
+                  <div class="contact-channel-meta">
+                    <h4>Scientific R&amp;D &amp; Healios Labs Testing</h4>
+                    <a href="mailto:formulations@vr2c.com">formulations@vr2c.com</a>
+                    <span class="contact-subtext">US safety validation &amp; sensitive skin data</span>
+                  </div>
+                </div>
+
+                <div class="contact-channel-item">
+                  <div class="contact-channel-icon" aria-hidden="true">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="contact-channel-meta">
+                    <h4>Direct Telephone Line</h4>
+                    <a href="tel:+18008722026">+1 (800) 872-2026</a>
+                    <span class="contact-subtext">Toll-free customer &amp; stylist assistance</span>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <!-- Spotlight Card: Authentic Promise -->
+            <div class="contact-pedestal-card">
+              <span class="contact-pedestal-badge">✦ THE VR2C PLEDGE</span>
+              <div class="contact-pedestal-media">
+                <img src="assets/1000134047.png" alt="VR2C botanical hair mask formulation" loading="lazy" />
+              </div>
+              <h4>Authentic Communication</h4>
+              <p>
+                We do not believe in robotic deflection. Every message is handled with candid expertise by trained beauty specialists and our formulation team.
+              </p>
+              <a href="our-founders.html" class="contact-btn-secondary" style="font-size: 0.88rem; padding: 0.75rem 1.4rem;">
+                <span>Meet Our Leadership</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FREQUENTLY ASKED QUESTIONS SECTION -->
+    <section class="contact-faq-section" id="faq">
+      <div class="contact-container">
+        <div class="contact-faq-header">
+          <span class="contact-kicker">✦ QUESTIONS &amp; GUIDANCE</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Quick answers to assist you with our formulations, skin compatibility, routines, and salon partnerships.</p>
+        </div>
+
+        <div class="contact-faq-accordion" id="faqAccordion">
+          
+          <div class="contact-faq-item active">
+            <button type="button" class="contact-faq-trigger" aria-expanded="true">
+              <span>How do I determine which VR2C formula fits my hair and skin?</span>
+              <span class="contact-faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+            </button>
+            <div class="contact-faq-content">
+              <p>Our line is crafted for targeted simplicity. For dry or depleted hair, our <strong>Vital Nutrition Shampoo</strong> and <strong>Repairing Hair Mask</strong> replenish vital lipids. For color-treated hair, <strong>Color Muse Mask</strong> safeguards brilliance, while our <strong>Style &amp; Finish Glossing Elixir</strong> smooths frizz and protects from heat without heavy residue.</p>
+            </div>
+          </div>
+
+          <div class="contact-faq-item">
+            <button type="button" class="contact-faq-trigger" aria-expanded="false">
+              <span>Where and how are VR2C products safety-tested?</span>
+              <span class="contact-faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+            </button>
+            <div class="contact-faq-content">
+              <p>Every product is rigorously safety-tested and scientifically evaluated in the United States through our collaboration with <strong>Healios Labs LLC</strong>. Dermatological compatibility tests ensure our formulas are gentle and proven suitable for sensitive skin. We formulate strictly without parabens, sulfates, and mineral oil.</p>
+            </div>
+          </div>
+
+          <div class="contact-faq-item">
+            <button type="button" class="contact-faq-trigger" aria-expanded="false">
+              <span>How can salons and educators partner with VR2C?</span>
+              <span class="contact-faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+            </button>
+            <div class="contact-faq-content">
+              <p>Co-founder Venky Charan Mohan brings over 27 years of national salon education and R&amp;D evaluation experience. Salons receive professional backbar pricing, comprehensive technical workshops, product demonstration kits, and priority client support. Connect with our team at <a href="mailto:salons@vr2c.com" style="color: var(--contact-mulberry); font-weight: 600;">salons@vr2c.com</a> to get started.</p>
+            </div>
+          </div>
+
+          <div class="contact-faq-item">
+            <button type="button" class="contact-faq-trigger" aria-expanded="false">
+              <span>What is your typical order processing and delivery window?</span>
+              <span class="contact-faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+            </button>
+            <div class="contact-faq-content">
+              <p>Orders are dispatched within 24 to 48 business hours with tracking details sent immediately to your email. Standard domestic transit takes 2–4 business days. For express or salon bulk inquiries, our concierge is happy to assist.</p>
+            </div>
+          </div>
+
+          <div class="contact-faq-item">
+            <button type="button" class="contact-faq-trigger" aria-expanded="false">
+              <span>Can I request official sensitive skin or analytical test data?</span>
+              <span class="contact-faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+            </button>
+            <div class="contact-faq-content">
+              <p>Yes. We believe trust is earned through transparency. We share verified dermatological test summaries and USA laboratory claims upon request. Simply reach out to <a href="mailto:formulations@vr2c.com" style="color: var(--contact-mulberry); font-weight: 600;">formulations@vr2c.com</a>.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BOTTOM ACTION STRIP -->
+    <section class="contact-cta-strip">
+      <div class="contact-container">
+        <div class="contact-cta-inner">
+          <span class="contact-kicker" style="color: var(--contact-gold);">✦ EXPLORE VR2C</span>
+          <h2>Care Carefully Considered.<br>Built For Real Life.</h2>
+          <p>Explore our complete collection of purposefully formulated skin and hair care, or discover the story behind our multidisciplinary founders.</p>
+          <div class="contact-cta-btns">
+            <a href="featured-products.html#collection" class="contact-btn-primary">
+              <span>Explore Products</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="brand-story.html#story" class="contact-btn-secondary">
+              <span>Read Our Story</span>
+              <i class="fas fa-book-open" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- UNIFIED VR2C SITE FOOTER -->
   <footer class="footer" id="contact">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics logo" class="footer-logo-image" style="margin-bottom: 1rem;" />
-          <p>VR2C Haircosmetics is a premier family-owned company dedicated to professional hair care since 1922. Made with love and scientific passion for beautiful hair.</p>
+          <p>VR2C Haircosmetics is dedicated to purposeful skin and hair care. Carefully considered. Thoughtfully developed. Made for real life.</p>
           <div class="social-links">
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div>
@@ -140,20 +1126,19 @@
             <li><a href="featured-products.html#collection">VR2C Care</a></li>
             <li><a href="featured-products.html#collection">Color Muse</a></li>
             <li><a href="featured-products.html#collection">VR2C Style</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">So Pure Organic</a></li>
-            <li><a href="brand-story.html#story">1922 by VR2C</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">Ingredient</a></li>
-            <li><a href="shop-by-concern.html#concerns">Shop</a></li>
+            <li><a href="ingredient-spotlight.html#ingredients">Hero Ingredients</a></li>
+            <li><a href="brand-story.html#story">Our Story</a></li>
+            <li><a href="shop-by-concern.html#concerns">Shop by Concern</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer-heading">About Us</h4>
           <ul class="footer-menu">
-            <li><a href="brand-story.html#story">Our Heritage (1922)</a></li>
-            <li><a href="why-choose-us.html#standards">B-Corp Sustainability</a></li>
-            <li><a href="index.html#salon">Salon &amp; Stylist Information</a></li>
-            <li><a href="contact-us.html#contact-form">Careers</a></li>
-            <li><a href="newsletter.html#journal">Blog</a></li>
+            <li><a href="brand-story.html#story">Our Heritage</a></li>
+            <li><a href="our-founders.html">Our Founders</a></li>
+            <li><a href="why-choose-us.html#principles">Care Standards</a></li>
+            <li><a href="index.html#salon">For Salons</a></li>
+            <li><a href="contact-us.html#contact-form">Careers &amp; Enquiries</a></li>
             <li><a href="testimonials.html#client-stories">Testimonials</a></li>
           </ul>
         </div>
@@ -161,18 +1146,18 @@
           <h4 class="footer-heading">Customer Care</h4>
           <ul class="footer-menu">
             <li><a href="index.html#routine">Hair Care Routine</a></li>
-            <li><a href="contact-us.html#contact-form">Shipping & Returns</a></li>
+            <li><a href="contact-us.html#contact-form">Shipping &amp; Returns</a></li>
             <li><a href="contact-us.html#contact-form">Track Order</a></li>
-            <li><a href="contact-us.html#contact-form">FAQs</a></li>
-            <li><a href="contact-us.html#contact-form">Contact</a></li>
+            <li><a href="contact-us.html#faq">FAQs</a></li>
+            <li><a href="contact-us.html#contact-form">Contact Us</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer-heading">Sustainability</h4>
           <ul class="footer-menu">
-            <li><a href="why-choose-us.html#standards">Cruelty Free Policy</a></li>
-            <li><a href="why-choose-us.html#standards">Solar-Powered Lab</a></li>
-            <li><a href="why-choose-us.html#standards">Recycled Packaging</a></li>
+            <li><a href="why-choose-us.html#principles">Cruelty-Free Policy</a></li>
+            <li><a href="why-choose-us.html#principles">US Safety Tested</a></li>
+            <li><a href="why-choose-us.html#principles">Recycled Packaging</a></li>
             <li><a href="ingredient-spotlight.html#ingredients">Clean Formulas</a></li>
           </ul>
         </div>
@@ -183,6 +1168,73 @@
       </div>
     </div>
   </footer>
+
+  <!-- Interactive Toast Feedback -->
+  <div class="contact-toast" id="contactToast" role="alert" aria-live="polite">
+    <i class="fas fa-check-circle" style="color: var(--contact-gold); font-size: 1.15rem;"></i>
+    <span id="contactToastMsg">Thank you! Your note has been delivered to our concierge team.</span>
+  </div>
+
   <script src="app.js"></script>
+  <script>
+    // FAQ Accordion Interactivity
+    document.querySelectorAll('.contact-faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.contact-faq-item');
+        const isActive = item.classList.contains('active');
+        
+        // Close other items
+        document.querySelectorAll('.contact-faq-item').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('active');
+            other.querySelector('.contact-faq-trigger').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle clicked item
+        if (isActive) {
+          item.classList.remove('active');
+          trigger.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Form Submission & Toast Feedback
+    const contactForm = document.getElementById('vr2cContactForm');
+    const toast = document.getElementById('contactToast');
+    const toastMsg = document.getElementById('contactToastMsg');
+    const submitBtn = document.getElementById('contactSubmitBtn');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Delivering...</span>';
+        
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>Message Sent!</span>';
+          
+          toastMsg.textContent = 'Thank you! Your note has been delivered to our concierge team.';
+          toast.classList.add('show');
+          
+          contactForm.reset();
+
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+          }, 3000);
+
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 4500);
+        }, 850);
+      });
+    }
+  </script>
 </body>
 </html>
