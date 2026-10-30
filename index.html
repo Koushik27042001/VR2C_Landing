@@ -154,6 +154,32 @@ main,footer,header{position:relative;z-index:1}
 .card .pic{aspect-ratio:3/4;overflow:hidden;border-radius:200px 200px 18px 18px;background:linear-gradient(#e9c9d8,#c99ab6)}
 .card .pic img{width:100%;height:118%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .card:hover .pic img{transform:scale(1.08)}
+/* Full product image display (prevents clipping for multi-product and studio bottles) */
+.card.card-full-img .pic,
+.card .pic.pic-contain {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.75rem;
+  box-shadow: inset 0 0 0 1px rgba(74, 29, 79, 0.08), 0 10px 26px rgba(74, 29, 79, 0.06);
+}
+.card.card-full-img .pic img,
+.card .pic.pic-contain img,
+.card .pic img.img-contain {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain !important;
+  object-position: center !important;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card.card-full-img:hover .pic img,
+.card:hover .pic.pic-contain img,
+.card:hover .pic img.img-contain {
+  transform: scale(1.05) !important;
+}
 .card small{display:block;margin-top:1.2rem;color:var(--mulberry);font-size:.8rem}
 .card h3{font-size:1.7rem;margin:.2rem 0 .6rem}
 .card a{font-size:.9rem;border-bottom:1px solid var(--gold);padding-bottom:2px}
@@ -413,7 +439,7 @@ main,footer,header{position:relative;z-index:1}
       <article class="card rv"><div class="pic"><img src="assets/bodyimage(1).jpeg" alt="Vital Nutrition Shampoo" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Vital Nutrition Shampoo</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
       <article class="card rv"><div class="pic"><img src="assets/bodyimage(2).jpeg" alt="Color Muse Mask" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Color Muse Mask</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
       <article class="card rv"><div class="pic"><img src="assets/bodyimage(3).jpeg" alt="Long and Strong Serum" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Long &amp; Strong Serum</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
-      <article class="card rv"><div class="pic"><img src="assets/bodyimage(6).jpeg" alt="Style and Finish" data-parallax="-0.06" loading="lazy"></div><small>Hair care</small><h3>Style &amp; Finish</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
+      <article class="card rv card-full-img"><div class="pic pic-contain"><img src="assets/bodyimage(6).jpeg" alt="Style &amp; Finish" class="img-contain" loading="lazy"></div><small>Hair care</small><h3>Style &amp; Finish</h3><a href="featured-products.html#collection">Explore product ↗</a></article>
     </div>
   </div>
 </section>
