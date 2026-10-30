@@ -4,10 +4,799 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Featured Products | VR2C Haircosmetics</title>
-  <meta name="description" content="Browse the VR2C collection of salon-grade haircare essentials, masks, and color-preserving formulas." />
+  <meta name="description" content="Explore the full VR2C Haircosmetics collection: salon-grade shampoos, vibrancy masks, restorative serums, and scalp therapies. Clean ingredients, US safety tested." />
   <link rel="icon" type="image/svg+xml" href="assets/v2c-favicon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --prod-ink: #24102b;
+      --prod-plum: #4a1d4f;
+      --prod-mulberry: #8a3366;
+      --prod-blush: #f7e4ea;
+      --prod-pearl: #fff9fb;
+      --prod-gold: #c9a15b;
+      --prod-gold-hover: #b58d47;
+      --prod-font-serif: 'Cormorant Garamond', Georgia, serif;
+      --prod-font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--prod-font-sans);
+      color: var(--prod-ink);
+      background: var(--prod-pearl);
+      line-height: 1.7;
+    }
+
+    .prod-page {
+      overflow-x: hidden;
+    }
+
+    .prod-container {
+      width: min(1280px, 92%);
+      margin: 0 auto;
+    }
+
+    .prod-kicker {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--prod-mulberry);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    /* 1. HERO & FILTER BAR */
+    .prod-hero-section {
+      padding: 6.5rem 0 3.5rem;
+      background: linear-gradient(180deg, #170a1c 0%, #220d2b 45%, var(--prod-pearl) 100%);
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+    }
+
+    .prod-hero-content {
+      max-width: 840px;
+      margin: 0 auto 3rem;
+    }
+
+    .prod-hero-content .prod-kicker {
+      color: var(--prod-gold);
+    }
+
+    .prod-hero-title {
+      font-family: var(--prod-font-serif);
+      font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.9rem;
+      color: #ffffff;
+    }
+
+    .prod-hero-subhead {
+      font-family: var(--prod-font-serif);
+      font-style: italic;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      color: var(--prod-gold);
+      margin-bottom: 1.3rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .prod-hero-desc {
+      font-size: 1.1rem;
+      color: #eedde9;
+      line-height: 1.8;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Filter Controls Bar */
+    .prod-controls-bar {
+      background: #ffffff;
+      border: 1px solid rgba(74, 29, 79, 0.09);
+      border-radius: 20px;
+      padding: 1.2rem 1.8rem;
+      box-shadow: 0 12px 35px rgba(36, 16, 43, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .prod-filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .prod-tab-btn {
+      background: transparent;
+      border: 1px solid rgba(74, 29, 79, 0.12);
+      color: #55445c;
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--prod-font-sans);
+    }
+
+    .prod-tab-btn:hover {
+      background: rgba(201, 161, 91, 0.12);
+      border-color: var(--prod-gold);
+      color: var(--prod-ink);
+    }
+
+    .prod-tab-btn.active {
+      background: var(--prod-ink);
+      color: #ffffff;
+      border-color: var(--prod-ink);
+      box-shadow: 0 4px 12px rgba(36, 16, 43, 0.2);
+    }
+
+    .prod-search-box {
+      position: relative;
+      min-width: 260px;
+      flex-grow: 1;
+      max-width: 320px;
+    }
+
+    .prod-search-box input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 29, 79, 0.15);
+      background: #faf4f7;
+      font-size: 0.88rem;
+      font-family: var(--prod-font-sans);
+      color: var(--prod-ink);
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .prod-search-box input:focus {
+      background: #ffffff;
+      border-color: var(--prod-gold);
+      box-shadow: 0 0 0 3px rgba(201, 161, 91, 0.2);
+    }
+
+    .prod-search-box i {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8b7790;
+      font-size: 0.88rem;
+    }
+
+    /* 2. PRODUCTS GRID */
+    .prod-catalog-section {
+      padding: 3.5rem 0 6rem;
+    }
+
+    .prod-results-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      font-size: 0.92rem;
+      color: #68576d;
+    }
+
+    .prod-results-count strong {
+      color: var(--prod-ink);
+    }
+
+    .prod-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Product Card */
+    .prod-card {
+      background: #ffffff;
+      border-radius: 22px;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      box-shadow: 0 8px 24px rgba(36, 16, 43, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+      cursor: pointer;
+    }
+
+    .prod-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(74, 29, 79, 0.12);
+      border-color: rgba(201, 161, 91, 0.45);
+    }
+
+    .prod-card-visual {
+      position: relative;
+      background: linear-gradient(135deg, #f7e8ef 0%, #faedf3 100%);
+      padding: 1.5rem;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .prod-card-img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .prod-card:hover .prod-card-img {
+      transform: scale(1.08);
+    }
+
+    .prod-card-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(23, 10, 28, 0.88);
+      color: var(--prod-gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(201, 161, 91, 0.3);
+    }
+
+    .prod-card-wishlist {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7a637f;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .prod-card-wishlist:hover,
+    .prod-card-wishlist.active {
+      color: #e63946;
+      background: #ffffff;
+      transform: scale(1.1);
+    }
+
+    .prod-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .prod-card-category {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--prod-mulberry);
+      margin-bottom: 0.4rem;
+    }
+
+    .prod-card-title {
+      font-family: var(--prod-font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--prod-ink);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .prod-card-tagline {
+      font-size: 0.88rem;
+      color: #5d4a63;
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+      flex-grow: 1;
+    }
+
+    .prod-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(74, 29, 79, 0.08);
+      margin-bottom: 1rem;
+      font-size: 0.84rem;
+    }
+
+    .prod-card-rating {
+      color: var(--prod-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
+    }
+
+    .prod-card-rating span {
+      color: #7b6980;
+      font-size: 0.78rem;
+      font-weight: 400;
+    }
+
+    .prod-card-size {
+      color: #6d5b72;
+      font-weight: 500;
+    }
+
+    .prod-card-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+
+    .prod-btn-view {
+      background: var(--prod-gold);
+      color: var(--prod-ink);
+      border: 1px solid var(--prod-gold);
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .prod-btn-view:hover {
+      background: #ffffff;
+      color: var(--prod-ink);
+      border-color: var(--prod-gold);
+      box-shadow: 0 6px 18px rgba(201, 161, 91, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* 3. VIEW DETAILS POPUP MODAL (ANIMATED) */
+    .prod-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(23, 10, 28, 0.84);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+    }
+
+    .prod-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .prod-modal-window {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid rgba(201, 161, 91, 0.35);
+      box-shadow: 0 30px 80px rgba(23, 10, 28, 0.5);
+      width: min(980px, 94vw);
+      max-height: 88vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      position: relative;
+      transform: translateY(35px) scale(0.95);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    }
+
+    .prod-modal-overlay.active .prod-modal-window {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .prod-modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(36, 16, 43, 0.08);
+      border: 0;
+      color: var(--prod-ink);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      z-index: 10;
+    }
+
+    .prod-modal-close-btn:hover {
+      background: var(--prod-ink);
+      color: #ffffff;
+      transform: rotate(90deg);
+    }
+
+    .prod-modal-body {
+      padding: clamp(2rem, 4vw, 3rem);
+    }
+
+    .prod-modal-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .prod-modal-stage {
+      background: linear-gradient(135deg, #f7e8ef 0%, #faedf3 100%);
+      border-radius: 20px;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      aspect-ratio: 1;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+    }
+
+    .prod-modal-stage img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(36, 16, 43, 0.15));
+      transition: transform 0.4s ease;
+    }
+
+    .prod-modal-stage:hover img {
+      transform: scale(1.05);
+    }
+
+    .prod-modal-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--prod-ink);
+      color: var(--prod-gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 161, 91, 0.3);
+    }
+
+    .prod-modal-category {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--prod-mulberry);
+      margin-bottom: 0.4rem;
+    }
+
+    .prod-modal-title {
+      font-family: var(--prod-font-serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--prod-ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .prod-modal-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.92rem;
+    }
+
+    .prod-modal-rating-row .stars {
+      color: var(--prod-gold);
+      letter-spacing: 2px;
+    }
+
+    .prod-modal-rating-row .review-count {
+      color: #68576d;
+    }
+
+    .prod-modal-tagline {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--prod-plum);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .prod-modal-desc {
+      font-size: 0.98rem;
+      color: #504055;
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .prod-modal-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(74, 29, 79, 0.08);
+      border-bottom: 1px solid rgba(74, 29, 79, 0.08);
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+    }
+
+    .prod-spec-item strong {
+      color: var(--prod-ink);
+      font-weight: 600;
+    }
+
+    .prod-spec-item span {
+      color: #6d5b72;
+    }
+
+    .prod-modal-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .prod-btn-add {
+      background: var(--prod-gold);
+      color: var(--prod-ink);
+      border: 1px solid var(--prod-gold);
+      padding: 0.85rem 1.85rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .prod-btn-add:hover {
+      background: #ffffff;
+      color: var(--prod-ink);
+      border-color: var(--prod-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 161, 91, 0.28);
+    }
+
+    /* Modal Accordions / Details Sections */
+    .prod-modal-panels {
+      display: grid;
+      gap: 1.5rem;
+      border-top: 1px solid rgba(74, 29, 79, 0.09);
+      padding-top: 2rem;
+    }
+
+    .prod-panel-card {
+      background: #fdf8fa;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem 1.8rem;
+    }
+
+    .prod-panel-title {
+      font-family: var(--prod-font-serif);
+      font-size: 1.45rem;
+      color: var(--prod-ink);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .prod-panel-title i {
+      color: var(--prod-gold);
+      font-size: 1.1rem;
+    }
+
+    .prod-ingredients-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .prod-ingredient-pill {
+      background: #ffffff;
+      border: 1px solid rgba(201, 161, 91, 0.35);
+      color: #7d5918;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .prod-free-from-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .prod-free-tag {
+      background: rgba(138, 51, 102, 0.08);
+      border: 1px solid rgba(138, 51, 102, 0.22);
+      color: var(--prod-mulberry);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    .prod-routine-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .prod-routine-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.94rem;
+      color: #55445c;
+    }
+
+    .prod-step-num {
+      background: var(--prod-blush);
+      color: var(--prod-plum);
+      font-weight: 700;
+      font-size: 0.78rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* 4. SALON ASSURANCE BANNER */
+    .prod-assurance-section {
+      padding: 4.5rem 0;
+      background: #ffffff;
+      border-top: 1px solid rgba(74, 29, 79, 0.08);
+    }
+
+    .prod-assurance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .prod-assurance-card {
+      text-align: center;
+      padding: 1.8rem 1.2rem;
+      border-radius: 18px;
+      background: var(--prod-pearl);
+      border: 1px solid rgba(74, 29, 79, 0.06);
+    }
+
+    .prod-assurance-card i {
+      font-size: 1.8rem;
+      color: var(--prod-gold);
+      margin-bottom: 0.9rem;
+      display: inline-block;
+    }
+
+    .prod-assurance-card h4 {
+      font-family: var(--prod-font-serif);
+      font-size: 1.35rem;
+      color: var(--prod-ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .prod-assurance-card p {
+      font-size: 0.88rem;
+      color: #68576d;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Toast Notification */
+    .prod-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--prod-ink);
+      color: #ffffff;
+      padding: 1rem 1.6rem;
+      border-radius: 14px;
+      border: 1px solid var(--prod-gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      z-index: 3000;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .prod-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 990px) {
+      .prod-modal-top-grid {
+        grid-template-columns: 1fr;
+      }
+      .prod-assurance-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .prod-controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .prod-search-box {
+        max-width: 100%;
+      }
+      .prod-assurance-grid {
+        grid-template-columns: 1fr;
+      }
+      .prod-modal-actions {
+        flex-direction: column;
+      }
+      .prod-btn-add {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header" id="top">
@@ -56,54 +845,107 @@
   <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation"></nav>
 </header>
 
-  <main>
-    <section class="coming-soon-page" aria-labelledby="comingSoonTitle">
-      <div class="container">
-        <div class="coming-soon-hero">
-          <div class="coming-soon-copy">
-            <span class="section-subtitle">THE VR2C COLLECTION · IN THE MAKING</span>
-            <h1 id="comingSoonTitle">A considered collection is on its way.</h1>
-            <p>We’re preparing complete product details and routines so you can explore the collection with confidence.</p>
-            <a href="index.html" class="btn-primary"><i class="fas fa-house" aria-hidden="true"></i> Return to Home</a>
-          </div>
-          <figure class="coming-soon-visual">
-            <img src="assets/1000134054.png" alt="VR2C volumizing shampoo" />
-            <figcaption><span class="coming-soon-pulse"></span> Collection details are in progress</figcaption>
-          </figure>
+  <main class="prod-page">
+    <!-- 1. HERO SECTION -->
+    <section class="prod-hero-section" id="collection">
+      <div class="prod-container">
+        <div class="prod-hero-content">
+          <span class="prod-kicker">✦ THE VR2C COLLECTION</span>
+          <h1 class="prod-hero-title">Carefully Considered Formulas</h1>
+          <p class="prod-hero-subhead">Salon-Grade Science · Clean Botanicals · Everyday Efficacy</p>
+          <p class="prod-hero-desc">
+            Explore our complete range of purposefully formulated skin and hair care. Developed by beauty professionals and pharmaceutical scientists, safety-tested in the USA, and crafted with intentional botanicals.
+          </p>
         </div>
-        <section class="coming-soon-roadmap" id="collection" aria-label="Collection roadmap">
-          <p class="roadmap-kicker">THE BUILD</p>
-          <h2>What’s coming to the collection</h2>
-          <div class="roadmap-steps">
-            <details class="roadmap-step" open>
-              <summary><span class="roadmap-number">01</span><span class="roadmap-title">Confirm the range</span></summary>
-              <p>Bring the care, treatment, and styling ranges together in one place.</p>
-            </details>
-            <details class="roadmap-step">
-              <summary><span class="roadmap-number">02</span><span class="roadmap-title">Prepare product guides</span></summary>
-              <p>Make ingredients, routines, and product details easy to compare.</p>
-            </details>
-            <details class="roadmap-step">
-              <summary><span class="roadmap-number">03</span><span class="roadmap-title">Open the collection</span></summary>
-              <p>The full Featured Products page will appear here when it’s ready.</p>
-            </details>
+
+        <!-- Filter & Search Controls -->
+        <div class="prod-controls-bar">
+          <div class="prod-filter-tabs" role="tablist">
+            <button type="button" class="prod-tab-btn active" data-category="all">All Formulas</button>
+            <button type="button" class="prod-tab-btn" data-category="care">VR2C Care</button>
+            <button type="button" class="prod-tab-btn" data-category="color">Color Muse</button>
+            <button type="button" class="prod-tab-btn" data-category="style">VR2C Style</button>
+            <button type="button" class="prod-tab-btn" data-category="scalp">Scalp &amp; Therapy</button>
           </div>
-        </section>
+
+          <div class="prod-search-box">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" id="prodSearchInput" placeholder="Search products, ingredients..." aria-label="Search products" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PRODUCT CATALOG GRID -->
+    <section class="prod-catalog-section">
+      <div class="prod-container">
+        <div class="prod-results-meta">
+          <div class="prod-results-count">Showing <strong id="productCount">10</strong> formulations</div>
+          <div style="font-size: 0.85rem; color: #88748d;"><i class="fas fa-shield-halved" style="color: var(--prod-gold);"></i> Rigorously safety-tested in the USA</div>
+        </div>
+
+        <div class="prod-grid-container" id="prodGrid">
+          <!-- Product cards will be injected by JavaScript below -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SALON ASSURANCE PROMISE -->
+    <section class="prod-assurance-section">
+      <div class="prod-container">
+        <div class="prod-assurance-grid">
+          <div class="prod-assurance-card">
+            <i class="fas fa-flask-vial"></i>
+            <h4>US Safety Evaluated</h4>
+            <p>Scientifically assessed through Healios Labs LLC for skin compatibility and verified efficacy.</p>
+          </div>
+          <div class="prod-assurance-card">
+            <i class="fas fa-leaf"></i>
+            <h4>Clean Purity Standard</h4>
+            <p>Intentional botanicals formulated strictly without parabens, sulfates, or mineral oil.</p>
+          </div>
+          <div class="prod-assurance-card">
+            <i class="fas fa-award"></i>
+            <h4>27+ Years Mastery</h4>
+            <p>Engineered with decades of salon experience, ensuring high-performance usability at home.</p>
+          </div>
+          <div class="prod-assurance-card">
+            <i class="fas fa-heart"></i>
+            <h4>100% Cruelty-Free</h4>
+            <p>Ethically developed with zero animal testing and sustainable packaging commitments.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- 4. VIEW DETAILS POPUP MODAL (ANIMATED) -->
+  <div class="prod-modal-overlay" id="prodModalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="prod-modal-window" id="prodModalWindow">
+      <button type="button" class="prod-modal-close-btn" id="prodModalCloseBtn" aria-label="Close product details">&times;</button>
+      <div class="prod-modal-body" id="prodModalBody">
+        <!-- Injected dynamically on click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Feedback -->
+  <div class="prod-toast" id="prodToast">
+    <i class="fas fa-check-circle" style="color: var(--prod-gold);"></i>
+    <span id="prodToastMsg">Added to your routine!</span>
+  </div>
 
   <footer class="footer" id="contact">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics logo" class="footer-logo-image" style="margin-bottom: 1rem;" />
-          <p>VR2C Haircosmetics is a premier family-owned company dedicated to professional hair care since 1922. Made with love and scientific passion for beautiful hair.</p>
+          <p>VR2C Haircosmetics is dedicated to purposeful skin and hair care. Carefully considered. Thoughtfully developed. Made for real life.</p>
           <div class="social-links">
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div>
@@ -112,20 +954,19 @@
             <li><a href="featured-products.html#collection">VR2C Care</a></li>
             <li><a href="featured-products.html#collection">Color Muse</a></li>
             <li><a href="featured-products.html#collection">VR2C Style</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">So Pure Organic</a></li>
-            <li><a href="brand-story.html#story">1922 by VR2C</a></li>
-            <li><a href="ingredient-spotlight.html#ingredients">Ingredient</a></li>
-            <li><a href="shop-by-concern.html#concerns">Shop</a></li>
+            <li><a href="ingredient-spotlight.html#ingredients">Hero Ingredients</a></li>
+            <li><a href="brand-story.html#story">Our Story</a></li>
+            <li><a href="shop-by-concern.html#concerns">Shop by Concern</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer-heading">About Us</h4>
           <ul class="footer-menu">
-            <li><a href="brand-story.html#story">Our Heritage (1922)</a></li>
-            <li><a href="why-choose-us.html#standards">B-Corp Sustainability</a></li>
-            <li><a href="index.html#salon">Salon &amp; Stylist Information</a></li>
-            <li><a href="contact-us.html#contact-form">Careers</a></li>
-            <li><a href="newsletter.html#journal">Blog</a></li>
+            <li><a href="brand-story.html#story">Our Heritage</a></li>
+            <li><a href="our-founders.html">Our Founders</a></li>
+            <li><a href="why-choose-us.html#principles">Care Standards</a></li>
+            <li><a href="index.html#salon">For Salons</a></li>
+            <li><a href="contact-us.html#contact-form">Careers &amp; Enquiries</a></li>
             <li><a href="testimonials.html#client-stories">Testimonials</a></li>
           </ul>
         </div>
@@ -133,18 +974,18 @@
           <h4 class="footer-heading">Customer Care</h4>
           <ul class="footer-menu">
             <li><a href="index.html#routine">Hair Care Routine</a></li>
-            <li><a href="contact-us.html#contact-form">Shipping & Returns</a></li>
+            <li><a href="contact-us.html#contact-form">Shipping &amp; Returns</a></li>
             <li><a href="contact-us.html#contact-form">Track Order</a></li>
             <li><a href="contact-us.html#contact-form">FAQs</a></li>
-            <li><a href="contact-us.html#contact-form">Contact</a></li>
+            <li><a href="contact-us.html#contact-form">Contact Us</a></li>
           </ul>
         </div>
         <div>
           <h4 class="footer-heading">Sustainability</h4>
           <ul class="footer-menu">
-            <li><a href="why-choose-us.html#standards">Cruelty Free Policy</a></li>
-            <li><a href="why-choose-us.html#standards">Solar-Powered Lab</a></li>
-            <li><a href="why-choose-us.html#standards">Recycled Packaging</a></li>
+            <li><a href="why-choose-us.html#principles">Cruelty-Free Policy</a></li>
+            <li><a href="why-choose-us.html#principles">US Safety Tested</a></li>
+            <li><a href="why-choose-us.html#principles">Recycled Packaging</a></li>
             <li><a href="ingredient-spotlight.html#ingredients">Clean Formulas</a></li>
           </ul>
         </div>
@@ -155,6 +996,460 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Product Catalog Database
+    const VR2C_PRODUCTS = [
+      {
+        id: 'vital-nutrition-shampoo',
+        title: 'Vital Nutrition Shampoo',
+        category: 'care',
+        categoryLabel: 'VR2C Care · Cleanser',
+        badge: 'Bestseller',
+        image: 'assets/bodyimage(1).jpeg',
+        size: '250 ml / 8.5 fl. oz.',
+        rating: '4.9',
+        reviews: '184',
+        tagline: 'Deep Nourishing Hydration for Normal to Dry Strands',
+        description: 'Formulated in VR2C Laboratories with essential minerals, provitamin B5, and botanical aloe vera. Gently cleanses the scalp while replenishing vital moisture, restoring elasticity, and leaving hair weightlessly supple with luminous salon sheen.',
+        ingredients: ['Vitamin E', 'Organic Aloe Vera Gel', 'Provitamin B5', 'Hydrolyzed Wheat Protein', 'Argan Oil'],
+        freeFrom: ['No Sulfates', 'No Parabens', 'No Mineral Oil', 'Color Safe'],
+        howToUse: [
+          'Dispense a 10p-sized amount onto wet palms and emulsify.',
+          'Massage into wet hair from scalp to lengths, enjoying the rich, gentle lather.',
+          'Rinse thoroughly with lukewarm water. Pair with Vital Nutrition Conditioner.'
+        ],
+        claims: 'Proven 89% moisture retention over 24 hours. Clinically tested safe for sensitive scalps.'
+      },
+      {
+        id: 'color-muse-mask',
+        title: 'Color Muse Vibrancy Mask',
+        category: 'color',
+        categoryLabel: 'Color Muse · Deep Mask',
+        badge: 'Award Winner',
+        image: 'assets/bodyimage(2).jpeg',
+        size: '200 ml / 6.8 fl. oz.',
+        rating: '5.0',
+        reviews: '142',
+        tagline: 'Pigment-Locking Deep Conditioner & Radiance Shield',
+        description: 'Infused with silk amino acids, sunflower seed antioxidants, and UV filters. Deeply fortifies chemically treated hair, sealing the cuticle to lock in rich dye pigments, eliminate brassiness, and deliver mirror-gloss brilliance.',
+        ingredients: ['Silk Amino Acids', 'Moroccan Argan Oil', 'Sunflower Seed Extract', 'Keratin Peptide', 'Vitamin E'],
+        freeFrom: ['No Sulfates', 'No Parabens', 'No Silicones', 'UV Protection'],
+        howToUse: [
+          'After cleansing, squeeze out excess water from hair.',
+          'Distribute evenly from mid-lengths to ends using fingers or a wide-tooth comb.',
+          'Leave in for 3 to 5 minutes (or 10 minutes for intensive repair), then rinse cool.'
+        ],
+        claims: 'Prevents color fade for up to 8 weeks. Reduces cuticle porosity by up to 76%.'
+      },
+      {
+        id: 'long-strong-serum',
+        title: 'Long & Strong Fortifying Serum',
+        category: 'style',
+        categoryLabel: 'VR2C Style · Repair Serum',
+        badge: 'Salon Hero',
+        image: 'assets/bodyimage(3).jpeg',
+        size: '100 ml / 3.4 fl. oz.',
+        rating: '4.9',
+        reviews: '210',
+        tagline: 'Anti-Breakage Growth & Heat Styling Defense Elixir',
+        description: 'Our iconic restorative serum designed specifically for effortless styling. Drops in with zero greasy residue to smooth stubborn morning frizz, seal fragile split ends, and shield strands against hot irons and blow-dryers up to 450°F.',
+        ingredients: ['Cold-Pressed Argan Oil', 'Biotin Complex', 'Pure Vitamin E', 'Camellia Seed Oil'],
+        freeFrom: ['No Parabens', 'No Mineral Oil', 'No Heavy Wax', 'Heat Protection up to 450°F'],
+        howToUse: [
+          'Dispense 2-3 drops into palm, rub hands together to activate.',
+          'Glide through damp hair before blow-drying, or smooth over dry ends to tame flyaways.',
+          'Leave in — do not rinse.'
+        ],
+        claims: 'Delivers 72-hour frizz resistance. Instantly seals up to 94% of split ends.'
+      },
+      {
+        id: 'style-finish-elixir',
+        title: 'Style & Finish Glossing Elixir',
+        category: 'style',
+        categoryLabel: 'VR2C Style · Polish & Hold',
+        badge: 'Stylist Pick',
+        image: 'assets/bodyimage(6).jpeg',
+        size: '125 ml / 4.2 fl. oz.',
+        rating: '4.8',
+        reviews: '98',
+        tagline: 'Weightless Luster, Anti-Humidity Shield & Texture Finish',
+        description: 'An ultra-fine finishing elixir that sets your style in place with flexible, touchable hold. Creates an invisible barrier against environmental humidity, preventing swell, static, and flyaways.',
+        ingredients: ['Moroccan Argan Oil', 'Bamboo Extract', 'Marula Oil', 'Vitamin E'],
+        freeFrom: ['No Parabens', 'No Sulfates', 'No Flaking', 'Anti-Humidity'],
+        howToUse: [
+          'Hold bottle 8-10 inches away from styled hair.',
+          'Mist lightly over finished blowout or curls for an instant mirror-like polish.',
+          'Can be layered throughout the day for touch-up frizz defense.'
+        ],
+        claims: 'Blocks up to 88% humidity. Zero sticky residue or stiffness.'
+      },
+      {
+        id: 'restorative-morning-serum',
+        title: 'Restorative Morning Hair Serum',
+        category: 'style',
+        categoryLabel: 'VR2C Style · Morning Care',
+        badge: 'Everyday Essential',
+        image: 'assets/bodyimage(5).jpeg',
+        size: '100 ml / 3.4 fl. oz.',
+        rating: '4.9',
+        reviews: '165',
+        tagline: 'Quick-Absorbing Smoothing Elixir for Busy Mornings',
+        description: 'Engineered for real life and rushed mornings. Absorbs completely within 30 seconds to instantly smooth bedhead frizz, hydrate dry ends, and give hair a confident, polished look before leaving home.',
+        ingredients: ['Pure Vitamin E', 'Argan Oil', 'Jojoba Esters', 'Botanical Squalane'],
+        freeFrom: ['No Parabens', 'No Sulfates', 'No Artificial Dyes', 'Quick Absorb'],
+        howToUse: [
+          'Warm 1 to 2 pumps between palms.',
+          'Rake through dry or damp hair from mid-lengths downwards.',
+          'Brush through for immediate smoothness and natural shine.'
+        ],
+        claims: 'Rapid 30-second absorption. Lightweight non-greasy natural finish.'
+      },
+      {
+        id: 'volumizing-care-cleanser',
+        title: 'Volumizing Care Cleanser',
+        category: 'care',
+        categoryLabel: 'VR2C Care · Root Lift',
+        badge: 'Weightless Lift',
+        image: 'assets/1000134054.png',
+        size: '300 ml / 10.1 fl. oz.',
+        rating: '4.8',
+        reviews: '112',
+        tagline: 'Weightless Body & Root Elevation with Biotin & Peptides',
+        description: 'Infuses fine, limp strands with airy fullness and structural volume. Fortifies the hair cortex with plant peptides without drying out the lengths, creating bouncy, touchable fullness.',
+        ingredients: ['Biotin', 'Hydrolyzed Wheat Peptides', 'Ginkgo Biloba', 'Rosemary Oil'],
+        freeFrom: ['No Sulfates', 'No Parabens', 'No Heavy Wax', 'Root Lifting'],
+        howToUse: [
+          'Apply to wet hair, focusing deeply at the roots and scalp.',
+          'Massage in upward motions for 1-2 minutes to stimulate root vitality.',
+          'Rinse cleanly with warm water.'
+        ],
+        claims: 'Increases visible hair volume by up to 40% after first wash.'
+      },
+      {
+        id: 'scalp-therapy-detox',
+        title: 'Scalp Therapy Detox Cleanser',
+        category: 'scalp',
+        categoryLabel: 'Scalp & Therapy · Balancing',
+        badge: 'Dermatologist Tested',
+        image: 'assets/1000134052.png',
+        size: '250 ml / 8.5 fl. oz.',
+        rating: '5.0',
+        reviews: '128',
+        tagline: 'Purifying Botanical Micro-Exfoliant for Healthy Follicles',
+        description: 'A soothing, dermatologist-tested scalp wash that clears product buildup, balances excess sebum, and calms irritated or dry scalps with pure aloe vera, tea tree, and zinc PCA.',
+        ingredients: ['Organic Aloe Vera', 'Zinc PCA', 'Tea Tree Leaf Oil', 'Niacinamide (Vitamin B3)'],
+        freeFrom: ['No Sulfates', 'No Parabens', 'No Synthetic Fragrance', 'Sensitive Skin Tested'],
+        howToUse: [
+          'Section damp hair and apply nozzle directly to the scalp.',
+          'Gently massage with fingertips in circular motions for 2 minutes.',
+          'Rinse completely. Use 1-2 times weekly for optimal follicle health.'
+        ],
+        claims: 'Proven reduction in scalp dryness and flakes within 3 applications.'
+      },
+      {
+        id: 'nourishing-moisture-conditioner',
+        title: 'Nourishing Moisture Conditioner',
+        category: 'care',
+        categoryLabel: 'VR2C Care · Hydrating Seal',
+        badge: 'Salon Classic',
+        image: 'assets/1000134053.png',
+        size: '250 ml / 8.5 fl. oz.',
+        rating: '4.9',
+        reviews: '156',
+        tagline: 'Silk Detangling & Deep Cuticle Seal Conditioner',
+        description: 'Rich in essential plant ceramides and vitamin E that immediately melt into strands. Instantly detangles wet hair, prevents comb friction, and restores natural moisture balance.',
+        ingredients: ['Plant Ceramides', 'Pure Vitamin E', 'Shea Butter Extract', 'Hydrolyzed Silk'],
+        freeFrom: ['No Sulfates', 'No Parabens', 'No Mineral Oil', 'Easy Detangle'],
+        howToUse: [
+          'After shampooing, apply generously through mid-lengths and ends.',
+          'Gently detangle with fingers or wide-tooth comb.',
+          'Leave for 2 minutes before rinsing with cool water.'
+        ],
+        claims: 'Reduces mechanical comb breakage by up to 85%.'
+      },
+      {
+        id: 'color-protect-luminosity-elixir',
+        title: 'Color Protect & Luminosity Elixir',
+        category: 'color',
+        categoryLabel: 'Color Muse · Leave-in Milk',
+        badge: 'Color Lock',
+        image: 'assets/1000134050.png',
+        size: '100 ml / 3.4 fl. oz.',
+        rating: '4.9',
+        reviews: '88',
+        tagline: 'Leave-in Antioxidant Veil for Colored & Highlighted Strands',
+        description: 'A weightless leave-in milk providing round-the-clock defense against UV radiation, hard water minerals, and environmental oxidation. Enhances multidimensional highlights and tone depth.',
+        ingredients: ['Vitamin E', 'Pomegranate Seed Oil', 'UV Filter Complex', 'Hydrolyzed Keratin'],
+        freeFrom: ['No Parabens', 'No Sulfates', 'No Gluten', 'UV Protection'],
+        howToUse: [
+          'Spray evenly over clean, towel-dried hair before styling.',
+          'Comb through from roots to ends. Do not rinse.',
+          'Style as usual with blow-dryer or air-dry.'
+        ],
+        claims: 'Protects color tone richness against UV and hard water fading.'
+      },
+      {
+        id: 'thermal-defense-smoothing-spray',
+        title: 'Thermal Defense & Smoothing Spray',
+        category: 'style',
+        categoryLabel: 'VR2C Style · Heat Barrier',
+        badge: 'Pro Protection',
+        image: 'assets/1000134046.png',
+        size: '150 ml / 5.1 fl. oz.',
+        rating: '4.9',
+        reviews: '134',
+        tagline: '450°F Heat Shield & Anti-Static Smoothing Mist',
+        description: 'Essential barrier spray for hot tools, flat irons, and blowouts. Envelops hair in a weightless thermal shield that seals in internal moisture while preventing scorching, breakage, and frizz.',
+        ingredients: ['Hydrolyzed Wheat Protein', 'Argan Oil', 'Thermal Defense Polymer', 'Provitamin B5'],
+        freeFrom: ['No Parabens', 'No Heavy Wax', 'Cruelty Free', 'Heat Defense 450°F'],
+        howToUse: [
+          'Mist section by section onto dry or damp hair before using heat tools.',
+          'Smooth down with a brush or comb.',
+          'Proceed with blow-drying, curling, or straightening.'
+        ],
+        claims: 'Guards against heat damage up to 450°F / 230°C. Delivers silky blowout finish.'
+      }
+    ];
+
+    // DOM Elements
+    const prodGrid = document.getElementById('prodGrid');
+    const productCountEl = document.getElementById('productCount');
+    const filterTabs = document.querySelectorAll('.prod-tab-btn');
+    const searchInput = document.getElementById('prodSearchInput');
+    const modalOverlay = document.getElementById('prodModalOverlay');
+    const modalWindow = document.getElementById('prodModalWindow');
+    const modalBody = document.getElementById('prodModalBody');
+    const modalCloseBtn = document.getElementById('prodModalCloseBtn');
+    const toast = document.getElementById('prodToast');
+    const toastMsg = document.getElementById('prodToastMsg');
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // Render Product Cards
+    function renderProducts() {
+      const filtered = VR2C_PRODUCTS.filter(p => {
+        const matchesCategory = (currentCategory === 'all' || p.category === currentCategory);
+        const q = searchQuery.toLowerCase();
+        const matchesSearch = !q || 
+          p.title.toLowerCase().includes(q) || 
+          p.tagline.toLowerCase().includes(q) || 
+          p.categoryLabel.toLowerCase().includes(q) ||
+          p.ingredients.some(i => i.toLowerCase().includes(q));
+        return matchesCategory && matchesSearch;
+      });
+
+      productCountEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        prodGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">
+            <i class="fas fa-search" style="font-size: 2.5rem; color: #bca8be; margin-bottom: 1rem;"></i>
+            <h3 style="font-family: var(--prod-font-serif); font-size: 1.8rem; color: var(--prod-ink); margin-bottom: 0.5rem;">No formulations found</h3>
+            <p style="color: #68576d;">Try adjusting your filter or search query.</p>
+          </div>
+        `;
+        return;
+      }
+
+      prodGrid.innerHTML = filtered.map(p => `
+        <article class="prod-card" data-id="${p.id}">
+          <div class="prod-card-visual">
+            <span class="prod-card-badge">${p.badge}</span>
+            <button type="button" class="prod-card-wishlist" aria-label="Save to wishlist" onclick="event.stopPropagation(); toggleWishlist(this, '${p.title}')">
+              <i class="far fa-heart"></i>
+            </button>
+            <img src="${p.image}" alt="${p.title}" class="prod-card-img" loading="lazy" />
+          </div>
+          <div class="prod-card-body">
+            <span class="prod-card-category">${p.categoryLabel}</span>
+            <h3 class="prod-card-title">${p.title}</h3>
+            <p class="prod-card-tagline">${p.tagline}</p>
+            <div class="prod-card-meta">
+              <div class="prod-card-rating">
+                <i class="fas fa-star"></i> ${p.rating}
+                <span>(${p.reviews})</span>
+              </div>
+              <span class="prod-card-size">${p.size}</span>
+            </div>
+            <div class="prod-card-actions">
+              <button type="button" class="prod-btn-view" onclick="event.stopPropagation(); openProductModal('${p.id}')">
+                <i class="fas fa-eye" aria-hidden="true"></i> View Details
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      // Add click event on each card to also open details
+      document.querySelectorAll('.prod-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.dataset.id;
+          openProductModal(id);
+        });
+      });
+    }
+
+    // Open Details Modal with Animated Transition
+    function openProductModal(productId) {
+      const p = VR2C_PRODUCTS.find(item => item.id === productId);
+      if (!p) return;
+
+      modalBody.innerHTML = `
+        <div class="prod-modal-top-grid">
+          <div class="prod-modal-stage">
+            <span class="prod-modal-badge">${p.badge}</span>
+            <img src="${p.image}" alt="${p.title}" />
+          </div>
+
+          <div class="prod-modal-info">
+            <span class="prod-modal-category">${p.categoryLabel}</span>
+            <h2 class="prod-modal-title">${p.title}</h2>
+            
+            <div class="prod-modal-rating-row">
+              <span class="stars">★★★★★</span>
+              <strong>${p.rating} / 5.0</strong>
+              <span class="review-count">(${p.reviews} verified salon reviews)</span>
+            </div>
+
+            <p class="prod-modal-tagline">${p.tagline}</p>
+            <p class="prod-modal-desc">${p.description}</p>
+
+            <div class="prod-modal-specs">
+              <div class="prod-spec-item">
+                <span>Volume:</span> <strong>${p.size}</strong>
+              </div>
+              <div class="prod-spec-item">
+                <span>Testing:</span> <strong>USA Evaluated (Healios Labs)</strong>
+              </div>
+              <div class="prod-spec-item">
+                <span>Suitability:</span> <strong>All hair types &amp; sensitive scalps</strong>
+              </div>
+            </div>
+
+            <div class="prod-modal-actions">
+              <button type="button" class="prod-btn-add" onclick="showToast('${p.title} added to your routine!')">
+                <i class="fas fa-check"></i> Add to My Routine
+              </button>
+              <button type="button" class="prod-tab-btn" onclick="closeProductModal()">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-modal-panels">
+          <!-- Active Botanicals -->
+          <div class="prod-panel-card">
+            <h3 class="prod-panel-title"><i class="fas fa-seedling"></i> Active Botanical Ingredients</h3>
+            <p style="font-size: 0.92rem; color: #5a485f; margin: 0 0 0.5rem;">Carefully selected components prioritizing nourishment, repair, and scalp harmony:</p>
+            <div class="prod-ingredients-list">
+              ${p.ingredients.map(ing => `<span class="prod-ingredient-pill"><i class="fas fa-check"></i> ${ing}</span>`).join('')}
+            </div>
+          </div>
+
+          <!-- Free-From Purity Standards -->
+          <div class="prod-panel-card">
+            <h3 class="prod-panel-title"><i class="fas fa-shield-halved"></i> Strict Exclusion &amp; Safety Standards</h3>
+            <p style="font-size: 0.92rem; color: #5a485f; margin: 0 0 0.5rem;">We exclude unnecessary additives so you feel completely confident in your daily routine:</p>
+            <div class="prod-free-from-tags">
+              ${p.freeFrom.map(f => `<span class="prod-free-tag">${f}</span>`).join('')}
+              <span class="prod-free-tag">Cruelty-Free</span>
+              <span class="prod-free-tag">USA Safety Tested</span>
+            </div>
+          </div>
+
+          <!-- How to Use Routine -->
+          <div class="prod-panel-card">
+            <h3 class="prod-panel-title"><i class="fas fa-sparkles"></i> How to Use — Application Ritual</h3>
+            <ol class="prod-routine-steps">
+              ${p.howToUse.map((step, idx) => `
+                <li class="prod-routine-step">
+                  <span class="prod-step-num">0${idx + 1}</span>
+                  <span>${step}</span>
+                </li>
+              `).join('')}
+            </ol>
+          </div>
+
+          <!-- Clinical Claims -->
+          <div class="prod-panel-card" style="background: rgba(201, 161, 91, 0.08); border-color: rgba(201, 161, 91, 0.3);">
+            <h3 class="prod-panel-title" style="color: #7d5918;"><i class="fas fa-certificate"></i> Verified Efficacy</h3>
+            <p style="font-size: 0.94rem; color: #503f2a; margin: 0; font-weight: 500;">
+              ${p.claims}
+            </p>
+          </div>
+        </div>
+      `;
+
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      modalCloseBtn.focus();
+    }
+
+    function closeProductModal() {
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Modal Event Listeners
+    modalCloseBtn.addEventListener('click', closeProductModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeProductModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+        closeProductModal();
+      }
+    });
+
+    // Toast Feedback
+    function showToast(message) {
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    // Wishlist Toggle
+    function toggleWishlist(btn, productTitle) {
+      const icon = btn.querySelector('i');
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        btn.classList.add('active');
+        showToast(`${productTitle} saved to wishlist!`);
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        btn.classList.remove('active');
+        showToast(`${productTitle} removed from wishlist.`);
+      }
+    }
+
+    // Category Tabs Filtering
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.dataset.category;
+        renderProducts();
+      });
+    });
+
+    // Search Input Filtering
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      renderProducts();
+    });
+
+    // Initialize Catalog on Load
+    renderProducts();
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
