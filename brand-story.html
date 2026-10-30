@@ -591,73 +591,51 @@
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-container">
-      <nav class="nav-left">
-        <div class="nav-dropdown">
-          <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
-            <a href="our-founders.html" class="dropdown-item">Founder &amp; Company Story</a>
-            <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
-          </div>
+  <header class="main-header" id="top">
+  <div class="header-container">
+    <nav class="nav-left" aria-label="Company information">
+      <div class="nav-dropdown">
+        <a href="brand-story.html" class="nav-link">Brand Story <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <a href="brand-story.html#story" class="dropdown-item">Our Story</a>
+          <a href="our-founders.html" class="dropdown-item">Founder &amp; Company Story</a>
+          <a href="brand-story.html#values" class="dropdown-item">Our Values</a>
         </div>
-        <div class="nav-dropdown">
-          <a href="why-choose-us.html" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="why-choose-us.html#principles" class="dropdown-item">Clean Ingredients</a>
-            <a href="why-choose-us.html#principles" class="dropdown-item">Dermatology Tested</a>
-            <a href="why-choose-us.html#principles" class="dropdown-item">Cruelty Free</a>
-          </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="why-choose-us.html" class="nav-link">Why Choose Us <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <a href="why-choose-us.html#principles" class="dropdown-item">Clean Ingredients</a>
+          <a href="why-choose-us.html#principles" class="dropdown-item">Care Standards</a>
+          <a href="why-choose-us.html#standards" class="dropdown-item">Sustainability</a>
         </div>
-        <div class="nav-dropdown">
-          <a href="featured-products.html" class="nav-link">Featured Products <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="featured-products.html#collection" class="dropdown-item">Our Products</a>
-            <a href="featured-products.html#collection" class="dropdown-item">Best Sellers</a>
-            <a href="featured-products.html#collection" class="dropdown-item">Salon Essentials</a>
-          </div>
-        </div>
-        <div class="nav-dropdown">
-          <a href="ingredient-spotlight.html" class="nav-link">Ingredient <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="ingredient-spotlight.html#ingredients" class="dropdown-item">Hero Ingredients</a>
-            <a href="ingredient-spotlight.html#ingredients" class="dropdown-item">Mineral Infusion</a>
-            <a href="ingredient-spotlight.html#ingredients" class="dropdown-item">Scalp & Hair Science</a>
-          </div>
-        </div>
-      </nav>
-
-      <a href="index.html" class="header-logo" aria-label="VR2C Haircosmetics Home">
-        <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics logo" class="header-logo-image" />
-      </a>
-
-      <nav class="nav-right">
-        <div class="nav-dropdown">
-          <a href="shop-by-concern.html" class="nav-link">Shop <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i></a>
-          <div class="dropdown-menu">
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Dryness</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Hair Growth</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Acne</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Hydration</a>
-            <a href="shop-by-concern.html#concerns" class="dropdown-item">Scalp Care</a>
-          </div>
-        </div>
-        <a href="contact-us.html#contact-form" class="nav-link">Contact</a>
-      </nav>
-      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
-        <i class="fas fa-bars" aria-hidden="true"></i>
-      </button>
-    </div>
-    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation">
-      <a href="brand-story.html">Brand Story</a>
-      <a href="why-choose-us.html">Why Choose Us</a>
-      <a href="featured-products.html">Featured Products</a>
-      <a href="ingredient-spotlight.html">Ingredient</a>
-      <a href="shop-by-concern.html">Shop</a>
-      <a href="contact-us.html">Contact</a>
+      </div>
+      <a href="featured-products.html" class="nav-link">Products</a>
+      <a href="ingredient-spotlight.html" class="nav-link">Ingredients</a>
     </nav>
-  </header>
+
+    <a href="index.html" class="header-logo" aria-label="VR2C Haircosmetics home">
+      <img src="assets/vr2c_logo.png" alt="VR2C Haircosmetics" class="header-logo-image">
+    </a>
+
+    <nav class="nav-right" aria-label="Shop and support">
+      <div class="nav-dropdown">
+        <a href="shop-by-concern.html" class="nav-link">Shop <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <a href="shop-by-concern.html#concerns" class="dropdown-item">Shop by Concern</a>
+          <a href="featured-products.html#collection" class="dropdown-item">Featured Products</a>
+        </div>
+      </div>
+      <a href="testimonials.html#client-stories" class="nav-link">Testimonials</a>
+      <a href="contact-us.html#contact-form" class="nav-link">Contact</a>
+    </nav>
+
+    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="mobileNavDrawer" aria-expanded="false" aria-label="Open navigation">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation"></nav>
+</header>
 
   <main class="story-page">
     <!-- 1. HERO SECTION -->
