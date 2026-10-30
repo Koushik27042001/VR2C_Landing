@@ -229,49 +229,58 @@
     .prod-card-visual {
       position: relative;
       background: linear-gradient(135deg, #f7e8ef 0%, #faedf3 100%);
-      padding: 1.5rem;
+      padding: 2.2rem 1.4rem 1.4rem;
       aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      border-bottom: 1px solid rgba(74, 29, 79, 0.06);
     }
 
     .prod-card-img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 80%;
+      max-height: 80%;
       object-fit: contain;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
     }
 
     .prod-card:hover .prod-card-img {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
     .prod-card-badge {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: rgba(23, 10, 28, 0.88);
+      top: 0.9rem;
+      left: 0.9rem;
+      z-index: 10;
+      pointer-events: none;
+      background: rgba(23, 10, 28, 0.92);
       color: var(--prod-gold);
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
+      padding: 0.32rem 0.8rem;
       border-radius: 999px;
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(201, 161, 91, 0.3);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(201, 161, 91, 0.35);
+      box-shadow: 0 4px 12px rgba(23, 10, 28, 0.25);
     }
 
     .prod-card-wishlist {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 10;
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border: 0;
       display: flex;
       align-items: center;
@@ -281,6 +290,8 @@
       font-size: 0.95rem;
       transition: all 0.2s ease;
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(36, 16, 43, 0.1);
     }
 
     .prod-card-wishlist:hover,
@@ -472,12 +483,15 @@
       position: relative;
       aspect-ratio: 1;
       border: 1px solid rgba(74, 29, 79, 0.08);
+      overflow: hidden;
     }
 
     .prod-modal-stage img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 82%;
+      max-height: 82%;
       object-fit: contain;
+      position: relative;
+      z-index: 1;
       filter: drop-shadow(0 15px 30px rgba(36, 16, 43, 0.15));
       transition: transform 0.4s ease;
     }
@@ -490,6 +504,8 @@
       position: absolute;
       top: 1rem;
       left: 1rem;
+      z-index: 10;
+      pointer-events: none;
       background: var(--prod-ink);
       color: var(--prod-gold);
       font-size: 0.72rem;
@@ -499,6 +515,7 @@
       padding: 0.35rem 0.85rem;
       border-radius: 999px;
       border: 1px solid rgba(201, 161, 91, 0.3);
+      box-shadow: 0 4px 12px rgba(23, 10, 28, 0.25);
     }
 
     .prod-modal-category {
@@ -1256,11 +1273,11 @@
       prodGrid.innerHTML = filtered.map(p => `
         <article class="prod-card" data-id="${p.id}">
           <div class="prod-card-visual">
+            <img src="${p.image}" alt="${p.title}" class="prod-card-img" loading="lazy" />
             <span class="prod-card-badge">${p.badge}</span>
             <button type="button" class="prod-card-wishlist" aria-label="Save to wishlist" onclick="event.stopPropagation(); toggleWishlist(this, '${p.title}')">
               <i class="far fa-heart"></i>
             </button>
-            <img src="${p.image}" alt="${p.title}" class="prod-card-img" loading="lazy" />
           </div>
           <div class="prod-card-body">
             <span class="prod-card-category">${p.categoryLabel}</span>
@@ -1299,8 +1316,8 @@
       modalBody.innerHTML = `
         <div class="prod-modal-top-grid">
           <div class="prod-modal-stage">
-            <span class="prod-modal-badge">${p.badge}</span>
             <img src="${p.image}" alt="${p.title}" />
+            <span class="prod-modal-badge">${p.badge}</span>
           </div>
 
           <div class="prod-modal-info">
