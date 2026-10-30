@@ -1992,7 +1992,8 @@ img {
 
 /* Main Footer */
 .footer {
-  background-color: var(--color-black);
+  background-color: #170a1c;
+  background: #170a1c;
   color: #888888;
   font-size: 0.875rem;
   padding-top: 5rem;
@@ -2687,8 +2688,8 @@ img {
 /* 1. Header Black & Menu Golden */
 .main-header,
 .main-header.scrolled {
-  background-color: #000000 !important;
-  background: #000000 !important;
+  background-color: #170a1c !important;
+  background: #170a1c !important;
   border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
 }
