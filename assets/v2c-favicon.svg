@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">V2C favicon</title>
+  <desc id="desc">A polished gold C-shaped emblem surrounding an iridescent scientific orb with a molecular leaf symbol.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff5a6"/>
+      <stop offset=".22" stop-color="#ffd64d"/>
+      <stop offset=".52" stop-color="#a85b08"/>
+      <stop offset=".76" stop-color="#ffe879"/>
+      <stop offset="1" stop-color="#b56a0b"/>
+    </linearGradient>
+    <linearGradient id="goldEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6b8"/>
+      <stop offset=".5" stop-color="#d58a16"/>
+      <stop offset="1" stop-color="#75400a"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="34%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#bafaff"/>
+      <stop offset=".22" stop-color="#35c8bd"/>
+      <stop offset=".48" stop-color="#064e59"/>
+      <stop offset=".72" stop-color="#16172c"/>
+      <stop offset=".88" stop-color="#713c26"/>
+      <stop offset="1" stop-color="#03040a"/>
+    </radialGradient>
+    <radialGradient id="shine" cx="25%" cy="14%" r="75%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".8"/>
+      <stop offset=".22" stop-color="#fff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="molecule" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff0c2"/>
+      <stop offset="1" stop-color="#bd7b39"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <clipPath id="orbClip"><circle cx="256" cy="256" r="154"/></clipPath>
+  </defs>
+
+  <!-- soft depth beneath the emblem -->
+  <circle cx="256" cy="263" r="205" fill="#000" opacity=".35" filter="url(#shadow)"/>
+
+  <!-- bold gold C silhouette, open at the right like the source mark -->
+  <path d="M404 116
+           A190 190 0 1 0 404 396
+           L354 346
+           A120 120 0 1 1 354 166
+           Z"
+        fill="url(#gold)" stroke="url(#goldEdge)" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M394 132 A171 171 0 1 0 394 380"
+        fill="none" stroke="#fff3a1" stroke-opacity=".55" stroke-width="3"/>
+
+  <!-- iridescent scientific orb -->
+  <circle cx="256" cy="256" r="158" fill="#080910" stroke="#5d350e" stroke-width="12"/>
+  <circle cx="256" cy="256" r="151" fill="url(#orb)" stroke="url(#gold)" stroke-width="5"/>
+  <g clip-path="url(#orbClip)">
+    <ellipse cx="216" cy="175" rx="130" ry="100" fill="url(#shine)"/>
+    <path d="M116 300 C180 240 226 248 284 280 S376 300 411 238"
+          fill="none" stroke="#59e9dc" stroke-opacity=".18" stroke-width="18"/>
+    <path d="M115 340 C185 290 250 320 310 350"
+          fill="none" stroke="#e7a7ff" stroke-opacity=".14" stroke-width="13"/>
+  </g>
+
+  <!-- molecular / botanical mark -->
+  <g fill="none" stroke="url(#molecule)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M174 294 L222 263 L267 292 L316 257 L351 278"/>
+    <path d="M222 263 L220 214 L263 181 L286 140"/>
+    <path d="M267 292 L270 342"/>
+    <path d="M316 257 L316 212"/>
+    <path d="M286 140 C306 163 305 188 286 207 C267 187 267 163 286 140 Z" fill="#dca66b" fill-opacity=".22"/>
+  </g>
+  <g stroke="#f3d4a0" stroke-width="4">
+    <circle cx="174" cy="294" r="13" fill="#e8b85d"/>
+    <circle cx="222" cy="263" r="12" fill="#d93480"/>
+    <circle cx="267" cy="292" r="12" fill="#31c7dc"/>
+    <circle cx="316" cy="257" r="12" fill="#36c5a0"/>
+    <circle cx="351" cy="278" r="12" fill="#d93480"/>
+    <circle cx="220" cy="214" r="8" fill="#d9a45d"/>
+    <circle cx="316" cy="212" r="8" fill="#d9a45d"/>
+    <circle cx="270" cy="342" r="8" fill="#d9a45d"/>
+  </g>
+  <path d="M278 152 C287 166 288 181 280 194" fill="none" stroke="#fff0c7" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+</svg>
