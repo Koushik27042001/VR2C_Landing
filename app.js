@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         <div style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
           <div style="border: 1px solid #EEE; padding: 1rem; border-radius: 8px; width: 200px;">
-            <img src="assets/1000134054.png" alt="VR2C volumizing shampoo" style="height: 140px; width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
+            <img src="assets/1000134054.jpeg" alt="VR2C volumizing shampoo" style="height: 140px; width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
             <h4 style="font-size: 0.9rem;">VR2C Care Vital Nutrition</h4>
             <p style="font-size: 0.8rem; color: #C5A059; font-weight: 600;">Step 1: Cleanse & Nourish</p>
           </div>
