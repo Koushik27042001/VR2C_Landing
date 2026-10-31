@@ -278,6 +278,21 @@
       border: 3px solid var(--founder-gold);
       box-shadow: 0 12px 30px rgba(36, 16, 43, 0.22);
       letter-spacing: 0.04em;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .founder-avatar-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 27%;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .founder-profile-card:hover .founder-avatar-photo {
+      transform: scale(1.08);
     }
 
     .founder-sidebar-role {
@@ -680,7 +695,9 @@
           <!-- FOUNDER 1: VENKY CHARAN MOHAN -->
           <article class="founder-profile-card">
             <div class="founder-avatar-box">
-              <div class="founder-monogram" aria-hidden="true">VM</div>
+              <div class="founder-monogram" aria-label="Venky Charan Mohan photo">
+                <img src="assets/founder_profile.jpeg" alt="Venky Charan Mohan, Co-Founder &amp; Board Director" class="founder-avatar-photo" />
+              </div>
               <div class="founder-sidebar-role">Co-Founder &amp; Director</div>
               <div class="founder-sidebar-exp">27+ Years Experience</div>
               <div class="founder-chips">
