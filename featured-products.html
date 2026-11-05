@@ -952,6 +952,769 @@
         justify-content: center;
       }
     }
+
+    /* ==========================================================================
+       3. INTERACTIVE 4-STEP SKINCARE SECTION & GIFT SET
+       ========================================================================== */
+    .skincare-four-step-section {
+      padding: 6.5rem 0 5.5rem;
+      background: linear-gradient(180deg, var(--prod-pearl) 0%, #fbf3f7 50%, #f7e8f0 100%);
+      position: relative;
+      border-top: 1px solid rgba(74, 29, 79, 0.06);
+      border-bottom: 1px solid rgba(74, 29, 79, 0.06);
+    }
+
+    .skincare-section-header {
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .skincare-title {
+      font-family: var(--prod-font-serif);
+      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+      color: var(--prod-ink);
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+      font-weight: 500;
+    }
+
+    .skincare-lead {
+      font-family: var(--prod-font-serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+      color: var(--prod-mulberry);
+      margin-bottom: 1rem;
+    }
+
+    .skincare-subdesc {
+      font-size: 1.02rem;
+      color: #635068;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .skincare-interactive-stage {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* Visual Showcase Card */
+    .skincare-visual-card {
+      background: #ffffff;
+      border-radius: 26px;
+      border: 1px solid rgba(74, 29, 79, 0.09);
+      box-shadow: 0 20px 50px rgba(36, 16, 43, 0.07);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .skincare-view-switchers {
+      display: flex;
+      gap: 0.6rem;
+      background: #faf2f6;
+      padding: 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+    }
+
+    .skincare-view-tab {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: #68546e;
+      font-size: 0.84rem;
+      font-weight: 600;
+      font-family: var(--prod-font-sans);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .skincare-view-tab:hover {
+      color: var(--prod-ink);
+    }
+
+    .skincare-view-tab.active {
+      background: var(--prod-ink);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(23, 10, 28, 0.22);
+    }
+
+    .skincare-view-tab.active i {
+      color: var(--prod-gold);
+    }
+
+    /* Media Frame */
+    .skincare-media-wrap {
+      position: relative;
+      width: 100%;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf7fa 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(74, 29, 79, 0.06);
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .skincare-media-frame {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .skincare-media-frame.active {
+      display: flex;
+    }
+
+    .skincare-img-set {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1671 / 941;
+      object-fit: contain;
+      border-radius: 14px;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .skincare-visual-card:hover .skincare-img-set {
+      transform: scale(1.02);
+    }
+
+    .skincare-solo-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    .skincare-img-solo {
+      max-height: 370px;
+      width: auto;
+      max-width: 90%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 15px 35px rgba(36, 16, 43, 0.16));
+      transition: transform 0.4s ease;
+    }
+
+    .skincare-visual-card:hover .skincare-img-solo {
+      transform: scale(1.04);
+    }
+
+    .skincare-visual-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 5;
+      background: rgba(23, 10, 28, 0.92);
+      color: var(--prod-gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(201, 161, 91, 0.35);
+      box-shadow: 0 4px 12px rgba(23, 10, 28, 0.2);
+    }
+
+    .skincare-visual-tag.star-tag {
+      background: linear-gradient(135deg, rgba(23, 10, 28, 0.94) 0%, rgba(74, 29, 79, 0.94) 100%);
+      color: #ffd480;
+      border-color: rgba(255, 212, 128, 0.4);
+    }
+
+    .skincare-card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 0.5rem 0.25rem 0;
+    }
+
+    .skincare-meta-badge {
+      font-size: 0.8rem;
+      color: var(--prod-mulberry);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .skincare-meta-title {
+      font-family: var(--prod-font-serif);
+      font-size: 1.65rem;
+      color: var(--prod-ink);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .skincare-meta-desc {
+      font-size: 0.94rem;
+      color: #68576d;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .skincare-visual-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    /* Right Column: Step Protocol */
+    .skincare-steps-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .skincare-steps-header h3 {
+      font-family: var(--prod-font-serif);
+      font-size: 2.1rem;
+      color: var(--prod-ink);
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .skincare-steps-header p {
+      color: #6f5d75;
+      font-size: 0.96rem;
+      margin: 0;
+    }
+
+    .skincare-steps-kicker {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--prod-mulberry);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .skincare-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .skincare-step-item {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      box-shadow: 0 6px 18px rgba(36, 16, 43, 0.04);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      gap: 1.2rem;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      position: relative;
+    }
+
+    .skincare-step-item:hover {
+      transform: translateX(4px);
+      border-color: rgba(201, 161, 91, 0.4);
+      box-shadow: 0 10px 24px rgba(74, 29, 79, 0.08);
+    }
+
+    .skincare-step-item.active {
+      border-color: var(--prod-gold);
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(74, 29, 79, 0.1);
+      transform: translateX(6px);
+    }
+
+    .skincare-step-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 4px;
+      background: var(--prod-gold);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .skincare-step-rail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .skincare-step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #f7e8f0;
+      color: var(--prod-plum);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(74, 29, 79, 0.12);
+      transition: all 0.25s ease;
+    }
+
+    .skincare-step-item.active .skincare-step-number {
+      background: var(--prod-ink);
+      color: var(--prod-gold);
+      border-color: var(--prod-gold);
+    }
+
+    .skincare-step-content {
+      flex-grow: 1;
+    }
+
+    .skincare-step-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .skincare-step-phase {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--prod-mulberry);
+    }
+
+    .skincare-step-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: #faf0f4;
+      color: #634b68;
+      border: 1px solid rgba(74, 29, 79, 0.1);
+    }
+
+    .skincare-step-pill.star-pill {
+      background: rgba(201, 161, 91, 0.16);
+      color: #8c6418;
+      border-color: rgba(201, 161, 91, 0.4);
+    }
+
+    .skincare-step-name {
+      font-family: var(--prod-font-serif);
+      font-size: 1.35rem;
+      color: var(--prod-ink);
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+
+    .skincare-step-brief {
+      font-size: 0.9rem;
+      color: #66556b;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .skincare-step-expanded {
+      display: none;
+      margin-top: 0.85rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(74, 29, 79, 0.12);
+      animation: fadeInScale 0.3s ease forwards;
+    }
+
+    .skincare-step-item.active .skincare-step-expanded {
+      display: block;
+    }
+
+    .skincare-step-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      color: #4b3d50;
+    }
+
+    .skincare-step-highlights strong {
+      color: var(--prod-ink);
+    }
+
+    .skincare-step-cta-row {
+      margin-top: 0.75rem;
+    }
+
+    .skincare-mini-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--prod-mulberry);
+      background: #faf0f5;
+      border: 1px solid rgba(138, 51, 102, 0.2);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .skincare-mini-btn:hover {
+      background: var(--prod-mulberry);
+      color: #ffffff;
+      border-color: var(--prod-mulberry);
+    }
+
+    /* ==========================================================================
+       4. INTERACTIVE VR2C HOME CARE SECTION
+       ========================================================================== */
+    .home-care-section {
+      padding: 6.5rem 0;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .home-care-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 3.8rem;
+      align-items: center;
+    }
+
+    .home-care-card {
+      background: linear-gradient(135deg, #fff9fc 0%, #fbf3f7 100%);
+      border-radius: 26px;
+      padding: 1.4rem;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      box-shadow: 0 18px 45px rgba(36, 16, 43, 0.06);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .home-care-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .home-care-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--prod-mulberry);
+      background: #f7e4ea;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(138, 51, 102, 0.15);
+    }
+
+    .home-care-subpill {
+      font-size: 0.8rem;
+      color: #7b6980;
+    }
+
+    .home-care-img-frame {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(74, 29, 79, 0.06);
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-care-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1672 / 941;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .home-care-card:hover .home-care-img {
+      transform: scale(1.02);
+    }
+
+    .home-care-card-caption h4 {
+      font-family: var(--prod-font-serif);
+      font-size: 1.45rem;
+      color: var(--prod-ink);
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+
+    .home-care-card-caption p {
+      font-size: 0.92rem;
+      color: #65546b;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Right Side Interactive Flow */
+    .home-care-interactive-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .home-care-title {
+      font-family: var(--prod-font-serif);
+      font-size: clamp(2.2rem, 3.8vw, 3rem);
+      color: var(--prod-ink);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .home-care-lead {
+      color: #6d5b73;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .home-care-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      background: #fbf3f7;
+      padding: 0.4rem;
+      border-radius: 16px;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+    }
+
+    .home-care-tab {
+      background: transparent;
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 0.6rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      color: #6a576f;
+      transition: all 0.25s ease;
+      font-family: var(--prod-font-sans);
+      text-align: center;
+    }
+
+    .home-care-tab i {
+      font-size: 1.1rem;
+      color: var(--prod-mulberry);
+      transition: all 0.2s ease;
+    }
+
+    .home-care-tab span {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--prod-ink);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .home-care-tab small {
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: #7b6880;
+      margin-top: 0.2rem;
+    }
+
+    .home-care-tab:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .home-care-tab.active {
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(36, 16, 43, 0.08);
+      border: 1px solid rgba(201, 161, 91, 0.35);
+    }
+
+    .home-care-tab.active i {
+      color: var(--prod-gold);
+    }
+
+    .home-care-ritual-box {
+      background: #faf4f8;
+      border-radius: 20px;
+      border: 1px solid rgba(74, 29, 79, 0.08);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      animation: fadeInScale 0.35s ease forwards;
+    }
+
+    .ritual-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(74, 29, 79, 0.08);
+      padding-bottom: 0.85rem;
+    }
+
+    .ritual-box-title {
+      font-family: var(--prod-font-serif);
+      font-size: 1.45rem;
+      color: var(--prod-ink);
+      margin: 0;
+    }
+
+    .ritual-box-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(201, 161, 91, 0.16);
+      color: #8c6418;
+      border: 1px solid rgba(201, 161, 91, 0.3);
+    }
+
+    .ritual-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .ritual-check-item {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      background: #ffffff;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(74, 29, 79, 0.06);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ritual-check-item:hover {
+      border-color: rgba(201, 161, 91, 0.4);
+      background: #fffdfd;
+    }
+
+    .ritual-check-item.checked {
+      background: #fbf7fa;
+      border-color: rgba(74, 29, 79, 0.15);
+      opacity: 0.85;
+    }
+
+    .ritual-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid rgba(74, 29, 79, 0.25);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .ritual-check-item.checked .ritual-checkbox {
+      background: var(--prod-gold);
+      border-color: var(--prod-gold);
+      color: #ffffff;
+    }
+
+    .ritual-checkbox i {
+      font-size: 0.65rem;
+      display: none;
+    }
+
+    .ritual-check-item.checked .ritual-checkbox i {
+      display: block;
+    }
+
+    .ritual-check-content {
+      flex-grow: 1;
+    }
+
+    .ritual-check-content h5 {
+      font-size: 0.95rem;
+      color: var(--prod-ink);
+      margin: 0 0 0.2rem;
+      font-weight: 700;
+    }
+
+    .ritual-check-content p {
+      font-size: 0.84rem;
+      color: #6a5970;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .ritual-tip-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid var(--prod-gold);
+      font-size: 0.85rem;
+      color: #55445c;
+    }
+
+    .ritual-tip-box strong {
+      color: var(--prod-ink);
+    }
+
+    .home-care-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -988,6 +1751,8 @@
         <div class="dropdown-menu">
           <a href="shop-by-concern.html" class="dropdown-item">Shop by Concern</a>
           <a href="featured-products.html" class="dropdown-item">Featured Products</a>
+          <a href="featured-products.html#skincare-routine" class="dropdown-item">4-Step Skincare Set</a>
+          <a href="featured-products.html#home-care" class="dropdown-item">Home Care Ritual</a>
         </div>
       </div>
       <a href="testimonials.html" class="nav-link">Testimonials</a>
@@ -1038,6 +1803,7 @@
             <button type="button" class="prod-tab-btn" data-category="color">Color Muse</button>
             <button type="button" class="prod-tab-btn" data-category="style">VR2C Style</button>
             <button type="button" class="prod-tab-btn" data-category="scalp">Scalp &amp; Therapy</button>
+            <button type="button" class="prod-tab-btn" data-category="skincare">Skincare &amp; Sets</button>
           </div>
 
           <div class="prod-search-box">
@@ -1052,7 +1818,7 @@
     <section class="prod-catalog-section">
       <div class="prod-container">
         <div class="prod-results-meta">
-          <div class="prod-results-count">Showing <strong id="productCount">10</strong> formulations</div>
+          <div class="prod-results-count">Showing <strong id="productCount">13</strong> formulations</div>
           <div style="font-size: 0.85rem; color: #88748d;"><i class="fas fa-shield-halved" style="color: var(--prod-gold);"></i> Rigorously safety-tested in the USA</div>
         </div>
 
@@ -1062,7 +1828,250 @@
       </div>
     </section>
 
-    <!-- 3. SALON ASSURANCE PROMISE -->
+    <!-- 3. INTERACTIVE 4-STEP SKINCARE RITUAL & GIFT SET -->
+    <section class="skincare-four-step-section" id="skincare-routine">
+      <div class="prod-container">
+        <div class="skincare-section-header">
+          <span class="prod-kicker">✦ DERMATOLOGICAL HARMONY</span>
+          <h2 class="skincare-title">The 4-Step Skincare Ritual</h2>
+          <p class="skincare-lead">Purposefully formulated for dermal barrier vitality, daily defense, and lit-from-within radiance.</p>
+          <p class="skincare-subdesc">
+            Whether experienced through our complete <strong>Luxury Four-Step Gift Set</strong> or personalized with individual hero elixirs like our <strong>Vitamin C Serum Citrus Glow</strong>, each step is clinically evaluated in the USA for sensitive skin compatibility.
+          </p>
+        </div>
+
+        <div class="skincare-interactive-stage">
+          <!-- Left Column: Visual Showcase with Interactive Switcher -->
+          <div class="skincare-visual-col">
+            <div class="skincare-visual-card">
+              <div class="skincare-view-switchers" role="tablist" aria-label="Toggle Skincare Views">
+                <button type="button" class="skincare-view-tab active" id="viewSetBtn" onclick="switchSkincareView('set')">
+                  <i class="fas fa-gift" aria-hidden="true"></i> Complete 4-Step Gift Set
+                </button>
+                <button type="button" class="skincare-view-tab" id="viewSoloBtn" onclick="switchSkincareView('solo')">
+                  <i class="fas fa-sun" aria-hidden="true"></i> Individual: Vitamin C Citrus Glow
+                </button>
+              </div>
+
+              <!-- Main Visual Frame -->
+              <div class="skincare-media-wrap">
+                <!-- View A: Four-Step Gift Set -->
+                <div class="skincare-media-frame active" id="skincareSetFrame">
+                  <img src="assets/Luxury VR2C Four-Step Skincare Gift Set.png" alt="Luxury VR2C Four-Step Skincare Gift Set" class="skincare-img skincare-img-set" loading="lazy" />
+                  <span class="skincare-visual-tag">Complete 4-Piece Regimen Box</span>
+                </div>
+
+                <!-- View B: Individual Vitamin C Serum Citrus Glow -->
+                <div class="skincare-media-frame" id="skincareSoloFrame">
+                  <div class="skincare-solo-inner">
+                    <img src="assets/Vitamin C Serum Citrus Glow.png" alt="Vitamin C Serum Citrus Glow Individual Formula" class="skincare-img skincare-img-solo" loading="lazy" />
+                  </div>
+                  <span class="skincare-visual-tag star-tag">✦ Step 03 Individual Hero Formula</span>
+                </div>
+              </div>
+
+              <!-- Visual Card Footer -->
+              <div class="skincare-card-details">
+                <div class="skincare-detail-meta" id="skincareVisualMeta">
+                  <div class="skincare-meta-badge">
+                    <i class="fas fa-shield-halved" style="color: var(--prod-gold);"></i> USA Safety Tested · Healios Labs LLC
+                  </div>
+                  <h3 class="skincare-meta-title" id="skincareVisualTitle">Luxury VR2C Four-Step Skincare Gift Set</h3>
+                  <p class="skincare-meta-desc" id="skincareVisualDesc">
+                    A master collection featuring Cleanser, Balancing Mist, Vitamin C Citrus Glow Serum, and Barrier Lock Creme. Packaged in a bespoke gold-stamped luxury gift box.
+                  </p>
+                </div>
+                <div class="skincare-visual-actions">
+                  <button type="button" class="prod-btn-add" id="skincareActionBtn" onclick="handleSkincareAdd()">
+                    <i class="fas fa-cart-plus" aria-hidden="true"></i> Add 4-Step Gift Set to Routine
+                  </button>
+                  <button type="button" class="prod-tab-btn" id="skincareModalBtn" onclick="openProductModal('four-step-skincare-gift-set')">
+                    <i class="fas fa-circle-info" aria-hidden="true"></i> View Formula Specs
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive 4-Step Timeline -->
+          <div class="skincare-steps-col">
+            <div class="skincare-steps-header">
+              <span class="skincare-steps-kicker">✦ THE SYNERGY PROTOCOL</span>
+              <h3>Explore Each Step</h3>
+              <p>Click any step to reveal formulation science, key botanicals, and application tips:</p>
+            </div>
+
+            <div class="skincare-steps-list">
+              <!-- Step 1 -->
+              <div class="skincare-step-item active" data-step="1" onclick="selectSkincareStep(1)">
+                <div class="skincare-step-rail">
+                  <span class="skincare-step-number">01</span>
+                  <span class="skincare-step-line"></span>
+                </div>
+                <div class="skincare-step-content">
+                  <div class="skincare-step-header-row">
+                    <span class="skincare-step-phase">Step 01 · Cleanse &amp; Clarify</span>
+                    <span class="skincare-step-pill">AM / PM</span>
+                  </div>
+                  <h4 class="skincare-step-name">Gentle Botanical Cleansing Elixir</h4>
+                  <p class="skincare-step-brief">Melt away impurities and pollutants while protecting the lipid mantle with organic aloe and amino surfactants.</p>
+                  <div class="skincare-step-expanded">
+                    <div class="skincare-step-highlights">
+                      <span><strong>Key Actives:</strong> Aloe Vera, Green Tea, Chamomile</span>
+                      <span><strong>Texture:</strong> Silky hydrating gel-to-milk</span>
+                      <span><strong>Benefit:</strong> Zero dryness, balanced pH 5.5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="skincare-step-item" data-step="2" onclick="selectSkincareStep(2)">
+                <div class="skincare-step-rail">
+                  <span class="skincare-step-number">02</span>
+                  <span class="skincare-step-line"></span>
+                </div>
+                <div class="skincare-step-content">
+                  <div class="skincare-step-header-row">
+                    <span class="skincare-step-phase">Step 02 · Tone &amp; Prepare</span>
+                    <span class="skincare-step-pill">AM / PM</span>
+                  </div>
+                  <h4 class="skincare-step-name">Centella &amp; Rose Hydration Mist</h4>
+                  <p class="skincare-step-brief">Soothe reactive skin, replenish cell water channels, and enhance serum absorption through micro-droplet misting.</p>
+                  <div class="skincare-step-expanded">
+                    <div class="skincare-step-highlights">
+                      <span><strong>Key Actives:</strong> Centella Asiatica, Rose Damascena, Niacinamide</span>
+                      <span><strong>Texture:</strong> Ultra-fine featherlight mist</span>
+                      <span><strong>Benefit:</strong> Calms redness, primes absorption</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 (HERO INDIVIDUAL) -->
+              <div class="skincare-step-item" data-step="3" onclick="selectSkincareStep(3)">
+                <div class="skincare-step-rail">
+                  <span class="skincare-step-number">03</span>
+                  <span class="skincare-step-line"></span>
+                </div>
+                <div class="skincare-step-content">
+                  <div class="skincare-step-header-row">
+                    <span class="skincare-step-phase">Step 03 · Treat &amp; Illuminate</span>
+                    <span class="skincare-step-pill star-pill">★ Individual Hero Formula</span>
+                  </div>
+                  <h4 class="skincare-step-name">Vitamin C Serum Citrus Glow</h4>
+                  <p class="skincare-step-brief">Supercharge radiance with 15% stabilized vitamin C and cold-pressed citrus bioflavonoids for an undeniable lit-from-within glow.</p>
+                  <div class="skincare-step-expanded">
+                    <div class="skincare-step-highlights">
+                      <span><strong>Key Actives:</strong> 15% Stabilized Vitamin C, Citrus Bioflavonoids, Ferulic Acid</span>
+                      <span><strong>Texture:</strong> Silky, quick-absorbing golden drops</span>
+                      <span><strong>Benefit:</strong> Fades dullness, protects against oxidation</span>
+                    </div>
+                    <div class="skincare-step-cta-row">
+                      <button type="button" class="skincare-mini-btn" onclick="event.stopPropagation(); openProductModal('vitamin-c-serum-citrus-glow')">
+                        <i class="fas fa-search-plus"></i> View Vitamin C Individual Profile
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="skincare-step-item" data-step="4" onclick="selectSkincareStep(4)">
+                <div class="skincare-step-rail">
+                  <span class="skincare-step-number">04</span>
+                </div>
+                <div class="skincare-step-content">
+                  <div class="skincare-step-header-row">
+                    <span class="skincare-step-phase">Step 04 · Seal &amp; Defend</span>
+                    <span class="skincare-step-pill">AM / PM</span>
+                  </div>
+                  <h4 class="skincare-step-name">Restorative Botanical Barrier Creme</h4>
+                  <p class="skincare-step-brief">Seal in daily active nutrients with biocompatible squalane, plant ceramides, and pure vitamin E for 24-hour hydration.</p>
+                  <div class="skincare-step-expanded">
+                    <div class="skincare-step-highlights">
+                      <span><strong>Key Actives:</strong> Botanical Squalane, Ceramide NP, Shea Esters</span>
+                      <span><strong>Texture:</strong> Whipped velvet non-greasy creme</span>
+                      <span><strong>Benefit:</strong> Reinforces lipid barrier, prevents TEWL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. INTERACTIVE VR2C HOME CARE RITUAL -->
+    <section class="home-care-section" id="home-care">
+      <div class="prod-container">
+        <div class="home-care-grid">
+          <!-- Left Side: Interactive Home Care Visual -->
+          <div class="home-care-visual-col">
+            <div class="home-care-card">
+              <div class="home-care-badge-row">
+                <span class="home-care-pill"><i class="fas fa-home" aria-hidden="true"></i> Salon Mastery at Home</span>
+                <span class="home-care-subpill">Everyday Care Routine</span>
+              </div>
+              
+              <div class="home-care-img-frame">
+                <img src="assets/home-care.png" alt="VR2C Home Care Ritual Collection" class="home-care-img" loading="lazy" />
+              </div>
+
+              <div class="home-care-card-caption">
+                <h4>The Professional Standard In Your Sanctuary</h4>
+                <p>
+                  Engineered with 30+ years of salon mastery to bridge professional backbar treatments with mindful everyday home rituals. Clean, restorative, and formulated without sulfates or parabens.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Interactive Home Care Routine Switcher & Checklist -->
+          <div class="home-care-interactive-col">
+            <div class="home-care-flow-header">
+              <span class="prod-kicker">✦ PERSONALIZE YOUR HOME SYSTEM</span>
+              <h2 class="home-care-title">Interactive Home Care Regimens</h2>
+              <p class="home-care-lead">Select a ritual tailored to your schedule and hair/skin needs:</p>
+            </div>
+
+            <!-- Interactive Tab Switchers -->
+            <div class="home-care-tabs" role="tablist">
+              <button type="button" class="home-care-tab active" data-ritual="morning" onclick="switchHomeRitual('morning')">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <span>Morning Fast Flow<small>5 Mins · Awaken &amp; Polish</small></span>
+              </button>
+              <button type="button" class="home-care-tab" data-ritual="evening" onclick="switchHomeRitual('evening')">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+                <span>Evening Repair<small>12 Mins · Replenish &amp; Lock</small></span>
+              </button>
+              <button type="button" class="home-care-tab" data-ritual="weekend" onclick="switchHomeRitual('weekend')">
+                <i class="fas fa-spa" aria-hidden="true"></i>
+                <span>Weekend Salon Reset<small>25 Mins · Deep Detox &amp; Mask</small></span>
+              </button>
+            </div>
+
+            <!-- Interactive Checklist Panel -->
+            <div class="home-care-ritual-box" id="homeRitualBox">
+              <!-- Injected dynamically by JS -->
+            </div>
+
+            <!-- Actions -->
+            <div class="home-care-actions">
+              <button type="button" class="prod-btn-add" onclick="savePersonalHomeRitual()">
+                <i class="fas fa-bookmark" aria-hidden="true"></i> Save Routine to My Profile
+              </button>
+              <button type="button" class="prod-tab-btn" onclick="filterHomeCareCatalog()">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i> Browse Home Care Formulas
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SALON ASSURANCE PROMISE -->
     <section class="prod-assurance-section">
       <div class="prod-container">
         <div class="prod-assurance-grid">
@@ -1126,6 +2135,8 @@
             <li><a href="featured-products.html">VR2C Care</a></li>
             <li><a href="featured-products.html">Color Muse</a></li>
             <li><a href="featured-products.html">VR2C Style</a></li>
+            <li><a href="featured-products.html#skincare-routine">4-Step Skincare</a></li>
+            <li><a href="featured-products.html#home-care">Home Care Ritual</a></li>
             <li><a href="ingredient-spotlight.html">Hero Ingredients</a></li>
             <li><a href="brand-story.html">Our Story</a></li>
             <li><a href="shop-by-concern.html">Shop by Concern</a></li>
@@ -1172,6 +2183,70 @@
   <script>
     // Product Catalog Database
     const VR2C_PRODUCTS = [
+      {
+        id: 'vitamin-c-serum-citrus-glow',
+        title: 'Vitamin C Serum Citrus Glow',
+        category: 'skincare',
+        categoryLabel: 'VR2C Skin · Antioxidant Radiance',
+        badge: 'Individual Star',
+        image: 'assets/Vitamin C Serum Citrus Glow.png',
+        size: '30 ml / 1.0 fl. oz.',
+        rating: '5.0',
+        reviews: '138',
+        tagline: '15% Stabilized Vitamin C & Cold-Pressed Citrus Bioflavonoids',
+        description: 'An illuminating daily skincare serum formulated to defend against environmental oxidative stress while brightening hyperpigmentation and boosting natural collagen synthesis. Pairs stabilized L-Ascorbic Acid with ferulic acid, botanical hyaluronic acid, and pure citrus peel bioflavonoids for a radiant, non-greasy velvet finish.',
+        ingredients: ['15% Stabilized Vitamin C (L-Ascorbic Acid)', 'Citrus Bioflavonoids', 'Ferulic Acid', 'Botanical Hyaluronic Acid', 'Pure Vitamin E'],
+        freeFrom: ['No Parabens', 'No Sulfates', 'No Mineral Oil', 'No Synthetic Fragrance', 'Cruelty-Free'],
+        howToUse: [
+          'After cleansing and toning, dispense 3 to 4 drops onto fingertips.',
+          'Gently press into face, neck, and décolletage with upward smoothing motions.',
+          'Allow 60 seconds for complete absorption before applying your barrier creme and SPF.'
+        ],
+        claims: 'Proven 92% increase in visible skin radiance within 14 days. Clinically safety-tested non-irritating by Healios Labs LLC.'
+      },
+      {
+        id: 'four-step-skincare-gift-set',
+        title: 'Luxury Four-Step Skincare Gift Set',
+        category: 'skincare',
+        categoryLabel: 'VR2C Skin · Complete Routine Set',
+        badge: 'Limited Edition Set',
+        image: 'assets/Luxury VR2C Four-Step Skincare Gift Set.png',
+        size: '4-Piece Full Regimen Box',
+        rating: '5.0',
+        reviews: '164',
+        tagline: 'Complete Dermal Harmony Regimen in a Luxury Gold-Stamped Presentation Box',
+        description: 'The definitive VR2C daily skincare journey. Combines four purposefully formulated steps: Purifying Botanical Cleanser (100ml), Balancing Hydration Mist (100ml), Vitamin C Serum Citrus Glow (30ml), and Restorative Botanical Barrier Creme (50ml). Together, they restore optimal skin pH, defend against daily oxidants, and lock in 24-hour hydration.',
+        ingredients: ['15% Vitamin C', 'Citrus Bioflavonoids', 'Plant Ceramides', 'Botanical Squalane', 'Centella Asiatica', 'Aloe Vera'],
+        freeFrom: ['No Parabens', 'No Sulfates', 'No Harsh Alcohols', 'USA Safety Tested', 'Dermatologist Evaluated'],
+        howToUse: [
+          'Step 01: Cleanse face with Botanical Cleanser and rinse with lukewarm water.',
+          'Step 02: Mist Balancing Hydration Mist evenly over face and pat gently.',
+          'Step 03: Press 3-4 drops of Vitamin C Serum Citrus Glow into skin to illuminate.',
+          'Step 04: Finish with Restorative Barrier Creme to seal moisture throughout the day.'
+        ],
+        claims: 'Synergistic 4-step protocol improves moisture barrier retention by 3.2x compared to standalone moisturizer use.'
+      },
+      {
+        id: 'home-care-duo',
+        title: 'VR2C Home Care Ritual Collection',
+        category: 'care',
+        categoryLabel: 'VR2C Care · Home System',
+        badge: 'Signature Home Care',
+        image: 'assets/home-care.png',
+        size: 'Complete Home Regimen System',
+        rating: '4.9',
+        reviews: '112',
+        tagline: 'Salon-Grade Cleansing, Conditioning & Styling Home Care System',
+        description: 'Bring the luxury and performance of professional salon care directly into your home sanctuary. Includes our bestselling Vital Nutrition cleanser, intensive repairing conditioner, and restorative morning smoothing elixir. Formulated to keep hair silky, resilient, and manageable between salon visits.',
+        ingredients: ['Argan Oil', 'Provitamin B5', 'Hydrolyzed Wheat Protein', 'Organic Aloe Vera', 'Botanical Squalane'],
+        freeFrom: ['No Sulfates', 'No Parabens', 'No Mineral Oil', 'Color Safe'],
+        howToUse: [
+          'Cleanse scalp gently with Vital Nutrition Shampoo.',
+          'Apply Nourishing Conditioner through lengths and detangle.',
+          'Finish with 2 drops of Restorative Serum on towel-dried or styled hair.'
+        ],
+        claims: 'Maintains salon vibrancy and reduces everyday breakage by up to 88%.'
+      },
       {
         id: 'vital-nutrition-shampoo',
         title: 'Vital Nutrition Shampoo',
@@ -1621,6 +2696,220 @@
 
     // Initialize Catalog on Load
     renderProducts();
+
+    // ----------------------------------------------------
+    // Interactive 4-Step Skincare Controls
+    // ----------------------------------------------------
+    let currentSkincareView = 'set';
+
+    function switchSkincareView(view) {
+      currentSkincareView = view;
+      const setBtn = document.getElementById('viewSetBtn');
+      const soloBtn = document.getElementById('viewSoloBtn');
+      const setFrame = document.getElementById('skincareSetFrame');
+      const soloFrame = document.getElementById('skincareSoloFrame');
+      const titleEl = document.getElementById('skincareVisualTitle');
+      const descEl = document.getElementById('skincareVisualDesc');
+      const actionBtn = document.getElementById('skincareActionBtn');
+      const modalBtn = document.getElementById('skincareModalBtn');
+
+      if (!setBtn || !soloBtn) return;
+
+      if (view === 'solo') {
+        soloBtn.classList.add('active');
+        setBtn.classList.remove('active');
+        soloFrame.classList.add('active');
+        setFrame.classList.remove('active');
+
+        titleEl.textContent = 'Vitamin C Serum Citrus Glow';
+        descEl.textContent = '15% stabilized L-Ascorbic Acid infused with cold-pressed citrus bioflavonoids, ferulic acid, and hyaluronic acid. Available as an individual formula.';
+        actionBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add Vitamin C Serum to Routine';
+        modalBtn.setAttribute('onclick', "openProductModal('vitamin-c-serum-citrus-glow')");
+      } else {
+        setBtn.classList.add('active');
+        soloBtn.classList.remove('active');
+        setFrame.classList.add('active');
+        soloFrame.classList.remove('active');
+
+        titleEl.textContent = 'Luxury VR2C Four-Step Skincare Gift Set';
+        descEl.textContent = 'A master collection featuring Cleanser, Balancing Mist, Vitamin C Citrus Glow Serum, and Barrier Lock Creme. Packaged in a bespoke gold-stamped luxury gift box.';
+        actionBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add 4-Step Gift Set to Routine';
+        modalBtn.setAttribute('onclick', "openProductModal('four-step-skincare-gift-set')");
+      }
+    }
+
+    function handleSkincareAdd() {
+      if (currentSkincareView === 'solo') {
+        showToast('Vitamin C Serum Citrus Glow added to your routine!');
+      } else {
+        showToast('Luxury Four-Step Skincare Gift Set added to your routine!');
+      }
+    }
+
+    function selectSkincareStep(stepNumber) {
+      document.querySelectorAll('.skincare-step-item').forEach(item => {
+        item.classList.remove('active');
+        if (parseInt(item.dataset.step, 10) === stepNumber) {
+          item.classList.add('active');
+        }
+      });
+
+      // If Step 3 (Vitamin C Serum Citrus Glow) is selected, highlight individual bottle view
+      if (stepNumber === 3) {
+        switchSkincareView('solo');
+      } else {
+        switchSkincareView('set');
+      }
+    }
+
+    // ----------------------------------------------------
+    // Interactive VR2C Home Care Regimens Database
+    // ----------------------------------------------------
+    const HOME_RITUALS = {
+      morning: {
+        title: 'Morning Awakening & Anti-Pollution Polish',
+        badge: '5 Minutes · Daily AM',
+        tip: '<strong>Stylist Tip:</strong> Emulsify 2 drops of serum between palms before pressing gently into hair ends and high facial contours.',
+        items: [
+          {
+            title: 'Vital Nutrition Cleanse / Gentle Scalp Prep',
+            desc: 'Awakens follicles and clears morning sebum with mild botanical surfactants.',
+            checked: true
+          },
+          {
+            title: 'Vitamin C Serum Citrus Glow Application',
+            desc: 'Smooth 3-4 golden drops onto face & neck for antioxidant shielding throughout the day.',
+            checked: true
+          },
+          {
+            title: 'Restorative Morning Smoothing Elixir',
+            desc: 'Locks down morning bedhead flyaways in 30 seconds with a weightless silk veil.',
+            checked: false
+          }
+        ]
+      },
+      evening: {
+        title: 'Evening Barrier Repair & Nighttime Unwind',
+        badge: '12 Minutes · Daily PM',
+        tip: '<strong>Science Note:</strong> Cellular regeneration peaks between 11 PM and 4 AM. Nightly barrier nourishment supports collagen synthesis.',
+        items: [
+          {
+            title: 'Double Botanical Cleansing Ritual',
+            desc: 'Dissolves sunscreen, micro-pollutants, and styling residue without disrupting natural pH.',
+            checked: true
+          },
+          {
+            title: 'Centella & Rose Hydration Mist',
+            desc: 'Replenishes intercellular water reservoirs and calms environmental skin redness.',
+            checked: true
+          },
+          {
+            title: 'Restorative Botanical Barrier Lock Creme',
+            desc: 'Squalane and ceramides create a breathable nocturnal seal against trans-epidermal moisture loss.',
+            checked: true
+          },
+          {
+            title: 'Overnight Cuticle Nourish Touch',
+            desc: 'One drop of pure argan elixir through ends prevents pillowcase friction and tangles.',
+            checked: false
+          }
+        ]
+      },
+      weekend: {
+        title: 'Weekend Full Salon Spa & Deep Detox',
+        badge: '25 Minutes · Weekly Intensive',
+        tip: '<strong>Pro Ritual:</strong> Wrap hair in a warm, damp towel while your Color Muse mask sits for 10 minutes to open cuticles for deep nutrient infusion.',
+        items: [
+          {
+            title: 'Scalp Therapy Detox Exfoliant',
+            desc: 'Clears product buildup, balances excess sebum, and oxygenates roots with tea tree & zinc PCA.',
+            checked: true
+          },
+          {
+            title: 'Color Muse Vibrancy Mask Intensive Wrap',
+            desc: 'Silk amino acids and keratin peptides rebuild internal hair bonds and seal pigment brilliance.',
+            checked: true
+          },
+          {
+            title: 'Complete 4-Step Skincare Harmony Protocol',
+            desc: 'Full Cleanse, Mist, Vitamin C Citrus Glow, and Barrier Creme routine for renewed weekend radiance.',
+            checked: true
+          },
+          {
+            title: 'Thermal Defense Styling Prep',
+            desc: 'Shields hair up to 450°F before any weekend heat styling or blowouts.',
+            checked: false
+          }
+        ]
+      }
+    };
+
+    function renderHomeRitual(ritualKey) {
+      const ritual = HOME_RITUALS[ritualKey] || HOME_RITUALS.morning;
+      const box = document.getElementById('homeRitualBox');
+      if (!box) return;
+
+      box.innerHTML = `
+        <div class="ritual-box-header">
+          <h4 class="ritual-box-title">${ritual.title}</h4>
+          <span class="ritual-box-badge">${ritual.badge}</span>
+        </div>
+
+        <ul class="ritual-checklist">
+          ${ritual.items.map((item, idx) => `
+            <li class="ritual-check-item ${item.checked ? 'checked' : ''}" onclick="toggleRitualCheck(this, '${ritualKey}', ${idx})">
+              <div class="ritual-checkbox">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="ritual-check-content">
+                <h5>${item.title}</h5>
+                <p>${item.desc}</p>
+              </div>
+            </li>
+          `).join('')}
+        </ul>
+
+        <div class="ritual-tip-box">
+          ${ritual.tip}
+        </div>
+      `;
+    }
+
+    function toggleRitualCheck(el, ritualKey, idx) {
+      el.classList.toggle('checked');
+      if (HOME_RITUALS[ritualKey] && HOME_RITUALS[ritualKey].items[idx]) {
+        HOME_RITUALS[ritualKey].items[idx].checked = el.classList.contains('checked');
+      }
+    }
+
+    function switchHomeRitual(ritualKey) {
+      document.querySelectorAll('.home-care-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.ritual === ritualKey) {
+          tab.classList.add('active');
+        }
+      });
+      renderHomeRitual(ritualKey);
+    }
+
+    function savePersonalHomeRitual() {
+      showToast('Customized Home Care routine saved to your profile!');
+    }
+
+    function filterHomeCareCatalog() {
+      const careTab = document.querySelector('.prod-tab-btn[data-category="care"]');
+      if (careTab) {
+        careTab.click();
+        const catalogEl = document.querySelector('.prod-catalog-section');
+        if (catalogEl) {
+          catalogEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    // Initialize Home Ritual on Load
+    renderHomeRitual('morning');
+
   </script>
   <script src="app.js"></script>
 </body>
